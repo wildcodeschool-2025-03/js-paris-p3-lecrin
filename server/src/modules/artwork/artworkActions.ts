@@ -1,7 +1,7 @@
 import type { RequestHandler } from "express";
 import artworkRepository from "./artworkRepository";
 
-const getAll: RequestHandler = async (req, res, next) => {
+const browse: RequestHandler = async (req, res, next) => {
   try {
     const result = await artworkRepository.selectAll();
     res.json(result);
@@ -10,4 +10,4 @@ const getAll: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { getAll };
+export default { browse };
