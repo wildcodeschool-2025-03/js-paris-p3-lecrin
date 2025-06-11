@@ -1,5 +1,5 @@
-import artworkRepository from "./artworkRepository";
 import type { RequestHandler } from "express";
+import artworkRepository from "./artworkRepository";
 
 const getAll: RequestHandler = async (req, res, next) => {
   try {
