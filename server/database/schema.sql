@@ -88,42 +88,13 @@ CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`artwork` (
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb3;
 
 -- -----------------------------------------------------
--- Table `BDD_projet_3`.`sub_movement`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`sub_movement` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(255) NOT NULL,
-    `movement_id` INT NOT NULL,
-    `description` TEXT NOT NULL,
-    PRIMARY KEY (`id`),
-    INDEX `fk_sub_movement_movement1_idx` (`movement_id` ASC) VISIBLE,
-    CONSTRAINT `fk_sub_movement_movement1` FOREIGN KEY (`movement_id`) REFERENCES `BDD_projet_3`.`movement` (`id`)
-) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb3;
-
--- -----------------------------------------------------
--- Table `BDD_projet_3`.`belong_artwork_submov`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`belong_artwork_submov` (
-    `sub_movement_id` INT NOT NULL,
-    `artwork_id` INT NOT NULL,
-    PRIMARY KEY (
-        `sub_movement_id`,
-        `artwork_id`
-    ),
-    INDEX `fk_sub_movement_has_artwork_artwork1_idx` (`artwork_id` ASC) VISIBLE,
-    INDEX `fk_sub_movement_has_artwork_sub_movement1_idx` (`sub_movement_id` ASC) VISIBLE,
-    CONSTRAINT `fk_sub_movement_has_artwork_artwork1` FOREIGN KEY (`artwork_id`) REFERENCES `BDD_projet_3`.`artwork` (`id`),
-    CONSTRAINT `fk_sub_movement_has_artwork_sub_movement1` FOREIGN KEY (`sub_movement_id`) REFERENCES `BDD_projet_3`.`sub_movement` (`id`)
-) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb3;
-
--- -----------------------------------------------------
 -- Table `BDD_projet_3`.`collection`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`collection` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(45) NOT NULL,
     `user_id` INT NOT NULL,
-    PRIMARY KEY (`id`),
+    PRIMARY KEY (`id`, `user_id`),
     INDEX `fk_collection_user1_idx` (`user_id` ASC) VISIBLE,
     INDEX `fk_collection_id_idx` (`id` ASC) VISIBLE,
     UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
@@ -157,22 +128,6 @@ CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`link_artist_movement` (
     INDEX `fk_movement_has_artist_movement1_idx` (`movement_id` ASC) VISIBLE,
     CONSTRAINT `fk_movement_has_artist_artist1` FOREIGN KEY (`artist_id`) REFERENCES `BDD_projet_3`.`artist` (`id`),
     CONSTRAINT `fk_movement_has_artist_movement1` FOREIGN KEY (`movement_id`) REFERENCES `BDD_projet_3`.`movement` (`id`)
-) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb3;
-
--- -----------------------------------------------------
--- Table `BDD_projet_3`.`link_artist_submovement`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`link_artist_submovement` (
-    `sub_movement_id` INT NOT NULL,
-    `artist_id` INT NOT NULL,
-    PRIMARY KEY (
-        `sub_movement_id`,
-        `artist_id`
-    ),
-    INDEX `fk_sub_movement_has_artist_artist1_idx` (`artist_id` ASC) VISIBLE,
-    INDEX `fk_sub_movement_has_artist_sub_movement1_idx` (`sub_movement_id` ASC) VISIBLE,
-    CONSTRAINT `fk_sub_movement_has_artist_artist1` FOREIGN KEY (`artist_id`) REFERENCES `BDD_projet_3`.`artist` (`id`),
-    CONSTRAINT `fk_sub_movement_has_artist_sub_movement1` FOREIGN KEY (`sub_movement_id`) REFERENCES `BDD_projet_3`.`sub_movement` (`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb3;
 
 -- -----------------------------------------------------
