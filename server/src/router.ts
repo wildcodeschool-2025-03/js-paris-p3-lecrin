@@ -7,13 +7,28 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Define item-related routes
-import artworkAction from "./modules/artwork/artworkAction";
 
 // router.get("/api/items", itemActions.browse);
 // router.get("/api/items/:id", itemActions.read);
 // router.post("/api/items", itemActions.add);
 
-router.get("/api/artworks", artworkAction.getAll);
+import artworkActions from "./modules/artwork/artworkActions";
+router.get("/api/artworks", artworkActions.browse);
+
+import userActions from "./modules/user/userActions";
+router.get("/api/users", userActions.browse);
+
+import artistActions from "./modules/artist/artistActions";
+router.get("/api/artists", artistActions.browse);
+
+import movementActions from "./modules/mouvement/movementActions";
+router.get("/api/movements", movementActions.browse);
+
+import collectionActions from "./modules/collection/collectionActions";
+router.get("/api/collections", collectionActions.browse);
+
+import commentActions from "./modules/comment/commentActions";
+router.get("/api/comments", commentActions.browse);
 
 /* ************************************************************************* */
 
