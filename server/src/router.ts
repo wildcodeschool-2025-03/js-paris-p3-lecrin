@@ -17,6 +17,10 @@ router.get("/api/artworks", artworkActions.browse);
 
 import userActions from "./modules/user/userActions";
 router.get("/api/users", userActions.browse);
+router.get("/api/users/:id", userActions.read);
+router.post("/api/users", userActions.add);
+router.delete("/api/users/:id", userActions.destroy);
+router.put("/api/users/:id", userActions.edit);
 
 import artistActions from "./modules/artist/artistActions";
 router.get("/api/artists", artistActions.browse);
