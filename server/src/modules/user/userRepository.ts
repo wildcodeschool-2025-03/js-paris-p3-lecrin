@@ -40,8 +40,15 @@ class UserRepository {
     const [result] = await db_client.query<Result>("UPDATE user SET ? WHERE id = ?", [user, id]);
     return result;
   }
-  
+
 }
 
 
 export default new UserRepository;
+
+
+
+
+
+
+
