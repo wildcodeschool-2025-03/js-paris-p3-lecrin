@@ -30,9 +30,9 @@ const add: RequestHandler = async (req, res, next) => {
     const result = await artworkRepository.create(req.body);
 
     if (result.affectedRows != null) {
-      res.json(result);
+      res.status(201).json(result);
     } else {
-      res.sendStatus(404);
+      res.sendStatus(400);
     }
   } catch (error) {
     next(error);
@@ -45,7 +45,7 @@ const destroy: RequestHandler = async (req, res, next) => {
     const result = await artworkRepository.deleteById(parseId);
 
     if (result.affectedRows > 0) {
-      res.json(result);
+      res.sendStatus(204);
     } else {
       res.sendStatus(404);
     }
@@ -61,7 +61,7 @@ const edit: RequestHandler = async (req, res, next) => {
     const result = await artworkRepository.updateById(parseId, artwork);
 
     if (result.affectedRows > 0) {
-      res.json(result);
+      res.sendStatus(204);
     } else {
       res.sendStatus(404);
     }

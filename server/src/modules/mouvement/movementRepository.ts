@@ -2,6 +2,7 @@ import db_client from "../../../database/client";
 import type { Result, Rows } from "../../../database/client";
 
 interface Movement {
+  id: number;
   name: string;
   photo: string;
   description: string;
@@ -20,7 +21,7 @@ async function selectOne(id: number) {
   return movement;
 }
 
-async function create(newMovement: Movement) {
+async function create(newMovement: Omit<Movement, "id">) {
   const [result] = await db_client.query<Result>(
     "INSERT INTO movement (name, photo, description) VALUES (?, ?, ?)",
     [newMovement.name, newMovement.photo, newMovement.description],
@@ -36,7 +37,7 @@ async function deleteById(id: number) {
   return result;
 }
 
-async function updateById(id: number, movement: Movement) {
+async function updateById(id: number, movement: Partial<Movement>) {
   const [result] = await db_client.query<Result>(
     "UPDATE movement SET ? WHERE id = ?",
     [movement, id],

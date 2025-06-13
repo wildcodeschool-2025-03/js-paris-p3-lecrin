@@ -2,6 +2,7 @@ import db_client from "../../../database/client";
 import type { Result, Rows } from "../../../database/client";
 
 interface Artwork {
+  id: number;
   name: string;
   user_id: number;
   date_artwork: string;
@@ -25,7 +26,7 @@ async function selectOne(id: number) {
   return artwork;
 }
 
-async function create(newArtwork: Artwork) {
+async function create(newArtwork: Omit<Artwork, "id">) {
   const [result] = await db_client.query<Result>(
     "INSERT INTO artwork (name, user_id, date_artwork, photo, place, description, artist_id, movement_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
     [
@@ -50,7 +51,7 @@ async function deleteById(id: number) {
   return result;
 }
 
-async function updateById(id: number, artwork: Artwork) {
+async function updateById(id: number, artwork: Partial<Artwork>) {
   const [result] = await db_client.query<Result>(
     "UPDATE artwork SET ? WHERE id = ?",
     [artwork, id],

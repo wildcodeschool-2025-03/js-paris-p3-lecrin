@@ -3,8 +3,8 @@ import userRepository from "./userRepository";
 
 const browse: RequestHandler = async (req, res, next) => {
   try {
-    const result = await userRepository.selectAll();
-    res.json(result);
+    const users = await userRepository.selectAll();
+    res.json(users);
   } catch (error) {
     next(error);
   }
@@ -13,9 +13,9 @@ const browse: RequestHandler = async (req, res, next) => {
 const read: RequestHandler = async (req, res, next) => {
   try {
     const id = Number.parseInt(req.params.id);
-    const result = await userRepository.selectOne(id);
-    if (result) {
-      res.json(result);
+    const user = await userRepository.selectOne(id);
+    if (user) {
+      res.json(user);
     } else {
       res.sendStatus(404);
     }
@@ -26,19 +26,15 @@ const read: RequestHandler = async (req, res, next) => {
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    const newUser = {
-      name: req.body.name,
-      birthday: req.body.birthday,
-      date_inscription: req.body.date_inscription,
-      mail: req.body.mail,
-      password: req.body.password,
-      admin: req.body.admin,
-      artist_id: req.body.artist_id,
-    };
     // Create the user
-    const insertId = await userRepository.create(newUser);
+    const result = await userRepository.create(req.body);
     // Respond with HTTP 201 (Created) and the ID of the newly inserted user
-    res.status(201).json({ insertId });
+
+    if (result.affectedRows != null) {
+      res.status(201).json(result);
+    } else {
+      res.sendStatus(400);
+    }
   } catch (err) {
     next(err);
   }
@@ -47,9 +43,9 @@ const add: RequestHandler = async (req, res, next) => {
 const destroy: RequestHandler = async (req, res, next) => {
   try {
     const deleteId = Number.parseInt(req.params.id);
-    const deleteUser = await userRepository.deleteByID(deleteId);
+    const deleteUser = await userRepository.deleteById(deleteId);
     if (deleteUser.affectedRows) {
-      res.json(deleteUser);
+      res.sendStatus(204);
     } else {
       res.status(404);
     }
@@ -62,11 +58,11 @@ const edit: RequestHandler = async (req, res, next) => {
   try {
     const id = Number.parseInt(req.params.id);
     const user = req.body;
-    const result = await userRepository.updateByID(user, id);
+    const result = await userRepository.updateById(user, id);
     if (result) {
-      res.json(result);
+      res.sendStatus(204);
     } else {
-      res.sendStatus(400);
+      res.sendStatus(404);
     }
   } catch (err) {
     next(err);
