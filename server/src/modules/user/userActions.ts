@@ -29,6 +29,7 @@ const add: RequestHandler = async (req, res, next) => {
     const newUser = {
       name: req.body.name,
       birthday: req.body.birthday,
+      date_inscription: req.body.date_inscription,
       mail: req.body.mail,
       password: req.body.password,
       admin: req.body.admin,
