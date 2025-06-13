@@ -45,6 +45,10 @@ router.get("/api/collections", collectionActions.browse);
 import artistRepository from "./modules/artist/artistRepository";
 import commentActions from "./modules/comment/commentActions";
 router.get("/api/comments", commentActions.browse);
+router.get("/api/comments/:id", commentActions.read);
+router.put("/api/comments/:id", commentActions.edit);
+router.post("/api/comments", commentActions.add);
+router.delete("/api/comments/:id", commentActions.destroy);
 
 /* ************************************************************************* */
 
