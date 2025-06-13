@@ -15,6 +15,10 @@ const router = express.Router();
 // --- ARTWORK --- //
 import artworkActions from "./modules/artwork/artworkActions";
 router.get("/api/artworks", artworkActions.browse);
+router.get("/api/artworks/:id", artworkActions.read);
+router.post("/api/artworks", artworkActions.add);
+router.delete("/api/artworks/:id", artworkActions.destroy);
+router.put("/api/artworks/:id", artworkActions.edit);
 
 // --- USER --- //
 
@@ -34,6 +38,10 @@ router.delete("/api/artists/:id", artistActions.destroy);
 
 import movementActions from "./modules/mouvement/movementActions";
 router.get("/api/movements", movementActions.browse);
+router.get("/api/movements/:id", movementActions.read);
+router.post("/api/movements", movementActions.add);
+router.delete("/api/movements/:id", movementActions.destroy);
+router.put("/api/movements/:id", movementActions.edit);
 
 // --- COLLECTION --- //
 

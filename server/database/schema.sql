@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`artist` (
 CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`movement` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(255) NOT NULL,
+    `photo` TEXT NOT NULL,
     `description` TEXT NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb3;
@@ -53,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`user` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(55) NOT NULL,
     `birthday` DATETIME NOT NULL,
-    `date_inscription` DATETIME NOT NULL,
+    `date_inscription` DATETIME NOT NULL DEFAULT NOW(),
     `mail` VARCHAR(255) NOT NULL,
     `password` VARCHAR(150) NOT NULL,
     `admin` TINYINT(1) NOT NULL,
@@ -68,12 +69,12 @@ CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`user` (
 -- Table `BDD_projet_3`.`artwork`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`artwork` (
-    `id` INT NOT NULL,
+    `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(55) NOT NULL,
     `user_id` INT NOT NULL,
     `date_artwork` DATETIME NOT NULL,
     `photo` TEXT NOT NULL,
-    `date_post` DATETIME NOT NULL,
+    `date_post` DATETIME NOT NULL DEFAULT NOW(),
     `place` VARCHAR(255) NOT NULL,
     `description` TEXT NULL DEFAULT NULL,
     `artist_id` INT NOT NULL,
