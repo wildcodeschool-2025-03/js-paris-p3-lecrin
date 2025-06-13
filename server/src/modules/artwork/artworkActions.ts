@@ -1,4 +1,4 @@
-import { json, type RequestHandler } from "express";
+import { type RequestHandler, json } from "express";
 import artworkRepository from "./artworkRepository";
 
 const browse: RequestHandler = async (req, res, next) => {
