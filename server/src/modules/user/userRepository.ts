@@ -25,6 +25,7 @@ class UserRepository {
     );
     return result.insertId;
   }
+
   async selectOne (id: number){
     const [user] = await db_client.query<Result>("SELECT * FROM user WHERE id = ? ", [id]);
     return user;
@@ -39,6 +40,7 @@ class UserRepository {
     const [result] = await db_client.query<Result>("UPDATE user SET ? WHERE id = ?", [user, id]);
     return result;
   }
+  
 }
 
 
