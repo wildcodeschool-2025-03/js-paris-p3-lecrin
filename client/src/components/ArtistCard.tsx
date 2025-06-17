@@ -3,7 +3,7 @@ import "./ArtistCard.css";
 function ArtistCard() {
   return (
     <>
-      <article className="ArtistCard">
+      <article className="artistCard">
         <div className="imagecard">
           <img
             className="portrait"
