@@ -1,27 +1,27 @@
 .ArtistCard {
-    display: inline-block !important;
-    padding: 3px 6px;
-    border: 1px solid white;
-    width: fit-content !important;
-    max-width: 100%;
-    width: 399px;
-    height: 353px;
-    box-sizing: border-box;
+  display: inline-block !important;
+  padding: 3px 6px;
+  border: 1px solid white;
+  width: fit-content !important;
+  max-width: 100%;
+  width: 399px;
+  height: 353px;
+  box-sizing: border-box;
 }
 
 .imagecard {
-    width: 313px;
-    height: 240px;
+  width: 313px;
+  height: 240px;
 }
 
 .portrait {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .artistCard p {
-    color: var(--white-color);
-    font-family: var(--text-font, "IBM Plex Sans", sans-serif);
+  color: var(--white-color);
+  font-family: var(--text-font, "IBM Plex Sans", sans-serif);
 }
