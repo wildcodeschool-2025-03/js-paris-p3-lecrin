@@ -1,7 +1,7 @@
 import "./artworkCard.css";
-import PictoSave from "../assets/images/pictos/picto-save.svg";
-import PictoLike from "../assets/images/pictos/picto-like.svg";
 import PictoComment from "../assets/images/pictos/picto-comment.svg";
+import PictoLike from "../assets/images/pictos/picto-like.svg";
+import PictoSave from "../assets/images/pictos/picto-save.svg";
 
 function ArtworkCard() {
   return (

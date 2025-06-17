@@ -1,5 +1,5 @@
 import db_client from "../../../database/client";
-import type { Result } from "../../../database/client";
+import type { Result, Rows } from "../../../database/client";
 
 interface Artist {
   id: number;
@@ -10,19 +10,20 @@ interface Artist {
 }
 
 async function selectAll() {
-  const [artists] = await db_client.query("SELECT * FROM artist");
+  const [artists] = await db_client.query<Rows>("SELECT * FROM artist");
   return artists;
 }
 
 async function selectOne(id: number) {
-  const [artist] = await db_client.query("SELECT * FROM artist WHERE id = ?", [
-    id,
-  ]);
+  const [[artist]] = await db_client.query<Rows>(
+    "SELECT * FROM artist WHERE id = ?",
+    [id],
+  );
   return artist;
 }
 
-async function create(newArtist: Artist) {
-  const [result] = await db_client.query(
+async function create(newArtist: Omit<Artist, "id">) {
+  const [result] = await db_client.query<Result>(
     "INSERT INTO artist ? VALUES (?, ?, ?, ?) ",
     [
       newArtist.name,
@@ -43,10 +44,10 @@ async function deleteById(id: number) {
 }
 
 async function updateById(artist: Partial<Artist>, id: number) {
-  const [result] = await db_client.query("UPDATE artist SET ? WHERE id = ?", [
-    artist,
-    id,
-  ]);
+  const [result] = await db_client.query<Result>(
+    "UPDATE artist SET ? WHERE id = ?",
+    [artist, id],
+  );
   return result;
 }
 
