@@ -1,8 +1,4 @@
-function Artist () {
-    return (
-        <>
-      
-        </>
-    )
-    }
-export default Artist
+function Artist() {
+  return <></>;
+}
+export default Artist;
