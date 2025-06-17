@@ -63,7 +63,7 @@ function ArtworkCard() {
               electronic typesetting, remaining essentially unchanged...
             </p>
 
-            <p className="textPlus">Voir plus</p>
+            <p className="textPlus">EN VOIR PLUS</p>
           </div>
         </article>
       </section>
