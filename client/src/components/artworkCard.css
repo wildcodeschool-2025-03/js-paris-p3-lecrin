@@ -1,0 +1,116 @@
+.sectionCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.divUser {
+  display: flex;
+}
+
+.divImgUser {
+  height: 28px;
+  width: 28px;
+}
+
+.divImg {
+  display: flex;
+  flex-direction: column;
+}
+
+.divInfoCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.divLike {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.textPetit,
+.datePost,
+.textPicto,
+.descArtwork {
+  color: var(--white-color);
+  font-size: 16px;
+  font-family: var(--text-font);
+}
+
+.divCard {
+  display: flex;
+}
+
+.imgArt {
+  width: 38vw;
+}
+
+.pictoLike,
+.pictoComment {
+  height: 16px;
+  width: auto;
+}
+
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.firstDivCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.titreArtwork,
+.titreArtist,
+.infoArtwork,
+.mvtArtwork {
+  color: var(--white-color);
+  font-family: var(--title-font);
+}
+
+.titreArtwork {
+  font-size: 36px;
+}
+
+.titreArtist {
+  font-size: 20px;
+}
+
+.mvtArtwork {
+  font-size: 12px;
+  padding: 6px 6px 6px 6px;
+  border: solid 1px white;
+}
+
+.infoArtwork,
+.mvtArtwork {
+  font-size: 12px;
+}
+
+.saveArtwork {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.divDescArtwork {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.textPlus {
+  color: var(--white-color);
+  font-size: 16px;
+  font-family: var(--title-font);
+  padding: 8px 54px 8px 54px;
+
+  border: solid 1px white;
+}
