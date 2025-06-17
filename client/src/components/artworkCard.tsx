@@ -8,14 +8,22 @@ function ArtworkCard() {
     <main className="sectionCard">
       <div className="divUser">
         <div className="divImgUser">
-          <img className="imgUser" src="" alt="" />
+          <img
+            className="imgUser"
+            src="https://i.pinimg.com/originals/54/72/d1/5472d1b09d3d724228109d381d617326.jpg"
+            alt=""
+          />
         </div>
         <p className="textPetit">User 1 a publié</p>
       </div>
 
       <section className="divCard">
         <div className="divImg">
-          <img className="imgArt" src="" alt="" />
+          <img
+            className="imgArt"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Hovhannes_Aivazovsky_-_The_Ninth_Wave_-_Google_Art_Project.jpg/2560px-Hovhannes_Aivazovsky_-_The_Ninth_Wave_-_Google_Art_Project.jpg"
+            alt=""
+          />
 
           <div className="divInfoCard">
             <p className="datePost">jeu.-12:12</p>
