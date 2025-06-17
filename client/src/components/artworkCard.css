@@ -1,10 +1,13 @@
 .sectionCard {
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
 
 .divUser {
   display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .divImgUser {
@@ -12,9 +15,18 @@
   width: 28px;
 }
 
+.imgUser {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .divImg {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+  align-items: end;
 }
 
 .divInfoCard {
@@ -42,6 +54,8 @@
 
 .divCard {
   display: flex;
+
+  gap: 40px;
 }
 
 .imgArt {
@@ -84,7 +98,7 @@
 
 .mvtArtwork {
   font-size: 12px;
-  padding: 6px 6px 6px 6px;
+  padding: 3px 6px 3px 6px;
   border: solid 1px white;
 }
 
