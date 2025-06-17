@@ -10,11 +10,13 @@ body {
   line-height: 1.7;
   color: #eee;
   margin: 0;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 #root {
   height: 100vh;
-  background-image: url("./assets/images/background.webp");
+  /* background-image: url("./assets/images/background.webp"); */
   background-size: cover;
   background-position: top;
   display: grid;
