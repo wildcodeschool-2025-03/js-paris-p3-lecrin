@@ -1,0 +1,10 @@
+.logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation {
+  display: flex;
+  justify-content: right;
+  gap: 20px;
+}
