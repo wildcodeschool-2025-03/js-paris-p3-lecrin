@@ -1,17 +1,19 @@
 import "./Home.css";
 import "../components/artworkCard";
 import ArtworkCard from "../components/artworkCard";
+import Searchbar from "../components/Searchbar";
 
 function Home() {
   return (
     <>
       <main>
-        <article className="divH1-btn">
-          <h1 className="titreHome">À l'honneur (fil d'actualité)</h1>
-          <div className="btnAddPost">
-            <p className="textHome">Ajouter une oeuvre</p>
-          </div>
-        </article>
+        <section className="hautHome">
+          <Searchbar />
+          <article className="divH1-btn">
+            <h1 className="titreHome">À l'honneur (fil d'actualité)</h1>
+            <p className="addBtn">Ajouter une oeuvre</p>
+          </article>
+        </section>
 
         <section className="sectionCardHome">
           <ArtworkCard />

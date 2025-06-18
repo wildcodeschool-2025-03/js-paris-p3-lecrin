@@ -1,0 +1,128 @@
+.cardArt {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  border: 1px solid var(--white-color);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* DIV EN HAUT : AVEC DÉGRADÉ DE HAUT EN BAS */
+.divUserCard {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 8px;
+}
+
+.divUserCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.1),
+    transparent
+  );
+  z-index: -1;
+}
+
+.divImgUserCard {
+  height: 28px;
+  width: 28px;
+}
+
+.imgUserCard {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.textPetitCard {
+  color: var(--white-color);
+  font-size: 14px;
+  font-family: var(--text-font);
+  font-weight: 100;
+}
+
+.spanUserCard {
+  font-weight: 500;
+}
+
+.heurePost {
+  color: var(--grey-color);
+  font-size: 14px;
+  font-family: var(--text-font);
+  font-weight: 400;
+}
+
+/* DIV EN BAS : AVEC DÉGRADÉ DE BAS EN HAUT */
+.infoCardBis {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px;
+}
+
+.infoCardBis::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.3),
+    transparent
+  );
+  z-index: -1;
+}
+
+.nameArtworkBis {
+  color: var(--white-color);
+  font-size: 20px;
+  font-family: var(--text-font);
+  font-weight: 600;
+}
+
+.nameArtistCard {
+  color: var(--white-color);
+  font-size: 16px;
+  font-family: var(--text-font);
+  font-weight: 400;
+}
+
+.dateArtCard {
+  color: var(--grey-color);
+  font-size: 16px;
+  font-family: var(--text-font);
+  font-weight: 400;
+}
+
+/* IMAGE EN FOND */
+.imgCardBis {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}

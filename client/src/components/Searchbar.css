@@ -1,0 +1,79 @@
+.DivNavBarFiltre {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.DivNavBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: var(--black-color);
+  border: 1px solid white;
+  height: 45px;
+  width: 350px;
+  padding: 10px;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+
+/* On rend la div blanche au survol OU si l'input est focus */
+.DivNavBar:hover,
+.DivNavBar:has(.searchBar:focus) {
+  background-color: white;
+}
+
+/* Picto blanc par défaut */
+.searchIcon {
+  filter: brightness(0) invert(1); /* blanc */
+  transition: filter 0.3s ease;
+}
+
+/* Picto noir quand la div est blanche (survol ou focus) */
+.DivNavBar:hover .searchIcon,
+.DivNavBar:has(.searchBar:focus) .searchIcon {
+  filter: brightness(0) invert(0); /* noir */
+}
+
+/* Champ input */
+.searchBar {
+  flex: 1;
+  background-color: var(--black-color);
+  color: white;
+  height: 43px;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  outline: none;
+  border: none;
+  box-shadow: none;
+  padding: 0 10px;
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Placeholder blanc par défaut */
+.searchBar::placeholder {
+  color: white;
+  opacity: 1;
+  transition: color 0.3s ease;
+}
+
+/* Quand div survolée ou input focus → fond + texte noirs */
+.DivNavBar:hover .searchBar,
+.DivNavBar:has(.searchBar:focus) .searchBar {
+  background-color: white;
+  color: black;
+}
+
+/* Placeholder devient noir aussi */
+.DivNavBar:hover .searchBar::placeholder,
+.DivNavBar:has(.searchBar:focus) .searchBar::placeholder {
+  color: black;
+}
+
+.divFiltre {
+  color: var(--white-color);
+}
