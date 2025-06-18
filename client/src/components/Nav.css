@@ -3,8 +3,21 @@
   flex-direction: column;
 }
 
+.logo h1 {
+  color: var(--white-color);
+}
+
+.logo h2 {
+  color: var(--white-color);
+}
+
 .navigation {
   display: flex;
   justify-content: right;
   gap: 20px;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: var(--white-color);
 }

@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
+import Artist from "./pages/Artist";
 import Home from "./pages/Home";
 
 // Create router configuration with routes
@@ -11,6 +12,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/Artiste",
+        element: <Artist />,
       },
     ],
   },
