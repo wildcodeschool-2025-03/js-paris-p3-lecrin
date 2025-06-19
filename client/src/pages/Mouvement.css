@@ -1,0 +1,45 @@
+.list-mouvements {
+  margin-top: 50px;
+}
+
+.separation {
+  border-top: solid var(--grey-color) 1px;
+  width: 100%;
+}
+
+.mouvement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  width: 80%;
+}
+
+.desc-img {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.desc-img img {
+  width: 15%;
+}
+
+.desc-text {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.desc-text h1 {
+  color: var(--white-color);
+  font-family: var(--title-font);
+  font-weight: 300;
+}
+
+.desc-text p {
+  color: var(--white-color);
+  font-family: var(--text-font);
+  font-weight: 100;
+}
