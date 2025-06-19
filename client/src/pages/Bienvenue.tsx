@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import "./Connexion.css"; // n'oublie pas ça
-
-function Connexion() {
+import "./Bienvenue.css";
+function Bienvenue() {
   return (
     <div className="welcome-page">
       <article className="connexion">
@@ -24,4 +23,4 @@ function Connexion() {
   );
 }
 
-export default Connexion;
+export default Bienvenue;
