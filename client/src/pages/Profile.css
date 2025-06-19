@@ -1,0 +1,125 @@
+.headerProfil {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+  margin-bottom: 32px;
+}
+
+.firstDivProf {
+  display: flex;
+  align-items: center;
+  gap: 58px;
+}
+
+.div {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.divNomBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.divImgProfil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%; /* cercle parfait */
+  height: 125px;
+  width: 125px;
+  border: 1px solid var(--white-color);
+
+  overflow: hidden; /* ⛔️ empêchera l'image de dépasser */
+  position: relative;
+}
+
+.imgProfil {
+  width: 250%; /* même énorme, l'image reste enfermée */
+  height: 250%;
+  object-fit: cover;
+  display: block;
+
+  position: absolute; /* nécessaire pour pouvoir la déplacer/centrer */
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* la centre parfaitement */
+}
+
+.nomProfil {
+  font-family: var(--text-font);
+  color: var(--white-color);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.badge {
+  font-family: var(--text-font);
+  color: var(--white-color);
+  font-size: 8px;
+  font-weight: 400;
+  padding: 2px;
+  background-color: var(--orange-color);
+}
+
+.divAbonne p {
+  font-family: var(--text-font);
+  color: var(--white-color);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.greyProfil {
+  color: var(--grey-color) !important;
+}
+
+.divAbonne {
+  display: flex;
+  gap: 24px;
+}
+
+.divAbonne div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editBtn {
+  color: var(--white-color);
+  background-color: transparent;
+  font-size: 16px;
+  font-family: var(--text-font);
+  font-weight: 200;
+  padding: 8px 54px;
+  border: 1px solid var(--white-color);
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s
+    ease;
+}
+
+.editBtn:hover {
+  background-color: white;
+  color: var(--black-color);
+  border-color: var(--black-color);
+}
+
+.navProfil {
+  display: flex;
+}
+
+.btnNavProf {
+  font-family: var(--text-font);
+  color: var(--white-color);
+  font-size: 16px;
+  font-weight: 400;
+  padding: 9px;
+  gap: 24px;
+}

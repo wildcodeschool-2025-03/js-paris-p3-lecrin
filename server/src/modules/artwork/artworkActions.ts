@@ -1,5 +1,20 @@
 import { type RequestHandler, json } from "express";
+import Joi from "joi";
 import artworkRepository from "./artworkRepository";
+
+const ValidateArtwork: RequestHandler = (req, res, next) => {
+  const schema = Joi.object({
+    name: Joi.string().alphanum().min(1).max(255).required(),
+    description: Joi.string().alphanum().required(),
+    place: Joi.string().min(2).max(100).required(),
+    //photo:
+    date_artwork: Joi.date().max("now").required(),
+  });
+
+  const result = schema.validate(req.body, { abortEarly: false });
+  if (result.error) res.status(400).json(result.error);
+  else next();
+};
 
 const browse: RequestHandler = async (req, res, next) => {
   try {
@@ -70,4 +85,4 @@ const edit: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, destroy, edit };
+export default { browse, read, add, destroy, edit, ValidateArtwork };

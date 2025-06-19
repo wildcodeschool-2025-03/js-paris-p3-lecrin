@@ -14,7 +14,9 @@ function ArtworkCard() {
             alt=""
           />
         </div>
-        <p className="textPetit">User 1 a publié</p>
+        <p className="textPetit">
+          <span className="spanUser">User 1</span> a publié
+        </p>
       </div>
 
       <section className="divCard">
