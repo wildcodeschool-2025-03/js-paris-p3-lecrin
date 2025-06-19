@@ -7,9 +7,9 @@ function Bienvenue() {
         <h1>Bienvenue sur L'Écrin</h1>
         <div>
           <h2>Tu as déjà un compte:</h2>
-          <button type="submit" className="btn-connexion">
-            Se connecter
-          </button>
+          <Link className="btn-connexion" to="/SeConnecter">
+            Se connecter{" "}
+          </Link>
           <h2>Tu n’as pas encore de compte:</h2>
           <button type="submit" className="btn-connexion">
             Créer un compte

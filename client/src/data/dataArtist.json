@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Vincent van Gogh",
+    "description": "Peintre post-impressionniste néerlandais connu pour sa palette vibrante et ses coups de pinceau expressifs.",
+    "birthday": "1853-03-30T00:00:00",
+    "death_date": "1890-07-29T00:00:00"
+  },
+  {
+    "id": 2,
+    "name": "Pablo Picasso",
+    "description": "Peintre et sculpteur espagnol, cofondateur du cubisme.",
+    "birthday": "1881-10-25T00:00:00",
+    "death_date": "1973-04-08T00:00:00"
+  },
+  {
+    "id": 3,
+    "name": "Frida Kahlo",
+    "description": "Peintre mexicaine célèbre pour ses portraits et son art inspiré du folklore local.",
+    "birthday": "1907-07-06T00:00:00",
+    "death_date": "1954-07-13T00:00:00"
+  },
+  {
+    "id": 4,
+    "name": "Claude Monet",
+    "description": "Figure clé de l'impressionnisme français.",
+    "birthday": "1840-11-14T00:00:00",
+    "death_date": "1926-12-05T00:00:00"
+  },
+  {
+    "id": 5,
+    "name": "Salvador Dalí",
+    "description": "Peintre surréaliste espagnol connu pour ses images oniriques et fantasques.",
+    "birthday": "1904-05-11T00:00:00",
+    "death_date": "1989-01-23T00:00:00"
+  },
+  {
+    "id": 6,
+    "name": "Andy Warhol",
+    "description": "Chef de file du mouvement Pop Art.",
+    "birthday": "1928-08-06T00:00:00",
+    "death_date": "1987-02-22T00:00:00"
+  }
+]

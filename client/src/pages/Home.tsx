@@ -1,7 +1,7 @@
 import "./Home.css";
 import "../components/artworkCard";
 import Searchbar from "../components/Searchbar";
-import ArtworkCard from "../components/artworkCard";
+import ArtworkList from "../components/artworkList";
 
 function Home() {
   return (
@@ -16,7 +16,7 @@ function Home() {
         </section>
 
         <section className="sectionCardHome">
-          <ArtworkCard />
+          <ArtworkList />
         </section>
       </main>
     </>

@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding: 20px 0px 20px 0px;
+  border-top: solid var(--grey-color) 1px;
 }
 
 .divUser {

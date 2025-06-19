@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "La Nuit étoilée",
+    "user_id": 1,
+    "date_artwork": "1889-06-01T00:00:00",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1920px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
+    "place": "Saint-Rémy-de-Provence",
+    "description": "Paysage nocturne vibrant aux tourbillons célestes.",
+    "artist_id": 1,
+    "movement_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Les Demoiselles d'Avignon",
+    "user_id": 2,
+    "date_artwork": "1907-07-01T00:00:00",
+    "photo": "https://d1ee3oaj5b5ueh.cloudfront.net/thumbs/1440xAUTO_processed_article_2023_08_98c1570a-020f-47ac-b934-bd123ed9b569-banner-master.webp",
+    "place": "Barcelone",
+    "description": "Scène emblématique du cubisme avec cinq femmes nues aux formes anguleuses.",
+    "artist_id": 2,
+    "movement_id": 2
+  },
+  {
+    "id": 3,
+    "name": "Impression, soleil levant",
+    "user_id": 4,
+    "date_artwork": "1872-11-13T00:00:00",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/5/54/Claude_Monet%2C_Impression%2C_soleil_levant.jpg",
+    "place": "Le Havre",
+    "description": "Tableau à l’origine du terme 'impressionnisme'.",
+    "artist_id": 4,
+    "movement_id": 1
+  },
+  {
+    "id": 4,
+    "name": "La Persistance de la mémoire",
+    "user_id": 5,
+    "date_artwork": "1931-04-01T00:00:00",
+    "photo": "https://misterprepa.net/wp-content/uploads/2023/07/Salvador-Dali-persistance-de-la-memoire-1931.jpg.webp",
+    "place": "New York",
+    "description": "Montres molles sur un paysage désertique, allégorie du temps.",
+    "artist_id": 5,
+    "movement_id": 3
+  },
+  {
+    "id": 5,
+    "name": "Marilyn Diptych",
+    "user_id": 6,
+    "date_artwork": "1962-01-01T00:00:00",
+    "photo": "https://www.singulart.com/blog/wp-content/uploads/2024/02/Marilyn-Diptych.jpg",
+    "place": "New York",
+    "description": "Portrait sériel de Marilyn Monroe devenu icône du Pop Art.",
+    "artist_id": 6,
+    "movement_id": 5
+  }
+]

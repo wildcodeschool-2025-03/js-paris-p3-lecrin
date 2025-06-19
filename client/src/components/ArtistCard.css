@@ -1,4 +1,5 @@
-.ArtistCard {
+.artistCard {
+  margin-top: 40px;
   display: inline-block !important;
   padding: 3px 6px;
   border: 1px solid white;
@@ -9,19 +10,71 @@
   box-sizing: border-box;
 }
 
+.descArtist {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  gap: 10px;
+}
+
 .imagecard {
   width: 313px;
   height: 240px;
 }
 
 .portrait {
-  width: 100%;
-  height: 100%;
+  margin-left: 15px;
+  margin-top: 15px;
+  width: 90%;
+  height: 90%;
   object-fit: cover;
   display: block;
 }
 
-.ArtistCard p {
+.artistCard p {
   color: var(--white-color);
   font-family: var(--text-font, "IBM Plex Sans", sans-serif);
+}
+
+.bio {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bio .date {
+  color: grey;
+}
+
+.mvtArtistCard {
+  display: flex;
+  gap: 20px;
+}
+
+.mvtArtistCard :hover {
+  background-color: white;
+  color: black;
+  border-color: black;
+}
+.mvtArtistCard p {
+  display: inline-block;
+  padding: 3px 6px;
+  border: 1px solid white;
+  font-size: 12px;
+  color: white;
+  background-color: transparent;
+  width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s
+    ease;
+}
+
+.genre p {
+  border: 1px solid white;
+}
+
+.artistCard .numberArts {
+  color: grey;
 }

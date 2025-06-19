@@ -1,21 +1,31 @@
-// artworkCard.tsx
-import "./artworkCard.css";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import "./profileArt.css";
 import PictoComment from "../assets/images/pictos/picto-comment.svg";
 import PictoLike from "../assets/images/pictos/picto-like.svg";
 import PictoSave from "../assets/images/pictos/picto-save.svg";
+import dataArtist from "../data/dataArtist.json";
+import dataArtwork from "../data/dataArtwork.json";
+import dataMovement from "../data/dataMovement.json";
 import type { Artist, Artwork, Movement } from "../types/vite-env";
 
-type ArtworkCardProps = {
-  artwork: Artwork;
-  artist: Artist;
-  movement: Movement;
-};
+function ProfileArt() {
+  const { id } = useParams();
+  const artwork: Artwork | undefined = dataArtwork.find(
+    (a) => a.id === Number(id),
+  );
 
-function ArtworkCard({ artwork, artist, movement }: ArtworkCardProps) {
-  // Protection pour éviter erreur si artwork ou user_id manquant
-  if (!artwork || !artwork.user_id) {
-    return <div>Artwork invalide ou données manquantes.</div>;
+  if (!artwork) return <p>Œuvre introuvable.</p>;
+
+  const artist: Artist | undefined = dataArtist.find(
+    (a) => a.id === artwork.artist_id,
+  );
+  const movement: Movement | undefined = dataMovement.find(
+    (m) => m.id === artwork.movement_id,
+  );
+
+  // ✅ Vérification complète avant d'afficher la page
+  if (!artist || !movement) {
+    return <p>Données incomplètes pour cette œuvre.</p>;
   }
 
   return (
@@ -71,10 +81,7 @@ function ArtworkCard({ artwork, artist, movement }: ArtworkCardProps) {
 
           <div className="divDescArtwork">
             <p className="descArtwork">{artwork.description}</p>
-
-            <Link to="/ProfilArtwork/:id" className="textPlus">
-              EN VOIR PLUS
-            </Link>
+            <p className="textPlus">EN VOIR PLUS</p>
           </div>
         </article>
       </section>
@@ -82,4 +89,4 @@ function ArtworkCard({ artwork, artist, movement }: ArtworkCardProps) {
   );
 }
 
-export default ArtworkCard;
+export default ProfileArt;

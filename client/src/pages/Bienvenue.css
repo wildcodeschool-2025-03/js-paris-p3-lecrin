@@ -37,6 +37,7 @@
 }
 
 .btn-connexion {
+  text-decoration: none;
   color: var(--white-color);
   background-color: transparent;
   font-size: 16px;

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Impressionnisme",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Impression_Sunrise.jpg",
+    "description": "Mouvement artistique du XIXe siècle caractérisé par des coups de pinceau visibles et une attention portée à la lumière."
+  },
+  {
+    "id": 2,
+    "name": "Cubisme",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/5/53/Les_Demoiselles_d%27Avignon.jpg",
+    "description": "Mouvement d'avant-garde rompant avec la perspective traditionnelle et représentant les objets sous plusieurs angles."
+  },
+  {
+    "id": 3,
+    "name": "Surréalisme",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/d/dd/The_Persistence_of_Memory.jpg",
+    "description": "Mouvement visant à libérer l'imaginaire en puisant dans les rêves et l'inconscient."
+  },
+  {
+    "id": 4,
+    "name": "Expressionnisme",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/4/42/The_Scream.jpg",
+    "description": "Style artistique exprimant les émotions humaines de manière intense et déformée."
+  },
+  {
+    "id": 5,
+    "name": "Art Pop",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/b/b9/Marilyn_Diptych.jpg",
+    "description": "Mouvement artistique des années 1950-60 célébrant la culture populaire et les médias."
+  },
+  {
+    "id": 6,
+    "name": "Symbolisme",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Arnold_Böcklin_-_Isle_of_the_Dead.jpg",
+    "description": "Courant artistique du XIXe siècle fondé sur l'évocation d'images mystiques et oniriques."
+  }
+]
