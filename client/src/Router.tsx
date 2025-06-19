@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
 import Artist from "./pages/Artist";
+import Connexion from "./pages/Connexion";
 import Home from "./pages/Home";
 import Profil from "./pages/Profile";
 
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
       {
         path: "/Artiste",
         element: <Artist />,
+      },
+      {
+        path: "/Connexion",
+        element: <Connexion />,
       },
     ],
   },
