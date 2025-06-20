@@ -13,6 +13,14 @@ async function selectAll() {
   return movements;
 }
 
+async function selectAllByArtwork(id: number) {
+  const [movements] = await db_client.query(
+    "SELECT * FROM movement JOIN movement_has_artwork ON movement_has_artwork.movement_id = movement.id WHERE movement_has_artwork.artwork_id = ?",
+    [id],
+  );
+  return movements;
+}
+
 async function selectOne(id: number) {
   const [[movement]] = await db_client.query<Rows>(
     "SELECT * FROM movement WHERE id = ?",
@@ -45,4 +53,11 @@ async function updateById(id: number, movement: Partial<Movement>) {
   return result;
 }
 
-export default { selectAll, selectOne, create, deleteById, updateById };
+export default {
+  selectAll,
+  selectOne,
+  create,
+  deleteById,
+  updateById,
+  selectAllByArtwork,
+};

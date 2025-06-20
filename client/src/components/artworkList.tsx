@@ -1,30 +1,38 @@
-import artists from "../data/dataArtist.json";
+import { useEffect, useState } from "react";
 import artworks from "../data/dataArtwork.json";
-import movements from "../data/dataMovement.json";
+import type { Artwork } from "../types/vite-env";
 import ArtworkCard from "./artworkCard";
 
 function ArtworkList() {
+  const [artworksData, setData] = useState<Artwork[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("http://localhost:3310/api/artworks")
+      .then((res) => res.json())
+      .then((json) => {
+        setData(json);
+        console.log(json);
+
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Erreur :", err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <p>Les tableaux arrivent !</p>;
+  if (artworksData.length < 1) {
+    // Protection pour éviter erreur si artwork ou user_id manquant
+    return <div>Artwork invalide ou données manquantes.</div>;
+  }
   console.log("artworks.length =", artworks.length);
 
   return (
     <div>
-      {artworks.slice(0, 6).map((artwork) => {
-        const artist = artists.find((a) => a.id === artwork.artist_id);
-        const movement = movements.find((m) => m.id === artwork.movement_id);
-
-        if (!artist || !movement || !artwork.user_id) {
-          console.log("Artwork filtré :", artwork);
-          return null;
-        }
-
-        return (
-          <ArtworkCard
-            key={artwork.id}
-            artwork={artwork}
-            artist={artist}
-            movement={movement}
-          />
-        );
+      {artworksData.map((artwork) => {
+        return <ArtworkCard key={artwork.id} artwork={artwork} />;
       })}
     </div>
   );

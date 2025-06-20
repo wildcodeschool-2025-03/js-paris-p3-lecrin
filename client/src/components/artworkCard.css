@@ -104,6 +104,12 @@
   font-weight: 400;
 }
 
+.divMvt {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+}
+
 .mvtArtwork {
   display: inline-block;
   padding: 3px 6px;

@@ -1,0 +1,53 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 80px;
+  margin-top: 120px;
+}
+
+.divFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.titleFooter {
+  color: var(--white-color);
+  font-family: var(--title-font);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.divBasFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pictosFooter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.pictoFooter {
+  width: 20px;
+  height: auto;
+}
+
+.divTextFooter {
+  display: flex;
+  gap: 12px;
+}
+
+.textFooter {
+  color: var(--white-color);
+  font-family: var(--text-font);
+  font-size: 14px;
+}

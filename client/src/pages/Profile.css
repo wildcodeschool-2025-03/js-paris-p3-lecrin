@@ -39,7 +39,7 @@
 }
 
 .imgProfil {
-  width: 250%; /* même énorme, l'image reste enfermée */
+  width: 250%;
   height: 250%;
   object-fit: cover;
   display: block;
