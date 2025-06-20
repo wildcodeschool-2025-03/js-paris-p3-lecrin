@@ -80,11 +80,13 @@ function ProfileArt() {
               {artwork.musee} - {artwork.ville}, {artwork.pays}
             </p>
             <p className="infoArtwork">{artwork.dimensions}</p>
-            {artwork.movements.map((movement: Movement) => (
-              <p key={movement.id} className="mvtArtwork">
-                {movement.name}
-              </p>
-            ))}
+            <div className="divMvt">
+              {artwork.movements.map((movement: Movement) => (
+                <p key={movement.id} className="mvtArtwork">
+                  {movement.name}
+                </p>
+              ))}
+            </div>
 
             <div className="saveArtwork">
               <img className="pictoSave" src={PictoSave} alt="" />

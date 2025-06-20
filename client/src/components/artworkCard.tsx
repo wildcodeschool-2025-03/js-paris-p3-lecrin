@@ -63,11 +63,15 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
               ) : null}
 
               <p className="infoArtwork">{artwork.dimensions}</p>
-              {artwork.movements.map((movement: Movement) => (
-                <p key={movement.id} className="mvtArtwork">
-                  {movement.name}
-                </p>
-              ))}
+
+              <div className="divMvt">
+                {artwork.movements.map((movement: Movement) => (
+                  <p key={movement.id} className="mvtArtwork">
+                    {movement.name}
+                  </p>
+                ))}
+              </div>
+
               <div className="saveArtwork">
                 <img className="pictoSave" src={PictoSave} alt="" />
                 <p className="infoArtwork">enregistrer</p>
