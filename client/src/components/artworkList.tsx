@@ -1,9 +1,7 @@
-import artists from "../data/dataArtist.json";
-import artworks from "../data/dataArtwork.json";
-import movements from "../data/dataMovement.json";
-import ArtworkCard from "./artworkCard";
 import { useEffect, useState } from "react";
-import type { Artist, Artwork, Movement } from "../types/vite-env";
+import artworks from "../data/dataArtwork.json";
+import type { Artwork } from "../types/vite-env";
+import ArtworkCard from "./artworkCard";
 
 function ArtworkList() {
   const [artworksData, setData] = useState<Artwork[]>([]);

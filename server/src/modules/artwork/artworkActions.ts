@@ -1,6 +1,6 @@
 import { type RequestHandler, json } from "express";
-import artworkRepository from "./artworkRepository";
 import movementRepository from "../mouvement/movementRepository";
+import artworkRepository from "./artworkRepository";
 
 const browse: RequestHandler = async (req, res, next) => {
   try {
