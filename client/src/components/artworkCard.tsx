@@ -23,7 +23,7 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
             />
           </div>
           <p className="textPetit">
-            <span className="spanUser">User {artwork.userName}</span> a publié
+            <span className="spanUser">{artwork.userName}</span> a publié
           </p>
         </div>
 

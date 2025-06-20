@@ -44,7 +44,7 @@ function ProfileArt() {
           />
         </div>
         <p className="textPetit">
-          <span className="spanUser">User {artwork.userName}</span> a publié
+          <span className="spanUser">{artwork.userName}</span> a publié
         </p>
       </div>
 
@@ -76,9 +76,11 @@ function ProfileArt() {
               {artwork.artistName} -{" "}
               {new Date(artwork.date_artwork).getFullYear()}
             </h2>
-            <p className="infoArtwork">
-              {artwork.musee} - {artwork.ville}, {artwork.pays}
-            </p>
+            {artwork.musee && artwork.ville && artwork.pays ? (
+              <p className="infoArtwork">
+                {artwork.musee} - {artwork.ville}, {artwork.pays}
+              </p>
+            ) : null}
             <p className="infoArtwork">{artwork.dimensions}</p>
             <div className="divMvt">
               {artwork.movements.map((movement: Movement) => (

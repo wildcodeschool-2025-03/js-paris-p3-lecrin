@@ -1,11 +1,9 @@
 import "./Mouvement.css";
-import Nav from "../components/Nav";
 import Searchbar from "../components/Searchbar";
 
 function Mouvement() {
   return (
     <>
-      <Nav />
       <Searchbar />
       <section className="list-mouvements">
         <div className="separation" />

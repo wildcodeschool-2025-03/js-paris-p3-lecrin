@@ -201,6 +201,10 @@ CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`movement_has_artwork` (
 
 INSERT INTO `BDD_projet_3`.`movement_has_artwork` (movement_id, artwork_id) VALUES (1,1);
 INSERT INTO `BDD_projet_3`.`movement_has_artwork` (movement_id, artwork_id) VALUES (2,1);
+INSERT INTO `BDD_projet_3`.`movement_has_artwork` (movement_id, artwork_id) VALUES (5,2);
+INSERT INTO `BDD_projet_3`.`movement_has_artwork` (movement_id, artwork_id) VALUES (3,3);
+INSERT INTO `BDD_projet_3`.`movement_has_artwork` (movement_id, artwork_id) VALUES (4,4);
+
 
 -- -----------------------------------------------------
 -- Table `BDD_projet_3`.`user_following_artist`
