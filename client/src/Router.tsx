@@ -18,23 +18,23 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/ProfilArtwork/:id",
+        path: "/profilartwork/:id",
         element: <ProfileArt />,
       },
       {
-        path: "/Profil",
+        path: "/profil",
         element: <Profil />,
       },
       {
-        path: "/Artiste",
+        path: "/artist",
         element: <Artist />,
       },
       {
-        path: "/Bienvenue",
+        path: "/welcome",
         element: <Bienvenue />,
       },
       {
-        path: "/SeConnecter",
+        path: "/login",
         element: <SeConnecter />,
       },
     ],
