@@ -1,10 +1,10 @@
 // artworkCard.tsx
-import "./artworkCard.css";
 import { Link } from "react-router-dom";
+import type { Artist, Artwork, Movement } from "../../types/vite-env";
 import PictoComment from "../assets/images/pictos/picto-comment.svg";
 import PictoLike from "../assets/images/pictos/picto-like.svg";
 import PictoSave from "../assets/images/pictos/picto-save.svg";
-import type { Artist, Artwork, Movement } from "../types/vite-env";
+import "./artworkCard.css";
 
 type ArtworkCardProps = {
   artwork: Artwork;

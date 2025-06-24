@@ -1,6 +1,6 @@
-import artists from "../data/dataArtist.json";
-import artworks from "../data/dataArtwork.json";
-import movements from "../data/dataMovement.json";
+import artists from "../../data/dataArtist.json";
+import artworks from "../../data/dataArtwork.json";
+import movements from "../../data/dataMovement.json";
 import ArtworkCard from "./artworkCard";
 
 function ArtworkList() {

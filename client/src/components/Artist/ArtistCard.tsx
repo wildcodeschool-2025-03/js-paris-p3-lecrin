@@ -20,7 +20,7 @@ function ArtistCard() {
             <p>Baroque</p>
             <p>Ténébrisme</p>
           </div>
-          <p className="numberArts">178 oeuvres</p>
+          <p className="numberArts">178 oeuvress</p>
         </article>
       </article>
     </>

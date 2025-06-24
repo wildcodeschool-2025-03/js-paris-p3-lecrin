@@ -1,7 +1,7 @@
+import "../components/Artwork";
+import ArtworkList from "../components/Artwork/artworkList";
+import Searchbar from "../components/Searchbar/Searchbar";
 import "./Home.css";
-import "../components/artworkCard";
-import Searchbar from "../components/Searchbar";
-import ArtworkList from "../components/artworkList";
 
 function Home() {
   return (
