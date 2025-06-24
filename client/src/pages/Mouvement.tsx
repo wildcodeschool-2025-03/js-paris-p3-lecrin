@@ -1,4 +1,4 @@
-import MouvementCard from "../components/MouvementCard";
+import MouvementList from "../components/MouvementList";
 import Searchbar from "../components/Searchbar";
 import "./Mouvement.css";
 
@@ -8,10 +8,7 @@ function Mouvement() {
       <Searchbar />
       <article className="mouvement">
         <main className="sectionMouvementCard">
-          <MouvementCard />
-          <MouvementCard />
-          <MouvementCard />
-          <MouvementCard />
+          <MouvementList />
         </main>
       </article>
     </>
