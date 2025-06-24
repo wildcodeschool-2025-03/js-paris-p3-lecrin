@@ -1,12 +1,10 @@
-import "./Mouvement.css";
 import MouvementCard from "../components/MouvementCard";
-import Nav from "../components/Nav";
 import Searchbar from "../components/Searchbar";
+import "./Mouvement.css";
 
 function Mouvement() {
   return (
     <>
-      <Nav />
       <Searchbar />
       <article className="mouvement">
         <main className="sectionMouvementCard">

@@ -1,5 +1,17 @@
 import type { RequestHandler } from "express";
+import Joi from "joi";
 import commentRepository from "./commentRepository";
+
+const ValidateComment: RequestHandler = (req, res, next) => {
+  const schema = Joi.object({
+    comment: Joi.string().alphanum().required,
+    date: Joi.date().required(),
+  });
+
+  const result = schema.validate(req.body, { abortEarly: false });
+  if (result.error) res.status(400).json(result.error);
+  else next();
+};
 
 const browse: RequestHandler = async (req, res, next) => {
   try {
@@ -68,4 +80,4 @@ const destroy: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, edit, add, destroy };
+export default { browse, read, edit, add, destroy, ValidateComment };

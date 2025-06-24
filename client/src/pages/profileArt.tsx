@@ -1,31 +1,36 @@
 import { useParams } from "react-router-dom";
 import "./profileArt.css";
+import { useEffect, useState } from "react";
 import PictoComment from "../assets/images/pictos/picto-comment.svg";
 import PictoLike from "../assets/images/pictos/picto-like.svg";
 import PictoSave from "../assets/images/pictos/picto-save.svg";
-import dataArtist from "../data/dataArtist.json";
-import dataArtwork from "../data/dataArtwork.json";
-import dataMovement from "../data/dataMovement.json";
-import type { Artist, Artwork, Movement } from "../types/vite-env";
+import type { Artwork, Movement } from "../types/vite-env";
 
 function ProfileArt() {
   const { id } = useParams();
-  const artwork: Artwork | undefined = dataArtwork.find(
-    (a) => a.id === Number(id),
-  );
 
-  if (!artwork) return <p>Œuvre introuvable.</p>;
+  const [artwork, setArtwork] = useState<Artwork>();
+  const [loading, setLoading] = useState(true);
 
-  const artist: Artist | undefined = dataArtist.find(
-    (a) => a.id === artwork.artist_id,
-  );
-  const movement: Movement | undefined = dataMovement.find(
-    (m) => m.id === artwork.movement_id,
-  );
+  useEffect(() => {
+    fetch(`http://localhost:3310/api/artworks/${id}`)
+      .then((res) => res.json())
+      .then((json) => {
+        setArtwork(json);
+        console.log(json);
 
-  // ✅ Vérification complète avant d'afficher la page
-  if (!artist || !movement) {
-    return <p>Données incomplètes pour cette œuvre.</p>;
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Erreur :", err);
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) return <p>Les tableaux arrivent !</p>;
+  if (!artwork || !artwork.userName) {
+    // Protection pour éviter erreur si artwork ou user_id manquant
+    return <div>Artwork invalide ou données manquantes.</div>;
   }
 
   return (
@@ -35,11 +40,11 @@ function ProfileArt() {
           <img
             className="imgUser"
             src="https://i.pinimg.com/originals/54/72/d1/5472d1b09d3d724228109d381d617326.jpg"
-            alt={`Avatar de l'utilisateur ${artwork.user_id}`}
+            alt={`Avatar de l'utilisateur ${artwork.userName}`}
           />
         </div>
         <p className="textPetit">
-          <span className="spanUser">User {artwork.user_id}</span> a publié
+          <span className="spanUser">{artwork.userName}</span> a publié
         </p>
       </div>
 
@@ -68,11 +73,23 @@ function ProfileArt() {
           <div className="firstDivCard">
             <h1 className="titreArtwork">{artwork.name}</h1>
             <h2 className="titreArtist">
-              {artist.name} - {new Date(artwork.date_artwork).getFullYear()}
+              {artwork.artistName} -{" "}
+              {new Date(artwork.date_artwork).getFullYear()}
             </h2>
-            <p className="infoArtwork">{artwork.place}</p>
-            <p className="infoArtwork">221 x 332 cm</p>
-            <p className="mvtArtwork">{movement.name}</p>
+            {artwork.musee && artwork.ville && artwork.pays ? (
+              <p className="infoArtwork">
+                {artwork.musee} - {artwork.ville}, {artwork.pays}
+              </p>
+            ) : null}
+            <p className="infoArtwork">{artwork.dimensions}</p>
+            <div className="divMvt">
+              {artwork.movements.map((movement: Movement) => (
+                <p key={movement.id} className="mvtArtwork">
+                  {movement.name}
+                </p>
+              ))}
+            </div>
+
             <div className="saveArtwork">
               <img className="pictoSave" src={PictoSave} alt="" />
               <p className="infoArtwork">enregistrer</p>

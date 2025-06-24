@@ -7,6 +7,12 @@ export type Artist = {
   // autres champs si besoin
 };
 
+export type Movement = {
+  id: number;
+  name: string;
+  // autres champs si besoin
+};
+
 export type Artwork = {
   id: number;
   name: string;
@@ -14,14 +20,15 @@ export type Artwork = {
   movement_id: number;
   user_id?: number;
   photo: string;
+  date_post: number;
   date_artwork: string;
-  place?: string;
+  musee?: string;
+  ville?: string;
+  pays?: string;
+  dimensions: string;
   description?: string;
-  // autres champs si besoin
-};
-
-export type Movement = {
-  id: number;
-  name: string;
+  movements: Movement[];
+  artistName: string;
+  userName: string;
   // autres champs si besoin
 };

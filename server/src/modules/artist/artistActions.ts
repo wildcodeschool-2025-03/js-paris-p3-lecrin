@@ -1,5 +1,19 @@
 import type { RequestHandler } from "express";
+import Joi from "joi";
 import artistRepository from "./artistRepository";
+
+const ValidateArtist: RequestHandler = (req, res, next) => {
+  const schema = Joi.object({
+    name: Joi.string().alphanum().min(1).max(255).required(),
+    description: Joi.string().alphanum().required(),
+    death_date: Joi.date().max("now"),
+    birthday: Joi.date().required(),
+  });
+
+  const result = schema.validate(req.body, { abortEarly: false });
+  if (result.error) res.status(400).json(result.error);
+  else next();
+};
 
 const browse: RequestHandler = async (req, res, next) => {
   try {
@@ -67,4 +81,4 @@ const destroy: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, edit, add, destroy };
+export default { browse, read, edit, add, destroy, ValidateArtist };

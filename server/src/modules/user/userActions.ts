@@ -1,5 +1,20 @@
 import type { RequestHandler } from "express";
+import Joi, { required } from "joi";
 import userRepository from "./userRepository";
+
+const ValidateUser: RequestHandler = (req, res, next) => {
+  const schema = Joi.object({
+    name: Joi.string().alphanum().min(1).max(255).required(),
+    birthday: Joi.date().required(),
+    mail: Joi.string().email().required(),
+    password: Joi.string().alphanum().min(1).max(255).required(),
+    admin: Joi.string().alphanum().min(1).max(255).required(),
+  });
+
+  const result = schema.validate(req.body, { abortEarly: false });
+  if (result.error) res.status(400).json(result.error);
+  else next();
+};
 
 const browse: RequestHandler = async (req, res, next) => {
   try {
@@ -69,4 +84,4 @@ const edit: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add, read, destroy, edit };
+export default { browse, add, read, destroy, edit, ValidateUser };

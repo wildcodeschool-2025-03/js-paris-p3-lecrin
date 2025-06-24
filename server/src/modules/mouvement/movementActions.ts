@@ -1,5 +1,18 @@
 import type { RequestHandler } from "express";
+import Joi from "joi";
 import movementRepository from "./movementRepository";
+
+const ValidateMovement: RequestHandler = (req, res, next) => {
+  const schema = Joi.object({
+    name: Joi.string().alphanum().min(1).max(255).required(),
+    description: Joi.string().alphanum(),
+    //photo:
+  });
+
+  const result = schema.validate(req.body, { abortEarly: false });
+  if (result.error) res.status(400).json(result.error);
+  else next();
+};
 
 const browse: RequestHandler = async (req, res, next) => {
   try {
@@ -70,4 +83,4 @@ const edit: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, destroy, edit };
+export default { browse, read, add, destroy, edit, ValidateMovement };

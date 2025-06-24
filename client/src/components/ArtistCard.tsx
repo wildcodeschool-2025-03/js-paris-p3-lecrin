@@ -11,17 +11,15 @@ function ArtistCard() {
             alt="artiste"
           />
         </div>
-        <article className="descArtist">
-          <div className="bio">
-            <p>Le Caravage</p>
-            <p className="date">1571-1610</p>
-          </div>
-          <div className="mvtArtistCard">
-            <p>Baroque</p>
-            <p>Ténébrisme</p>
-          </div>
-          <p className="numberArts">178 oeuvres</p>
-        </article>
+
+        <div className="infoArtist">
+          <h2 className="nameArtistCard">
+            Caravage
+            <span className="dateArtistCard"> Birth - Death</span>
+          </h2>
+          <p className="mvtArtwork">movement</p>
+          <p className="nbreOeuvre">178 oeuvres</p>
+        </div>
       </article>
     </>
   );
