@@ -11,7 +11,7 @@ function MouvementList() {
       .then((data) => {
         setDataMovements(data);
       });
-  });
+  }, []);
 
   return (
     <div>

@@ -5,12 +5,38 @@ import PictoLike from "../../assets/images/pictos/picto-like.svg";
 import PictoSave from "../../assets/images/pictos/picto-save.svg";
 import type { Artwork, Movement } from "../../types/vite-env";
 import "./artworkCard.css";
+import { useEffect, useState } from "react";
 
 type ArtworkCardProps = {
   artwork: Artwork;
 };
 
 function ArtworkCard({ artwork }: ArtworkCardProps) {
+  const [like, setLike] = useState([]);
+  const [updateLike, setUpdateLike] = useState([]);
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    fetch(`http://localhost:3310/api/artworks/${artwork.id}/like`)
+      .then((res) => res.json())
+      .then((data) => {
+        setLike(data[0].countLike);
+        console.log(data);
+      });
+  }, [updateLike, artwork.id]);
+
+  const handleClick = () => {
+    fetch("http://localhost:3310/api/artworks/like", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_id: 4, artwork_id: artwork.id }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUpdateLike(data);
+      });
+  };
+
   return (
     <>
       <main key={artwork.id} className="sectionCard">
@@ -23,7 +49,7 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
             />
           </div>
           <p className="textPetit">
-            <span className="spanUser">{artwork.userName}</span> a publié
+            <span className="spanUser">{artwork.userName}</span> a publiée
           </p>
         </div>
 
@@ -37,8 +63,14 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
               </p>
 
               <div className="divLike">
-                <img className="pictoLike" src={PictoLike} alt="" />
-                <p className="textPicto">28</p>
+                <button
+                  type="button"
+                  className="pictoLike"
+                  onClick={handleClick}
+                >
+                  <img className="pictoLike" src={PictoLike} alt="" />
+                </button>
+                <p className="textPicto">{like}</p>
               </div>
 
               <div className="divLike">
