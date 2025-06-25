@@ -1,4 +1,3 @@
-import "../components/Artwork";
 import ArtworkList from "../components/Artwork/artworkList";
 import Searchbar from "../components/Searchbar/Searchbar";
 import "./Home.css";

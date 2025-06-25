@@ -1,5 +1,5 @@
 import "./Searchbar.css";
-import PictoSearch from "../assets/images/pictos/picto-search.svg";
+import PictoSearch from "../../assets/images/pictos/picto-search.svg";
 
 function Searchbar() {
   return (
