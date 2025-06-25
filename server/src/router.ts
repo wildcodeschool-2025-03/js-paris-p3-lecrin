@@ -13,6 +13,7 @@ const router = express.Router();
 // router.post("/api/items", itemActions.add);
 
 // --- ARTWORK --- //
+
 import artworkActions from "./modules/artwork/artworkActions";
 router.get("/api/artworks", artworkActions.browse);
 router.get("/api/artworks/:id", artworkActions.read);
@@ -80,6 +81,13 @@ router.post(
   commentActions.add,
 );
 router.delete("/api/comments/:id", commentActions.destroy);
+
+// --- USER_LIKE_ARTWORKS --- //
+
+import userLikeArtworkAction from "./modules/user_like_artwork/userLikeArtworkAction";
+
+router.get("/api/artworks/:id/like", userLikeArtworkAction.read);
+router.post("/api/artworks/like", userLikeArtworkAction.add);
 
 /* ************************************************************************* */
 

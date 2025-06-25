@@ -37,5 +37,6 @@ export type Artwork = {
   movements: Movement[];
   artistName: string;
   userName: string;
+  countLike: number;
   // autres champs si besoin
 };
