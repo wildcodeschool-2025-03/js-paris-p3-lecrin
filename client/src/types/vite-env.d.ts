@@ -4,6 +4,11 @@
 export type Artist = {
   id: number;
   name: string;
+  birthday: string;
+  death_date: string;
+  movement: Movement[];
+  artworksCount: number; //jointure a faire
+  portrait: string;
   // autres champs si besoin
 };
 

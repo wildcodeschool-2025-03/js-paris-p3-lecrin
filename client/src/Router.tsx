@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
-import Artist from "./pages/Artist";
+import ArtistList from "./components/ArtistList";
 import Bienvenue from "./pages/Bienvenue";
 import Home from "./pages/Home";
 import Mouvement from "./pages/Mouvement";
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/artist",
-        element: <Artist />,
+        element: <ArtistList />,
       },
       {
         path: "/welcome",

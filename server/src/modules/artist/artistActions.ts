@@ -1,5 +1,6 @@
 import type { RequestHandler } from "express";
 import Joi from "joi";
+import movementRepository from "../mouvement/movementRepository";
 import artistRepository from "./artistRepository";
 
 const ValidateArtist: RequestHandler = (req, res, next) => {
@@ -28,8 +29,9 @@ const read: RequestHandler = async (req, res, next) => {
   try {
     const id = Number.parseInt(req.params.id);
     const artist = await artistRepository.selectOne(id);
+    artist.movements = await movementRepository.selectAllByArtwork(id);
 
-    if (artist) {
+    if (artist != null) {
       res.json(artist);
     } else {
       res.sendStatus(404);

@@ -10,7 +10,9 @@ interface Artist {
 }
 
 async function selectAll() {
-  const [artists] = await db_client.query<Rows>("SELECT * FROM artist");
+  const [artists] = await db_client.query<Rows>(
+    "SELECT artist.*, count(artwork.id) as artworkCount FROM artist join artwork on artwork.artist_id=artist.id group by artist.id",
+  );
   return artists;
 }
 
