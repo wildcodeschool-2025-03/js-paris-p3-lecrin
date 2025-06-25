@@ -1,6 +1,5 @@
 import "./Profile.css";
-import OmayaPaki from "../assets/images/Snapchat-639628284.jpg";
-// import pictoProfil from "../assets/images/pictos/picto-profil.svg";
+import pictoProfil from "../assets/images/pictos/picto-profil.svg";
 import BisArtworkCard from "../components/bisArtworkCard";
 
 function Profil() {
@@ -10,7 +9,7 @@ function Profil() {
         <header className="headerProfil">
           <article className="firstDivProf">
             <div className="divImgProfil">
-              <img className="imgProfil" src={OmayaPaki} alt="" />
+              <img className="imgProfil" src={pictoProfil} alt="" />
             </div>
 
             <div className="div">
