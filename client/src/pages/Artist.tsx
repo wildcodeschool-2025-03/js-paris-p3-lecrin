@@ -1,6 +1,6 @@
-import Searchbar from "../components/Searchbar";
+import Searchbar from "../components/Searchbar/Searchbar";
 import "./Artist.css";
-import ArtistCards from "../components/ArtistList";
+import ArtistList from "../components/ArtistList";
 
 function Artist() {
   return (
@@ -9,7 +9,7 @@ function Artist() {
         <Searchbar />
       </article>
       <article>
-        <ArtistCards />
+        <ArtistList />
       </article>
     </>
   );

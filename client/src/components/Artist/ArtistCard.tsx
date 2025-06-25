@@ -1,5 +1,5 @@
 import "./ArtistCard.css";
-import type { Artist } from "../types/vite-env";
+import type { Artist } from "../../types/vite-env";
 
 type ArtistCardProps = {
   artist: Artist;

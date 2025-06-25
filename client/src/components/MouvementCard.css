@@ -1,0 +1,30 @@
+.desc-img {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 30px;
+  border-top: solid var(--grey-color) 1px;
+}
+
+.desc-img img {
+  width: 15%;
+  margin-top: 2%;
+}
+
+.desc-text {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 2%;
+}
+
+.desc-text h1 {
+  color: var(--white-color);
+  font-family: var(--title-font);
+  font-weight: 300;
+}
+
+.desc-text p {
+  color: var(--white-color);
+  font-family: var(--text-font);
+  font-weight: 100;
+}

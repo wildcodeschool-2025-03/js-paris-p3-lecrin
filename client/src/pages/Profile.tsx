@@ -1,7 +1,7 @@
 import "./Profile.css";
 import OmayaPaki from "../assets/images/Snapchat-639628284.jpg";
 // import pictoProfil from "../assets/images/pictos/picto-profil.svg";
-import BisArtworkCard from "../components/bisArtworkCard";
+import BisArtworkCard from "../components/Artwork/bisArtworkCard";
 
 function Profil() {
   return (

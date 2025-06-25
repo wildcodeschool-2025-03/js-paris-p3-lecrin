@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import artworks from "../data/dataArtwork.json";
-import type { Artwork } from "../types/vite-env";
+import artworks from "../../data/dataArtwork.json";
+import type { Artwork } from "../../types/vite-env";
 import ArtworkCard from "./artworkCard";
 
 function ArtworkList() {

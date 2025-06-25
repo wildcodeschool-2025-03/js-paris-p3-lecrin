@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { data } from "react-router";
 import type { Artist } from "../types/vite-env";
-import ArtistCard from "./ArtistCard";
+import ArtistCard from "./Artist/ArtistCard";
 
-function ArtistCards() {
+function ArtistList() {
   const [artists, setArtists] = useState<Artist[]>([]);
 
   //const filteredArtists = artists.filter((artist) =>
@@ -26,4 +26,4 @@ function ArtistCards() {
   );
 }
 
-export default ArtistCards;
+export default ArtistList;

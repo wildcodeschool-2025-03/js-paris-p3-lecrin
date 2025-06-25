@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
-import ArtistCards from "./components/ArtistList";
+import ArtistList from "./components/ArtistList";
 import Bienvenue from "./pages/Bienvenue";
 import Home from "./pages/Home";
 import Mouvement from "./pages/Mouvement";
@@ -19,23 +19,23 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/ProfilArtwork/:id",
+        path: "/profilartwork/:id",
         element: <ProfileArt />,
       },
       {
-        path: "/Profil",
+        path: "/profil",
         element: <Profil />,
       },
       {
-        path: "/Artiste",
-        element: <ArtistCards />,
+        path: "/artist",
+        element: <ArtistList />,
       },
       {
-        path: "/Bienvenue",
+        path: "/welcome",
         element: <Bienvenue />,
       },
       {
-        path: "/SeConnecter",
+        path: "/login",
         element: <SeConnecter />,
       },
       {

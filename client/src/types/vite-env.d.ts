@@ -15,6 +15,8 @@ export type Artist = {
 export type Movement = {
   id: number;
   name: string;
+  description: string;
+  photo: string;
   // autres champs si besoin
 };
 
