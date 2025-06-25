@@ -1,6 +1,6 @@
 import "./Profile.css";
 import pictoProfil from "../assets/images/pictos/picto-profil.svg";
-import BisArtworkCard from "../components/bisArtworkCard";
+import BisArtworkCard from "../components/Artwork/bisArtworkCard";
 
 function Profil() {
   return (
