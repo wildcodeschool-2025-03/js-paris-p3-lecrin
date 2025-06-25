@@ -1,45 +1,14 @@
-.list-mouvements {
-  margin-top: 50px;
-}
-
-.separation {
-  border-top: solid var(--grey-color) 1px;
-  width: 100%;
-}
-
 .mouvement {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 50px;
-  width: 80%;
+  width: 100%;
 }
 
-.desc-img {
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-}
-
-.desc-img img {
-  width: 15%;
-}
-
-.desc-text {
+.sectionMouvementCard {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-}
-
-.desc-text h1 {
-  color: var(--white-color);
-  font-family: var(--title-font);
-  font-weight: 300;
-}
-
-.desc-text p {
-  color: var(--white-color);
-  font-family: var(--text-font);
-  font-weight: 100;
+  gap: 12px;
+  padding: 20px 0px 20px 0px;
 }
