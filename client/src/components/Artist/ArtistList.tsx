@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { data } from "react-router";
-import type { Artist } from "../types/vite-env";
-import ArtistCard from "./Artist/ArtistCard";
+import type { Artist } from "../../types/vite-env";
+import ArtistCard from "./ArtistCard";
 
 function ArtistList() {
   const [artists, setArtists] = useState<Artist[]>([]);
