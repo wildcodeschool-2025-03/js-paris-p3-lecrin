@@ -2,12 +2,16 @@
 // This provides types for the Vite-injected env variables on import.meta.env
 // See https://vite.dev/guide/features.html#client-types
 export type Artist = {
+  artistName: ReactNode;
   id: number;
   name: string;
+  photo: string;
+  pays: string;
+  description: string;
   birthday: string;
   death_date: string;
-  movement: Movement[];
-  artworksCount: number; //jointure a faire
+  movements: Movement[];
+  artworkCount: number; //jointure a faire
   portrait: string;
   // autres champs si besoin
 };
@@ -36,6 +40,7 @@ export type Artwork = {
   description?: string;
   movements: Movement[];
   artistName: string;
+  artworkName: string;
   userName: string;
   countLike: number;
   // autres champs si besoin

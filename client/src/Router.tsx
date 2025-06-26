@@ -1,9 +1,11 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
-import ArtistList from "./components/Artist/ArtistList";
+import Artist from "./pages/Artist";
 import Bienvenue from "./pages/Bienvenue";
 import Home from "./pages/Home";
 import Mouvement from "./pages/Mouvement";
+import ProfilArtist from "./pages/ProfilArtist";
+import ProfilMovement from "./pages/ProfilMovement";
 import Profil from "./pages/Profile";
 import SeConnecter from "./pages/SeConnecter";
 import ProfileArt from "./pages/profileArt";
@@ -28,7 +30,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/artist",
-        element: <ArtistList />,
+        element: <Artist />,
+      },
+      {
+        path: "/artist/:id",
+        element: <ProfilArtist />,
       },
       {
         path: "/welcome",
@@ -41,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: "/Mouvements",
         element: <Mouvement />,
+      },
+      {
+        path: "/Mouvements/:id",
+        element: <ProfilMovement />,
       },
     ],
   },

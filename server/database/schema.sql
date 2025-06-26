@@ -30,6 +30,8 @@ USE `BDD_projet_3`;
 CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`artist` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(255) NOT NULL,
+    `photo` TEXT NOT NULL,
+    `pays` TEXT NOT NULL,
     `description` TEXT NOT NULL,
     `birthday` DATETIME NOT NULL,
     `death_date` DATETIME NULL DEFAULT NULL,
@@ -40,6 +42,8 @@ INSERT INTO
     `BDD_projet_3`.`artist` (
         `id`,
         `name`,
+        `photo`,
+        `pays`,
         `description`,
         `birthday`,
         `death_date`
@@ -47,6 +51,8 @@ INSERT INTO
 VALUES (
         1,
         'Vincent van Gogh',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%28454045%29.jpg/1280px-Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_%28454045%29.jpg',
+        'Hollande',
         'Peintre post-impressionniste néerlandais connu pour sa palette vibrante et ses coups de pinceau expressifs.',
         '1853-03-30 00:00:00',
         '1890-07-29 00:00:00'
@@ -54,6 +60,8 @@ VALUES (
     (
         2,
         'Pablo Picasso',
+        'https://upload.wikimedia.org/wikipedia/commons/9/98/Pablo_picasso_1.jpg',
+        'Espagne',
         'Peintre et sculpteur espagnol, cofondateur du cubisme.',
         '1881-10-25 00:00:00',
         '1973-04-08 00:00:00'
@@ -61,6 +69,8 @@ VALUES (
     (
         3,
         'Claude Monet',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Claude_Monet_1899_Nadar_crop.jpg/1280px-Claude_Monet_1899_Nadar_crop.jpg',
+        'France',
         'Figure clé de l\'impressionnisme français.',
         '1840-11-14 00:00:00',
         '1926-12-05 00:00:00'
@@ -68,6 +78,8 @@ VALUES (
     (
         4,
         'Salvador Dalí',
+        'https://static.wixstatic.com/media/21c73d_2f894469c5a9405c82792f103f5f8f64~mv2.jpg/v1/fill/w_1293,h_1600,al_c,q_90,enc_avif,quality_auto/21c73d_2f894469c5a9405c82792f103f5f8f64~mv2.jpg',
+        'Espagne',
         'Peintre surréaliste espagnol connu pour ses images oniriques et fantasques.',
         '1904-05-11 00:00:00',
         '1989-01-23 00:00:00'
@@ -75,6 +87,8 @@ VALUES (
     (
         5,
         'Andy Warhol',
+        'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTPFObJThKEgIOYd4WBWwr_CMX9OC-RaaAfctu_1wui6-cR9t3Cyd75CGmM9IVvpNYCAjTzCXgcvtyg0aStabDNmg',
+        'États-Unis',
         'Chef de file du mouvement Pop Art.',
         '1928-08-06 00:00:00',
         '1987-02-22 00:00:00'
@@ -101,13 +115,13 @@ INSERT INTO
 VALUES (
         1,
         'Impressionnisme',
-        'https://upload.wikimedia.org/wikipedia/commons/2/2b/Impression_Sunrise.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/5/54/Claude_Monet%2C_Impression%2C_soleil_levant.jpg',
         'Mouvement artistique du XIXe siècle caractérisé par des coups de pinceau visibles et une attention portée à la lumière.'
     ),
     (
         2,
         'Cubisme',
-        'https://upload.wikimedia.org/wikipedia/en/5/53/Les_Demoiselles_d%27Avignon.jpg',
+        'https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Les_Demoiselles_d%27Avignon.jpg/1920px-Les_Demoiselles_d%27Avignon.jpg',
         'Mouvement d\'avant-garde rompant avec la perspective traditionnelle et représentant les objets sous plusieurs angles.'
     ),
     (
@@ -119,13 +133,13 @@ VALUES (
     (
         4,
         'Expressionnisme',
-        'https://upload.wikimedia.org/wikipedia/en/4/42/The_Scream.jpg',
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg/1280px-Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg',
         'Style artistique exprimant les émotions humaines de manière intense et déformée.'
     ),
     (
         5,
-        'Art Pop',
-        'https://upload.wikimedia.org/wikipedia/en/b/b9/Marilyn_Diptych.jpg',
+        'Pop Art',
+        'https://upload.wikimedia.org/wikipedia/en/4/4f/In_the_Car.jpg',
         'Mouvement artistique des années 1950-60 célébrant la culture populaire et les médias.'
     ),
     (
@@ -301,7 +315,7 @@ VALUES (
         NULL,
         '221 x 332 cm',
         'Tableau à l’origine du terme ''impressionnisme''.',
-        4
+        3
     ),
     (
         4,
@@ -314,7 +328,7 @@ VALUES (
         NULL,
         '221 x 332 cm',
         'Montres molles sur un paysage désertique, allégorie du temps.',
-        5
+        4
     ),
     (
         5,
@@ -327,7 +341,7 @@ VALUES (
         NULL,
         '221 x 332 cm',
         'Portrait sériel de Marilyn Monroe devenu icône du Pop Art.',
-        6
+        5
     );
 
 -- -----------------------------------------------------
@@ -372,6 +386,22 @@ CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`link_artist_movement` (
     CONSTRAINT `fk_movement_has_artist_artist1` FOREIGN KEY (`artist_id`) REFERENCES `BDD_projet_3`.`artist` (`id`),
     CONSTRAINT `fk_movement_has_artist_movement1` FOREIGN KEY (`movement_id`) REFERENCES `BDD_projet_3`.`movement` (`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb3;
+
+INSERT INTO
+    `BDD_projet_3`.`link_artist_movement` (movement_id, artist_id)
+VALUES (4, 1);
+INSERT INTO
+    `BDD_projet_3`.`link_artist_movement` (movement_id, artist_id)
+VALUES (2, 2);
+INSERT INTO
+    `BDD_projet_3`.`link_artist_movement` (movement_id, artist_id)
+VALUES (1, 3);
+INSERT INTO
+    `BDD_projet_3`.`link_artist_movement` (movement_id, artist_id)
+VALUES (3, 4);
+INSERT INTO
+    `BDD_projet_3`.`link_artist_movement` (movement_id, artist_id)
+VALUES (5, 5);
 
 -- -----------------------------------------------------
 -- Table `BDD_projet_3`.`movement_has_artwork`
