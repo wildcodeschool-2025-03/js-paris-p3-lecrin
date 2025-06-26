@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import type { Artist } from "../../types/vite-env";
 import ArtistCard from "./ArtistCard";
 import "./ArtistList.css";
+import Searchbar from "../Searchbar/Searchbar";
 
 function ArtistList() {
   const [artists, setArtists] = useState<Artist[]>([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
-  //const filteredArtists = artists.filter((artist) =>
-  //artist.name.toLowerCase().includes(artist.name.()),
-  //); //voir si on recherche avec d'autres parametres que le nom de l'artiste
+  const filteredArtists = artists.filter((artist) =>
+    artist.artistName?.toLowerCase().includes(search?.toLowerCase()),
+  );
 
   useEffect(() => {
     fetch("http://localhost:3310/api/artists")
@@ -34,8 +36,9 @@ function ArtistList() {
 
   return (
     <>
+      <Searchbar search={search} setSearch={setSearch} />
       <div className="artistlist">
-        {artists.map((artist) => (
+        {filteredArtists.map((artist) => (
           <ArtistCard key={artist.id} artist={artist} />
         ))}
       </div>

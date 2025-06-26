@@ -1,7 +1,12 @@
 import "./Searchbar.css";
 import PictoSearch from "../../assets/images/pictos/picto-search.svg";
 
-function Searchbar() {
+type SearchbarProps = {
+  search: string;
+  setSearch: (value: string) => void;
+};
+
+function Searchbar({ search, setSearch }: SearchbarProps) {
   return (
     <article className="DivNavBarFiltre">
       <div className="DivNavBar">
@@ -9,7 +14,9 @@ function Searchbar() {
         <input
           className="searchBar"
           type="text"
-          placeholder="Recherchez une œuvre"
+          placeholder="Rechercher..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
 
