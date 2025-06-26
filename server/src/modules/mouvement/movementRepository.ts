@@ -21,6 +21,14 @@ async function selectAllByArtwork(id: number) {
   return movements;
 }
 
+async function selectAllByArtist(id: number) {
+  const [movements] = await db_client.query(
+    "SELECT * FROM movement JOIN link_artist_movement ON link_artist_movement.movement_id = movement.id WHERE link_artist_movement.artist_id = ?",
+    [id],
+  );
+  return movements;
+}
+
 async function selectOne(id: number) {
   const [[movement]] = await db_client.query<Rows>(
     "SELECT * FROM movement WHERE id = ?",
@@ -60,4 +68,5 @@ export default {
   deleteById,
   updateById,
   selectAllByArtwork,
+  selectAllByArtist,
 };

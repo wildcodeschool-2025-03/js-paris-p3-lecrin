@@ -11,7 +11,20 @@ interface Artist {
 
 async function selectAll() {
   const [artists] = await db_client.query<Rows>(
-    "SELECT artist.id, JSON_ARRAYAGG(JSON_OBJECT('id', m.id,'name', m.name)) AS movements, artist.name as artistName, artist.photo, artist.birthday, artist.death_date, count(artwork.id) AS artworkCount FROM artist JOIN artwork on artwork.artist_id=artist.id JOIN link_artist_movement ON artist.id = link_artist_movement.artist_id JOIN movement m ON link_artist_movement.movement_id = m.id GROUP BY artist.id",
+    `SELECT 
+        artist.id, 
+        artist.name AS artistName, 
+        artist.photo, 
+        artist.birthday, 
+        artist.death_date, 
+        (SELECT COUNT(*) FROM artwork WHERE artwork.artist_id = artist.id) AS artworkCount,
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT('id', m.id, 'name', m.name))
+          FROM link_artist_movement lam
+          JOIN movement m ON lam.movement_id = m.id
+          WHERE lam.artist_id = artist.id
+        ) AS movements
+     FROM artist`,
   );
   return artists;
 }

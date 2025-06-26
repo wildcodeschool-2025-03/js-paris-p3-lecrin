@@ -29,7 +29,7 @@ const read: RequestHandler = async (req, res, next) => {
   try {
     const id = Number.parseInt(req.params.id);
     const artist = await artistRepository.selectOne(id);
-    artist.movements = await movementRepository.selectAllByArtwork(id);
+    artist.movements = await movementRepository.selectAllByArtist(id);
 
     if (artist != null) {
       res.json(artist);

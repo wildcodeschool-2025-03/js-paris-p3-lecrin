@@ -13,15 +13,27 @@
 }
 
 .divImgUser {
-  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* ⛔️ empêchera l'image de dépasser */
+  position: relative;
   width: 28px;
+  height: 28px;
+  border-radius: 100px;
 }
 
 .imgUser {
   width: 100%;
   height: 100%;
+
   object-fit: cover;
   display: block;
+
+  position: absolute; /* nécessaire pour pouvoir la déplacer/centrer */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .divImg {
