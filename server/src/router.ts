@@ -82,12 +82,13 @@ router.post(
 );
 router.delete("/api/comments/:id", commentActions.destroy);
 
-// --- USER_LIKE_ARTWORKS --- //
+// --- USER_LIKED_ARTWORKS --- //
 
 import userLikeArtworkAction from "./modules/user_like_artwork/userLikeArtworkAction";
 
 router.get("/api/artworks/:id/like", userLikeArtworkAction.read);
 router.post("/api/artworks/like", userLikeArtworkAction.add);
+router.delete("/api/artworks/:id/like", userLikeArtworkAction.destroy);
 
 /* ************************************************************************* */
 

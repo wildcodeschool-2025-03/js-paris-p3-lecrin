@@ -68,6 +68,12 @@
   width: 45vw;
 }
 
+.btnLike {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .pictoLike,
 .pictoComment {
   height: 20px;
