@@ -82,10 +82,15 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
 
           <article className="infoCard">
             <div className="firstDivCard">
-              <h1 className="titreArtwork">{artwork.name}</h1>
+              <h1 className="titreArtwork">{artwork.artworkName}</h1>
               <h2 className="titreArtist">
-                {artwork.artistName} -{" "}
-                {new Date(artwork.date_artwork).getFullYear()}
+                <Link
+                  className="LinkToArtistProf"
+                  to={`/artist/${artwork.artist_id}`}
+                >
+                  {artwork.artistName}
+                </Link>{" "}
+                - {new Date(artwork.date_artwork).getFullYear()}
               </h2>
 
               {artwork.musee && artwork.ville && artwork.pays ? (

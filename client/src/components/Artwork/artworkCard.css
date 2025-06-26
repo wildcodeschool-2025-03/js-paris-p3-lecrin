@@ -65,7 +65,7 @@
 }
 
 .imgArt {
-  width: 38vw;
+  width: 45vw;
 }
 
 .pictoLike,
@@ -150,6 +150,8 @@
 }
 
 .textPlus {
+  text-decoration: none;
+  color: inherit;
   color: var(--white-color);
   background-color: transparent;
   font-size: 16px;

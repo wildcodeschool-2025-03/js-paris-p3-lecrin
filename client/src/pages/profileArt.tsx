@@ -27,7 +27,7 @@ function ProfileArt() {
       });
   }, [id]);
 
-  if (loading) return <p>Les tableaux arrivent !</p>;
+  if (loading) return <p>Le tableau arrive !</p>;
   if (!artwork || !artwork.userName) {
     // Protection pour éviter erreur si artwork ou user_id manquant
     return <div>Artwork invalide ou données manquantes.</div>;
@@ -71,7 +71,7 @@ function ProfileArt() {
 
         <article className="infoCard">
           <div className="firstDivCard">
-            <h1 className="titreArtwork">{artwork.name}</h1>
+            <h1 className="titreArtwork">{artwork.artworkName}</h1>
             <h2 className="titreArtist">
               {artwork.artistName} -{" "}
               {new Date(artwork.date_artwork).getFullYear()}

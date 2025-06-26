@@ -1,5 +1,6 @@
 import "./ArtistCard.css";
-import type { Artist } from "../../types/vite-env";
+import { Link } from "react-router";
+import type { Artist, Movement } from "../../types/vite-env";
 
 type ArtistCardProps = {
   artist: Artist;
@@ -8,33 +9,32 @@ type ArtistCardProps = {
 function ArtistCard({ artist }: ArtistCardProps) {
   return (
     <>
-      <article className="artistCard">
-        <div className="imagecard">
-          <img
-            className="portrait"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Bild-Ottavio_Leoni%2C_Caravaggio.jpg/500px-Bild-Ottavio_Leoni%2C_Caravaggio.jpg"
-            alt={artist.name}
-          />
-        </div>
+      <Link className="LinkToArtistProf" to={`/artist/${artist.id}`}>
+        <article className="artistCard">
+          <div className="imagecard">
+            <img className="portrait" src={artist.photo} alt={artist.name} />
+          </div>
 
-        <div className="infoArtist">
-          <h2 className="nameArtistCard">
-            {artist.name}
-            <span className="dateArtistCard">
-              {" "}
-              {artist.birthday} - {artist.death_date}
-            </span>
-          </h2>
-          {/* <div className="mvtArtistCard"> */}
-          {/* {artist.movement.map((movement: Movement) => ( */}
-          {/* <p key={movement.id} className="mvtArtist"> */}
-          {/* {movement.name} */}
-          {/* </p> */}
-          {/* ))} */}
-          {/* </div> */}
-          <p className="nbreOeuvre">178 oeuvres</p>
-        </div>
-      </article>
+          <div className="infoArtist">
+            <h2 className="nameArtistCard">
+              {artist.artistName}
+              <span className="dateArtistCard">
+                {" "}
+                {new Date(artist.birthday).getFullYear()} -{" "}
+                {new Date(artist.death_date).getFullYear()}
+              </span>
+            </h2>
+            <div className="divMvt">
+              {artist.movements.map((movement: Movement) => (
+                <p key={movement.id} className="mvtArtwork">
+                  {movement.name}
+                </p>
+              ))}
+            </div>
+            <p className="nbreOeuvre">{artist.artworkCount} oeuvres</p>
+          </div>
+        </article>
+      </Link>
     </>
   );
 }

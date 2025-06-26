@@ -1,6 +1,6 @@
 import Searchbar from "../components/Searchbar/Searchbar";
 import "./Artist.css";
-import ArtistList from "../components/ArtistList";
+import ArtistList from "../components/Artist/ArtistList";
 
 function Artist() {
   return (
