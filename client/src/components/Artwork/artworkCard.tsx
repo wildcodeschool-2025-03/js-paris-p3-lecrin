@@ -13,8 +13,8 @@ type ArtworkCardProps = {
 
 function ArtworkCard({ artwork }: ArtworkCardProps) {
   const [like, setLike] = useState<{ user_id: number }[]>([]);
-  const [updateLike, setUpdateLike] = useState([]);
-  const [deleteLike, setDeleteLike] = useState([]);
+  const [updateLike, setUpdateLike] = useState<Response | never[]>([]);
+  const [deleteLike, setDeleteLike] = useState<Response | never[]>([]);
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     fetch(`http://localhost:3310/api/artworks/${artwork.id}/like`)
@@ -31,17 +31,13 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: 4 }),
-      })
-        .then((res) => res.json())
-        .then((data) => setDeleteLike(data));
+      }).then((res) => setDeleteLike(res));
     } else {
       fetch("http://localhost:3310/api/artworks/like", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: 4, artwork_id: artwork.id }),
-      })
-        .then((res) => res.json())
-        .then((data) => setUpdateLike(data));
+      }).then((res) => setUpdateLike(res));
     }
   };
 
