@@ -1,5 +1,6 @@
 import "./Profile.css";
 import pictoProfil from "../assets/images/pictos/picto-profil.svg";
+import ListBisArtworkCard from "../components/Artwork/ListBisArtwork";
 
 function Profil() {
   return (
@@ -43,6 +44,8 @@ function Profil() {
             <p className="btnNavProf">Favoris</p>
           </nav>
         </section>
+
+        <ListBisArtworkCard />
       </main>
     </>
   );
