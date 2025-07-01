@@ -1,7 +1,7 @@
 import "./bisArtworkCard.css";
+import { Link } from "react-router";
 import PictoLike from "../../assets/images/pictos/picto-like.svg";
 import type { Artwork } from "../../types/vite-env";
-import { Link } from "react-router";
 
 type ArtworkCardProps = {
   artwork: Artwork;

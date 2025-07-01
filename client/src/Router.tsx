@@ -6,10 +6,10 @@ import Home from "./pages/Home";
 import Mouvement from "./pages/Mouvement";
 import ProfilArtist from "./pages/ProfilArtist";
 import ProfilMovement from "./pages/ProfilMovement";
+import ProfilUser from "./pages/ProfilUser";
 import Profil from "./pages/Profile";
 import SeConnecter from "./pages/SeConnecter";
 import ProfileArt from "./pages/profileArt";
-import ProfilUser from "./pages/ProfilUser";
 
 // Create router configuration with routes
 // You can add more routes as you build out your app!

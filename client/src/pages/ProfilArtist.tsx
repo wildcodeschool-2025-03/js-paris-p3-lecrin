@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import "./ProfilArtist.css";
 import { useEffect, useState } from "react";
-import type { Artist, Movement } from "../types/vite-env";
 import { Link } from "react-router-dom";
+import type { Artist, Movement } from "../types/vite-env";
 
 function ProfilArtist() {
   const { id } = useParams();

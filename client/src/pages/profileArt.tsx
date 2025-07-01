@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 import "./profileArt.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import PictoComment from "../assets/images/pictos/picto-comment.svg";
 import PictoLike from "../assets/images/pictos/picto-like.svg";
 import PictoSave from "../assets/images/pictos/picto-save.svg";
 import type { Artwork, Movement } from "../types/vite-env";
-import { Link } from "react-router-dom";
 
 function ProfileArt() {
   const { id } = useParams();
