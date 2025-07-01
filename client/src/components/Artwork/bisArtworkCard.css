@@ -8,7 +8,6 @@
   margin-bottom: 20px;
   border: 1px solid var(--white-color);
   overflow: hidden;
-  border-radius: 8px;
   background-color: #000; /* si tu veux du contraste */
   position: relative;
 }

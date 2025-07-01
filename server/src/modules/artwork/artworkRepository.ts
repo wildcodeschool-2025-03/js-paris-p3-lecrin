@@ -17,14 +17,14 @@ interface Artwork {
 
 async function selectAll() {
   const [artworks] = await db_client.query<Rows>(
-    "SELECT artwork.id, JSON_ARRAYAGG(JSON_OBJECT('id', m.id,'name', m.name)) AS movements, user.name AS userName, artwork.name as artworkName, artwork.photo, artwork.date_artwork, artwork.musee, artwork.ville, artwork.pays, artwork.date_post, artwork.dimensions, artwork.description, artist.name AS artistName, artist.id AS artist_id FROM artwork JOIN artist ON artwork.artist_id = artist.id JOIN user ON artwork.user_id = user.id JOIN movement_has_artwork ON artwork.id = movement_has_artwork.artwork_id JOIN movement m ON movement_has_artwork.movement_id = m.id GROUP BY artwork.id",
+    "SELECT artwork.id, user.id as userId, JSON_ARRAYAGG(JSON_OBJECT('id', m.id,'name', m.name)) AS movements, user.name AS userName, artwork.name as artworkName, artwork.photo, artwork.date_artwork, artwork.musee, artwork.ville, artwork.pays, artwork.date_post, artwork.dimensions, artwork.description, artist.name AS artistName, artist.id AS artist_id FROM artwork JOIN artist ON artwork.artist_id = artist.id JOIN user ON artwork.user_id = user.id JOIN movement_has_artwork ON artwork.id = movement_has_artwork.artwork_id JOIN movement m ON movement_has_artwork.movement_id = m.id GROUP BY artwork.id",
   );
   return artworks;
 }
 
 async function selectOne(id: number) {
   const [[artwork]] = await db_client.query<Rows>(
-    "SELECT artwork.id, user.name AS userName, artwork.name as artworkName, artwork.photo, artwork.date_artwork, artwork.musee, artwork.ville, artwork.pays, artwork.date_post, artwork.description, artist.name AS artistName FROM artwork JOIN artist ON artwork.artist_id = artist.id JOIN user ON artwork.user_id = user.id WHERE artwork.id = ?",
+    "SELECT artwork.id, user.id as userId, user.name AS userName, artwork.name as artworkName, artwork.photo, artwork.date_artwork, artwork.musee, artwork.ville, artwork.pays, artwork.date_post, artwork.description, artist.name AS artistName FROM artwork JOIN artist ON artwork.artist_id = artist.id JOIN user ON artwork.user_id = user.id WHERE artwork.id = ?",
     [id],
   );
   return artwork;

@@ -24,10 +24,12 @@ function ProfilMovement() {
       });
   }, [id]);
 
-  if (loading) return <p>L'artiste arrive !</p>;
+  if (loading) return <p className="msgErr">L'artiste arrive !</p>;
   if (!movement) {
     // Protection pour éviter erreur si artwork ou user_id manquant
-    return <div>Artiste invalide ou données manquantes.</div>;
+    return (
+      <div className="msgErr">Artiste invalide ou données manquantes.</div>
+    );
   }
   return (
     <>

@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 import "./ProfilArtist.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import type { Artist, Movement } from "../types/vite-env";
 
 function ProfilArtist() {
   const { id } = useParams();
-
   const [artist, setArtist] = useState<Artist>();
   const [loading, setLoading] = useState(true);
 
@@ -53,9 +53,11 @@ function ProfilArtist() {
 
               <div className="divMvt">
                 {artist.movements.map((movement: Movement) => (
-                  <p key={movement.id} className="mvtArtwork">
-                    {movement.name}
-                  </p>
+                  <Link key={movement.id} to={`/Mouvements/${movement.id}`}>
+                    <p key={movement.id} className="mvtArtwork">
+                      {movement.name}
+                    </p>
+                  </Link>
                 ))}
               </div>
             </div>

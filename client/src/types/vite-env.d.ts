@@ -29,7 +29,7 @@ export type Artwork = {
   name: string;
   artist_id: number;
   movement_id: number;
-  user_id?: number;
+  userId: number;
   photo: string;
   date_post: number;
   date_artwork: string;
@@ -43,5 +43,13 @@ export type Artwork = {
   artworkName: string;
   userName: string;
   countLike: number;
+  // autres champs si besoin
+};
+
+export type User = {
+  id: number;
+  name: string;
+  photo: string;
+  admin: string;
   // autres champs si besoin
 };

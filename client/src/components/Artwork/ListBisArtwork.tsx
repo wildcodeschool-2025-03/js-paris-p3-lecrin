@@ -22,10 +22,12 @@ function ListBisArtworkCard() {
       });
   }, []);
 
-  if (loading) return <p>Les tableaux arrivent !</p>;
+  if (loading) return <p className="msgErr">Les tableaux arrivent !</p>;
   if (artworksData.length < 1) {
     // Protection pour éviter erreur si artwork ou user_id manquant
-    return <div>Artwork invalide ou données manquantes.</div>;
+    return (
+      <div className="msgErr">Artwork invalide ou données manquantes.</div>
+    );
   }
   console.log("artworks.length =", artworks.length);
   return (
