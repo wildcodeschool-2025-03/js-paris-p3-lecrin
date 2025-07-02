@@ -43,4 +43,19 @@ async function updateById(comment: Partial<Comment>, id: number) {
   return result;
 }
 
-export default { selectAll, selectOne, create, deleteById, updateById };
+async function selectCommentByArtworkId(artworkId: number) {
+  const [comment] = await db_client.query<Rows>(
+    "SELECT * FROM comment WHERE artwork_id = ?",
+    [artworkId],
+  );
+  return comment;
+}
+
+export default {
+  selectAll,
+  selectOne,
+  create,
+  deleteById,
+  updateById,
+  selectCommentByArtworkId,
+};

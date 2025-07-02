@@ -554,6 +554,14 @@ CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`comment` (
     CONSTRAINT `fk_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `BDD_projet_3`.`user` (`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb3;
 
+INSERT INTO `BDD_projet_3`.`comment` (`text`, `date`, `user_id`, `artwork_id`)
+VALUES (
+  'Incroyable œuvre, j\'adore la composition !',
+  NOW(), -- ou une date précise si tu veux
+  1,     -- ID d’un user existant
+  2      -- ID de l’artwork pour lequel tu veux tester
+);
+
 -- -----------------------------------------------------
 -- Table `BDD_projet_3`.`link_artist_movement`
 -- -----------------------------------------------------
