@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
 import "./ProfilUser.css";
 import { useEffect, useState } from "react";
-import pictoProfil from "../assets/images/pictos/picto-profil.svg";
-import ListBisArtworkCard from "../components/Artwork/ListBisArtwork";
 import type { User } from "../types/vite-env";
 
 function ProfilUser() {
@@ -37,7 +35,7 @@ function ProfilUser() {
         <header className="headerProfil">
           <article className="firstDivProf">
             <div className="divImgProfil">
-              <img className="imgProfil" src={pictoProfil} alt="" />
+              <img className="imgProfil" src={user.photo} alt="" />
             </div>
 
             <div className="div">
@@ -73,8 +71,6 @@ function ProfilUser() {
             <p className="btnNavProf">Favoris</p>
           </nav>
         </section>
-
-        <ListBisArtworkCard />
       </main>
     </>
   );

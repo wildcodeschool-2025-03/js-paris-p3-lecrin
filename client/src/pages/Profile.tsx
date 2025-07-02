@@ -44,8 +44,6 @@ function Profil() {
             <p className="btnNavProf">Favoris</p>
           </nav>
         </section>
-
-        <ListBisArtworkCard />
       </main>
     </>
   );

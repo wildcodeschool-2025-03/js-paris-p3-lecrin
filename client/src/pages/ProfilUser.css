@@ -46,7 +46,7 @@
 
   position: absolute; /* nécessaire pour pouvoir la déplacer/centrer */
   top: 100%;
-  left: 50%;
+  left: 100%;
   transform: translate(-50%, -50%); /* la centre parfaitement */
 }
 
