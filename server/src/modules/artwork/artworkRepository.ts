@@ -65,4 +65,28 @@ async function updateById(id: number, artwork: Partial<Artwork>) {
   return result;
 }
 
-export default { selectAll, selectOne, create, deleteById, updateById };
+async function selectAllByArtist(id: number) {
+  const [artworks] = await db_client.query(
+    "SELECT artwork.*, user.photo AS userPhoto, user.name AS userName FROM artwork LEFT JOIN user ON user.id = artwork.user_id WHERE artwork.artist_id = ?",
+    [id],
+  );
+  return artworks;
+}
+
+async function selectAllByMovement(id: number) {
+  const [artworks] = await db_client.query(
+    "SELECT artwork.*, artist.name AS artistName, user.photo AS userPhoto, user.name AS userName FROM artwork LEFT JOIN user ON user.id = artwork.user_id JOIN movement_has_artwork ON movement_has_artwork.artwork_id = artwork.id JOIN artist ON artist.id = artwork.artist_id WHERE movement_has_artwork.movement_id = ?",
+    [id],
+  );
+  return artworks;
+}
+
+export default {
+  selectAll,
+  selectOne,
+  create,
+  deleteById,
+  updateById,
+  selectAllByArtist,
+  selectAllByMovement,
+};

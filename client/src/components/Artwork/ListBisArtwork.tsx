@@ -1,44 +1,22 @@
-import { useEffect, useState } from "react";
-import artworks from "../../data/dataArtwork.json";
 import type { Artwork } from "../../types/vite-env";
 import BisArtworkCard from "./bisArtworkCard";
 
-function ListBisArtworkCard() {
-  const [artworksData, setData] = useState<Artwork[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("http://localhost:3310/api/artworks")
-      .then((res) => res.json())
-      .then((json) => {
-        setData(json);
-        console.log(json);
-
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Erreur :", err);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) return <p className="msgErr">Les tableaux arrivent !</p>;
-  if (artworksData.length < 1) {
-    // Protection pour éviter erreur si artwork ou user_id manquant
-    return (
-      <div className="msgErr">Artwork invalide ou données manquantes.</div>
-    );
-  }
-  console.log("artworks.length =", artworks.length);
+function ListArtistBisArtworkCard({ artworks }: { artworks: Artwork[] }) {
   return (
     <>
       <div className="DivListBisArt">
-        {artworksData.map((artwork) => {
-          return <BisArtworkCard key={artwork.id} artwork={artwork} />;
+        {artworks.map((artwork) => {
+          return (
+            <BisArtworkCard
+              key={artwork.id}
+              artwork={artwork}
+              artist={artwork.artistName}
+            />
+          );
         })}
       </div>
     </>
   );
 }
 
-export default ListBisArtworkCard;
+export default ListArtistBisArtworkCard;

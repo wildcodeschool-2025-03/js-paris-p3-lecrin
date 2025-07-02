@@ -13,6 +13,7 @@ export type Artist = {
   movements: Movement[];
   artworkCount: number; //jointure a faire
   portrait: string;
+  artworks: Artwork[];
   // autres champs si besoin
 };
 
@@ -21,6 +22,7 @@ export type Movement = {
   name: string;
   description: string;
   photo: string;
+  artworks: Artwork[];
   // autres champs si besoin
 };
 

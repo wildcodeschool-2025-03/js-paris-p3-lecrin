@@ -280,7 +280,7 @@ VALUES
     (
         1,
         'Alice Dupont',
-        'https://randomuser.me/api/portraits/women/10.jpg',
+        'https://i.pinimg.com/736x/c5/a2/2d/c5a22d749a0c10323bc47008e9961d41.jpg',
         '1990-05-12 00:00:00',
         '2023-04-01 10:30:00',
         'alice.dupont@example.com',
@@ -291,7 +291,7 @@ VALUES
     (
         2,
         'Bob Martin',
-        'https://randomuser.me/api/portraits/men/12.jpg',
+        'https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg',
         '1985-09-27 00:00:00',
         '2023-04-15 14:22:00',
         'bob.martin@example.com',
@@ -302,7 +302,7 @@ VALUES
     (
         3,
         'Chloé Bernard',
-        'https://randomuser.me/api/portraits/women/20.jpg',
+        'https://i.pinimg.com/736x/68/df/95/68df95ccf2471d65fd52f7e65def404e.jpg',
         '1995-02-03 00:00:00',
         '2023-05-10 08:00:00',
         'chloe.bernard@example.com',
@@ -313,7 +313,7 @@ VALUES
     (
         4,
         'David Lefèvre',
-        'https://randomuser.me/api/portraits/men/30.jpg',
+        'https://img.freepik.com/photos-gratuite/homme-noir-pose_23-2148171639.jpg?semt=ais_hybrid&w=740',
         '1978-12-11 00:00:00',
         '2023-06-18 17:45:00',
         'david.lefevre@example.com',
@@ -324,7 +324,7 @@ VALUES
     (
         5,
         'Emma Roux',
-        'https://randomuser.me/api/portraits/women/33.jpg',
+        'https://images.unsplash.com/photo-1507019403270-cca502add9f8?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmlsJTIwZmlsbGV8ZW58MHx8MHx8fDA%3D',
         '2000-01-22 00:00:00',
         '2024-01-05 09:12:00',
         'emma.roux@example.com',
@@ -335,7 +335,7 @@ VALUES
     (
         6,
         'Félix Moreau',
-        'https://randomuser.me/api/portraits/men/44.jpg',
+        'https://www.utopix.com/fr/blog/wp-content/uploads/2024/04/NGY5NDEzN2EtYjUxNy00Yjc2LWExNTktNjVlYWExYWRkODdh_68210697-79b2-40b6-8d49-08ac639970c6_profilhomme9-scaled.jpg',
         '1992-07-30 00:00:00',
         '2024-03-22 13:00:00',
         'felix.moreau@example.com',
@@ -346,7 +346,7 @@ VALUES
     (
         7,
         'Gabriel Rousseau',
-        'https://randomuser.me/api/portraits/men/50.jpg',
+        'https://img.freepik.com/photos-gratuite/portrait-jeune-homme-africain-profil_176420-12620.jpg',
         '1980-03-05 00:00:00',
         '2024-02-10 11:45:00',
         'gabriel.rousseau@example.com',
@@ -357,7 +357,7 @@ VALUES
     (
         8,
         'Isabelle Laurent',
-        'https://randomuser.me/api/portraits/women/48.jpg',
+        'https://www.gabrielgorgi.com/wp-content/uploads/2019/12/01.jpg',
         '1998-10-19 00:00:00',
         '2024-04-12 16:00:00',
         'isabelle.laurent@example.com',
@@ -368,7 +368,7 @@ VALUES
     (
         9,
         'Julien Petit',
-        'https://randomuser.me/api/portraits/men/28.jpg',
+        'https://thumbs.dreamstime.com/b/portrait-beau-de-profil-de-jeune-homme-88646223.jpg',
         '1991-06-25 00:00:00',
         '2024-05-21 19:20:00',
         'julien.petit@example.com',

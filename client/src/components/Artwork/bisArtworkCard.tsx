@@ -5,9 +5,10 @@ import type { Artwork } from "../../types/vite-env";
 
 type ArtworkCardProps = {
   artwork: Artwork;
+  artist: string;
 };
 
-function BisArtworkCard({ artwork }: ArtworkCardProps) {
+function BisArtworkCard({ artwork, artist }: ArtworkCardProps) {
   return (
     <>
       <Link to={`/ProfilArtwork/${artwork.id}`}>
@@ -35,9 +36,9 @@ function BisArtworkCard({ artwork }: ArtworkCardProps) {
           />
           <article className="infoCardBis">
             <div>
-              <p className="nameArtworkBis">{artwork.artworkName}</p>
+              <p className="nameArtworkBis">{artwork.name}</p>
               <p className="nameArtistCard">
-                {artwork.artistName}
+                {artist}
                 <span className="dateArtCard">
                   {" "}
                   - {new Date(artwork.date_artwork).getFullYear()}

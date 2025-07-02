@@ -2,11 +2,14 @@ import { useParams } from "react-router-dom";
 import "./ProfilArtist.css";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ListArtistBisArtworkCard from "../components/Artwork/ListBisArtwork";
 import type { Artist, Movement } from "../types/vite-env";
 
 function ProfilArtist() {
   const { id } = useParams();
   const [artist, setArtist] = useState<Artist>();
+  console.log(artist);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -67,6 +70,10 @@ function ProfilArtist() {
               <p className="textPlus">EN VOIR PLUS</p>
             </div>
           </article>
+        </section>
+        <section className="ProfilArtistCardList">
+          <h1 className="oeuvresAssociées">Oeuvres Associées</h1>
+          <ListArtistBisArtworkCard artworks={artist.artworks} />
         </section>
       </main>
     </>

@@ -1,5 +1,6 @@
 import type { RequestHandler } from "express";
 import Joi from "joi";
+import artworkRepository from "../artwork/artworkRepository";
 import movementRepository from "../mouvement/movementRepository";
 import artistRepository from "./artistRepository";
 
@@ -30,6 +31,7 @@ const read: RequestHandler = async (req, res, next) => {
     const id = Number.parseInt(req.params.id);
     const artist = await artistRepository.selectOne(id);
     artist.movements = await movementRepository.selectAllByArtist(id);
+    artist.artworks = await artworkRepository.selectAllByArtist(id);
 
     if (artist != null) {
       res.json(artist);
