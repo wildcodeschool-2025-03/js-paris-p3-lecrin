@@ -10,7 +10,6 @@ import CommentList from "../Comment/CommentList";
 
 type ArtworkCardProps = {
   artwork: Artwork;
-  
 };
 
 function ArtworkCard({ artwork }: ArtworkCardProps) {

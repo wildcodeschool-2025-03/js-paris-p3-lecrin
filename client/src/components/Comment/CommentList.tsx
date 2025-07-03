@@ -12,7 +12,12 @@ interface CommentListProps {
   artworkImage: string;
 }
 
-function CommentList({ artworkId, onClose, modalIsOpen, artworkImage}: CommentListProps) {
+function CommentList({
+  artworkId,
+  onClose,
+  modalIsOpen,
+  artworkImage,
+}: CommentListProps) {
   const [comments, setComments] = useState<Comment[]>([]);
 
   useEffect(() => {
@@ -31,7 +36,7 @@ function CommentList({ artworkId, onClose, modalIsOpen, artworkImage}: CommentLi
       isOpen={modalIsOpen}
       onRequestClose={onClose}
       contentLabel="Commentaires"
-       className="react-modal-content"
+      className="react-modal-content"
       overlayClassName="react-modal-overlay"
     >
       <img src={artworkImage} alt="Artwork" className="comment-image" />

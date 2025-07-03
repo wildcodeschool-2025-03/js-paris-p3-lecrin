@@ -19,8 +19,7 @@
   padding: 2rem;
   gap: 2rem;
   font-family: var(--text-font);
-    color: var(--white-color);
-
+  color: var(--white-color);
 }
 
 .comment-image {
@@ -41,7 +40,6 @@
   display: block;
   margin-bottom: 0.25rem;
   color: var(--white-color);
-    
 }
 
 .comment-item p {
