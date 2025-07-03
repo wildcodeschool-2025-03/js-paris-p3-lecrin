@@ -1,0 +1,50 @@
+.react-modal-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.react-modal-content {
+  background: #141414; /* fond noir */
+  color: #fff; /* texte blanc */
+  display: flex;
+  flex-direction: row;
+  max-width: 900px;
+  width: 70%;
+  margin: auto;
+  margin-top: 5%;
+  padding: 2rem;
+  gap: 2rem;
+  font-family: var(--text-font);
+    color: var(--white-color);
+
+}
+
+.comment-image {
+  max-width: 300px;
+  height: auto;
+}
+
+.comment-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.comment-item span {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--white-color);
+    
+}
+
+.comment-item p {
+  margin: 0;
+  line-height: 1.4;
+}

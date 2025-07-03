@@ -10,6 +10,7 @@ import CommentList from "../Comment/CommentList";
 
 type ArtworkCardProps = {
   artwork: Artwork;
+  
 };
 
 function ArtworkCard({ artwork }: ArtworkCardProps) {
@@ -55,6 +56,7 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
     <>
       <CommentList
         artworkId={artwork.id}
+        artworkImage={artwork.photo}
         onClose={closeModal}
         modalIsOpen={modalIsOpen}
       />
