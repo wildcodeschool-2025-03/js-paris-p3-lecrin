@@ -1,5 +1,6 @@
 import type { RequestHandler } from "express";
 import Joi from "joi";
+import artworkRepository from "../artwork/artworkRepository";
 import movementRepository from "./movementRepository";
 
 const ValidateMovement: RequestHandler = (req, res, next) => {
@@ -27,7 +28,7 @@ const read: RequestHandler = async (req, res, next) => {
   try {
     const parseId = Number.parseInt(req.params.id);
     const collection = await movementRepository.selectOne(parseId);
-
+    collection.artworks = await artworkRepository.selectAllByMovement(parseId);
     if (collection != null) {
       res.json(collection);
     } else {

@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Mouvement from "./pages/Mouvement";
 import ProfilArtist from "./pages/ProfilArtist";
 import ProfilMovement from "./pages/ProfilMovement";
+import ProfilUser from "./pages/ProfilUser";
 import Profil from "./pages/Profile";
 import SeConnecter from "./pages/SeConnecter";
 import ProfileArt from "./pages/profileArt";
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         path: "/profil",
         element: <Profil />,
+      },
+      {
+        path: "/profiluser/:id",
+        element: <ProfilUser />,
       },
       {
         path: "/artist",

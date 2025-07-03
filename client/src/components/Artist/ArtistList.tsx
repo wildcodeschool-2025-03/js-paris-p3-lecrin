@@ -28,10 +28,12 @@ function ArtistList() {
       });
   }, []);
 
-  if (loading) return <p>Les artistes arrivent !</p>;
+  if (loading) return <p className="msgErr">Les artistes arrivent !</p>;
   if (artists.length < 1) {
     // Protection pour éviter erreur si artwork ou user_id manquant
-    return <div>Artiste invalide ou données manquantes.</div>;
+    return (
+      <div className="msgErr">Artiste invalide ou données manquantes.</div>
+    );
   }
 
   return (

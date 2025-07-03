@@ -40,22 +40,25 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
       }).then((res) => setUpdateLike(res));
     }
   };
+  console.log(artwork);
 
   return (
     <>
       <main key={artwork.id} className="sectionCard">
-        <div className="divUser">
-          <div className="divImgUser">
-            <img
-              className="imgUser"
-              src="https://i.pinimg.com/originals/54/72/d1/5472d1b09d3d724228109d381d617326.jpg"
-              alt={`Avatar de l'utilisateur ${artwork.userName}`}
-            />
+        <Link className="LinkToArtistProf" to={`/profiluser/${artwork.userId}`}>
+          <div className="divUser">
+            <div className="divImgUser">
+              <img
+                className="imgUser"
+                src="https://i.pinimg.com/originals/54/72/d1/5472d1b09d3d724228109d381d617326.jpg"
+                alt={`Avatar de l'utilisateur ${artwork.userName}`}
+              />
+            </div>
+            <p className="textPetit">
+              <span className="spanUser">{artwork.userName}</span> a publiée
+            </p>
           </div>
-          <p className="textPetit">
-            <span className="spanUser">{artwork.userName}</span> a publiée
-          </p>
-        </div>
+        </Link>
 
         <section className="divCard">
           <div className="divImg">
@@ -103,9 +106,11 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
 
               <div className="divMvt">
                 {artwork.movements.map((movement: Movement) => (
-                  <p key={movement.id} className="mvtArtwork">
-                    {movement.name}
-                  </p>
+                  <Link key={movement.id} to={`/Mouvements/${movement.id}`}>
+                    <p key={movement.id} className="mvtArtwork">
+                      {movement.name}
+                    </p>
+                  </Link>
                 ))}
               </div>
 

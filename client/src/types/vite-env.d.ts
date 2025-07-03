@@ -13,6 +13,7 @@ export type Artist = {
   movements: Movement[];
   artworkCount: number; //jointure a faire
   portrait: string;
+  artworks: Artwork[];
   // autres champs si besoin
 };
 
@@ -21,6 +22,7 @@ export type Movement = {
   name: string;
   description: string;
   photo: string;
+  artworks: Artwork[];
   // autres champs si besoin
 };
 
@@ -29,7 +31,7 @@ export type Artwork = {
   name: string;
   artist_id: number;
   movement_id: number;
-  user_id?: number;
+  userId: number;
   photo: string;
   date_post: number;
   date_artwork: string;
@@ -49,6 +51,7 @@ export type Artwork = {
 export type Users = {
   id: number;
   name: string;
+  photo: string;
   birthday: string;
   date_inscription: string;
   mail: string;
@@ -57,4 +60,5 @@ export type Users = {
   admin?: string;
   artist_id?: Artist[];
   token : string;
+
 };

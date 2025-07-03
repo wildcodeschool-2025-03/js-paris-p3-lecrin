@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import "./profileArt.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import PictoComment from "../assets/images/pictos/picto-comment.svg";
 import PictoLike from "../assets/images/pictos/picto-like.svg";
 import PictoSave from "../assets/images/pictos/picto-save.svg";
@@ -27,10 +28,12 @@ function ProfileArt() {
       });
   }, [id]);
 
-  if (loading) return <p>Le tableau arrive !</p>;
+  if (loading) return <p className="msgErr">Le tableau arrive !</p>;
   if (!artwork || !artwork.userName) {
     // Protection pour éviter erreur si artwork ou user_id manquant
-    return <div>Artwork invalide ou données manquantes.</div>;
+    return (
+      <div className="msgErr">Artwork invalide ou données manquantes.</div>
+    );
   }
 
   return (
@@ -84,9 +87,11 @@ function ProfileArt() {
             <p className="infoArtwork">{artwork.dimensions}</p>
             <div className="divMvt">
               {artwork.movements.map((movement: Movement) => (
-                <p key={movement.id} className="mvtArtwork">
-                  {movement.name}
-                </p>
+                <Link key={movement.id} to={`/Mouvements/${movement.id}`}>
+                  <p key={movement.id} className="mvtArtwork">
+                    {movement.name}
+                  </p>
+                </Link>
               ))}
             </div>
 

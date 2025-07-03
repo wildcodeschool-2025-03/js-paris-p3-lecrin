@@ -1,23 +1,100 @@
-.logo {
+.nav {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.logo {
+  text-decoration: none;
+}
+
+.logo:hover h1,
+.logo:hover h2 {
+  text-shadow: 0 0 3px white, 0 0 10px white, 0 0 15px white;
+}
+
+.logo h1,
+.logo h2 {
+  transition: text-shadow 0.3s ease;
 }
 
 .logo h1 {
+  text-align: center;
   color: var(--white-color);
+  font-family: var(--title-font);
+  font-size: 32px;
+  font-weight: 300;
+  padding: 0;
 }
 
 .logo h2 {
+  text-align: center;
   color: var(--white-color);
+  font-family: var(--title-font);
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .navigation {
   display: flex;
-  justify-content: right;
   gap: 20px;
 }
 
 .navigation a {
   text-decoration: none;
   color: var(--white-color);
+  font-family: var(--text-font);
+  position: relative;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+  text-decoration: none;
+}
+
+.navigation a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  top: 100%;
+  left: 0;
+  pointer-events: none;
+  transform-origin: 50% 100%;
+  transition: clip-path 0.3s, transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    0 100%,
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    0 100%,
+    100% 100%,
+    100% 0%
+  );
+}
+
+.navigation a:hover::before {
+  transform: translate3d(0, 2px, 0) scale3d(1.08, 3, 1);
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    50% 100%,
+    50% 0,
+    50% 0,
+    50% 100%,
+    50% 100%,
+    0 100%,
+    100% 100%,
+    100% 0%
+  );
+}
+
+.navigation a:hover {
+  transform: translateY(-2px);
 }
