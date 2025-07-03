@@ -80,4 +80,26 @@ const destroy: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, edit, add, destroy, ValidateComment };
+const seeComments: RequestHandler = async (req, res, next) => {
+  try {
+    const artworkId = Number.parseInt(req.params.id);
+    const comments =
+      await commentRepository.selectCommentByArtworkId(artworkId);
+    if (comments.length > 0) {
+      res.status(200).json(comments);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+export default {
+  browse,
+  read,
+  edit,
+  add,
+  destroy,
+  ValidateComment,
+  seeComments,
+};

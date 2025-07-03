@@ -24,13 +24,15 @@ function ArtistCard({ artist }: ArtistCardProps) {
                 {new Date(artist.death_date).getFullYear()}
               </span>
             </h2>
+
             <div className="divMvt">
               {artist.movements.map((movement: Movement) => (
-                <p key={movement.id} className="mvtArtwork">
-                  {movement.name}
-                </p>
+                <Link key={movement.id} to={`/Mouvements/${movement.id}`}>
+                  <p className="mvtArtwork">{movement.name}</p>
+                </Link>
               ))}
             </div>
+
             <p className="nbreOeuvre">{artist.artworkCount} oeuvres</p>
           </div>
         </article>

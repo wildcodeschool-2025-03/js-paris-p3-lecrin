@@ -1,12 +1,15 @@
 import { useParams } from "react-router-dom";
 import "./ProfilArtist.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import ListArtistBisArtworkCard from "../components/Artwork/ListBisArtwork";
 import type { Artist, Movement } from "../types/vite-env";
 
 function ProfilArtist() {
   const { id } = useParams();
-
   const [artist, setArtist] = useState<Artist>();
+  console.log(artist);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -53,9 +56,11 @@ function ProfilArtist() {
 
               <div className="divMvt">
                 {artist.movements.map((movement: Movement) => (
-                  <p key={movement.id} className="mvtArtwork">
-                    {movement.name}
-                  </p>
+                  <Link key={movement.id} to={`/Mouvements/${movement.id}`}>
+                    <p key={movement.id} className="mvtArtwork">
+                      {movement.name}
+                    </p>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -65,6 +70,10 @@ function ProfilArtist() {
               <p className="textPlus">EN VOIR PLUS</p>
             </div>
           </article>
+        </section>
+        <section className="ProfilArtistCardList">
+          <h1 className="oeuvresAssociées">Oeuvres Associées</h1>
+          <ListArtistBisArtworkCard artworks={artist.artworks} />
         </section>
       </main>
     </>

@@ -17,14 +17,14 @@ interface Artwork {
 
 async function selectAll() {
   const [artworks] = await db_client.query<Rows>(
-    "SELECT artwork.id, JSON_ARRAYAGG(JSON_OBJECT('id', m.id,'name', m.name)) AS movements, user.name AS userName, artwork.name as artworkName, artwork.photo, artwork.date_artwork, artwork.musee, artwork.ville, artwork.pays, artwork.date_post, artwork.dimensions, artwork.description, artist.name AS artistName, artist.id AS artist_id FROM artwork JOIN artist ON artwork.artist_id = artist.id JOIN user ON artwork.user_id = user.id JOIN movement_has_artwork ON artwork.id = movement_has_artwork.artwork_id JOIN movement m ON movement_has_artwork.movement_id = m.id GROUP BY artwork.id",
+    "SELECT artwork.id, user.id as userId, JSON_ARRAYAGG(JSON_OBJECT('id', m.id,'name', m.name)) AS movements, user.name AS userName, artwork.name as artworkName, artwork.photo, artwork.date_artwork, artwork.musee, artwork.ville, artwork.pays, artwork.date_post, artwork.dimensions, artwork.description, artist.name AS artistName, artist.id AS artist_id FROM artwork JOIN artist ON artwork.artist_id = artist.id JOIN user ON artwork.user_id = user.id JOIN movement_has_artwork ON artwork.id = movement_has_artwork.artwork_id JOIN movement m ON movement_has_artwork.movement_id = m.id GROUP BY artwork.id",
   );
   return artworks;
 }
 
 async function selectOne(id: number) {
   const [[artwork]] = await db_client.query<Rows>(
-    "SELECT artwork.id, user.name AS userName, artwork.name as artworkName, artwork.photo, artwork.date_artwork, artwork.musee, artwork.ville, artwork.pays, artwork.date_post, artwork.description, artist.name AS artistName FROM artwork JOIN artist ON artwork.artist_id = artist.id JOIN user ON artwork.user_id = user.id WHERE artwork.id = ?",
+    "SELECT artwork.id, user.id as userId, user.name AS userName, artwork.name as artworkName, artwork.photo, artwork.date_artwork, artwork.musee, artwork.ville, artwork.pays, artwork.date_post, artwork.description, artist.name AS artistName FROM artwork JOIN artist ON artwork.artist_id = artist.id JOIN user ON artwork.user_id = user.id WHERE artwork.id = ?",
     [id],
   );
   return artwork;
@@ -65,4 +65,28 @@ async function updateById(id: number, artwork: Partial<Artwork>) {
   return result;
 }
 
-export default { selectAll, selectOne, create, deleteById, updateById };
+async function selectAllByArtist(id: number) {
+  const [artworks] = await db_client.query(
+    "SELECT artwork.*, user.photo AS userPhoto, user.name AS userName FROM artwork LEFT JOIN user ON user.id = artwork.user_id WHERE artwork.artist_id = ?",
+    [id],
+  );
+  return artworks;
+}
+
+async function selectAllByMovement(id: number) {
+  const [artworks] = await db_client.query(
+    "SELECT artwork.*, artist.name AS artistName, user.photo AS userPhoto, user.name AS userName FROM artwork LEFT JOIN user ON user.id = artwork.user_id JOIN movement_has_artwork ON movement_has_artwork.artwork_id = artwork.id JOIN artist ON artist.id = artwork.artist_id WHERE movement_has_artwork.movement_id = ?",
+    [id],
+  );
+  return artworks;
+}
+
+export default {
+  selectAll,
+  selectOne,
+  create,
+  deleteById,
+  updateById,
+  selectAllByArtist,
+  selectAllByMovement,
+};

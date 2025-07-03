@@ -23,3 +23,22 @@ body {
   margin-left: 10%;
   margin-right: 10%;
 }
+
+.msgErr {
+  font-family: var(--title-font);
+  color: var(--white-color);
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
+.oeuvresAssociées {
+  font-family: var(--title-font);
+  color: var(--white-color);
+  font-size: 20px;
+  font-weight: 400;
+  padding-bottom: 32px;
+  padding-top: 60px;
+}

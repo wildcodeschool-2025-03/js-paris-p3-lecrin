@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import type { Movement } from "../types/vite-env";
 import "./ProfilMovement.css";
+import ListArtistBisArtworkCard from "../components/Artwork/ListBisArtwork";
 
 function ProfilMovement() {
   const { id } = useParams();
@@ -24,10 +25,12 @@ function ProfilMovement() {
       });
   }, [id]);
 
-  if (loading) return <p>L'artiste arrive !</p>;
+  if (loading) return <p className="msgErr">Le mouvement arrive !</p>;
   if (!movement) {
     // Protection pour éviter erreur si artwork ou user_id manquant
-    return <div>Artiste invalide ou données manquantes.</div>;
+    return (
+      <div className="msgErr">Mouvement invalide ou données manquantes.</div>
+    );
   }
   return (
     <>
@@ -49,6 +52,11 @@ function ProfilMovement() {
               <p className="textPlus">EN VOIR PLUS</p>
             </div>
           </article>
+        </section>
+
+        <section className="ProfilArtistCardList">
+          <h1 className="oeuvresAssociées">Oeuvres Associées</h1>
+          <ListArtistBisArtworkCard artworks={movement.artworks} />
         </section>
       </main>
     </>
