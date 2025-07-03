@@ -6,6 +6,7 @@ import PictoSave from "../../assets/images/pictos/picto-save.svg";
 import type { Artwork, Movement } from "../../types/vite-env";
 import "./artworkCard.css";
 import { useEffect, useState } from "react";
+import CommentList from "../Comment/CommentList";
 
 type ArtworkCardProps = {
   artwork: Artwork;
@@ -15,6 +16,7 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
   const [like, setLike] = useState<{ user_id: number }[]>([]);
   const [updateLike, setUpdateLike] = useState<Response | never[]>([]);
   const [deleteLike, setDeleteLike] = useState<Response | never[]>([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     fetch(`http://localhost:3310/api/artworks/${artwork.id}/like`)
@@ -42,8 +44,20 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
   };
   console.log(artwork);
 
+  function openModal() {
+    setModalIsOpen(true);
+  }
+
+  function closeModal() {
+    setModalIsOpen(false);
+  }
   return (
     <>
+      <CommentList
+        artworkId={artwork.id}
+        onClose={closeModal}
+        modalIsOpen={modalIsOpen}
+      />
       <main key={artwork.id} className="sectionCard">
         <Link className="LinkToArtistProf" to={`/profiluser/${artwork.userId}`}>
           <div className="divUser">
@@ -77,7 +91,14 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
               </div>
 
               <div className="divLike">
-                <img className="pictoComment" src={PictoComment} alt="" />
+                <button
+                  type="button"
+                  onClick={openModal}
+                  className="btnLike"
+                  aria-label="Voir les commentaires"
+                >
+                  <img src={PictoComment} alt="" />
+                </button>
                 <p className="textPicto">4</p>
               </div>
             </div>

@@ -17,7 +17,7 @@ const router = express.Router();
 import artworkActions from "./modules/artwork/artworkActions";
 router.get("/api/artworks", artworkActions.browse);
 router.get("/api/artworks/:id", artworkActions.read);
-router.get("/api/artworks/:id/comments", commentActions.seeComments);
+router.get("/api/artworks/:id/comments", commentActions.ReadCommentByArtworkId);
 router.post(
   "/api/artworks",
   artworkActions.ValidateArtwork,

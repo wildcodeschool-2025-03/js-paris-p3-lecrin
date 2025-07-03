@@ -1,3 +1,4 @@
+import { tr } from "@faker-js/faker/.";
 import type { RequestHandler } from "express";
 import Joi from "joi";
 import commentRepository from "./commentRepository";
@@ -80,7 +81,7 @@ const destroy: RequestHandler = async (req, res, next) => {
   }
 };
 
-const seeComments: RequestHandler = async (req, res, next) => {
+const ReadCommentByArtworkId: RequestHandler = async (req, res, next) => {
   try {
     const artworkId = Number.parseInt(req.params.id);
     const comments =
@@ -94,6 +95,7 @@ const seeComments: RequestHandler = async (req, res, next) => {
     next(error);
   }
 };
+
 export default {
   browse,
   read,
@@ -101,5 +103,5 @@ export default {
   add,
   destroy,
   ValidateComment,
-  seeComments,
+  ReadCommentByArtworkId,
 };
