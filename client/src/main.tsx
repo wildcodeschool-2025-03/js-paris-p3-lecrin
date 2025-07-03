@@ -3,6 +3,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router";
 import { router } from "./Router";
+import { UserProvider } from "./contexts/user.context";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -16,7 +17,10 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
+    ,
   </StrictMode>,
 );
 

@@ -9,7 +9,12 @@
   flex-direction: column;
   gap: 40px;
 }
-
+/* .bjr {
+  color: var(--white-color);
+  font-size: 36px;
+  font-family: var(--text-font);
+  font-weight: 400;
+} */
 .titreHome {
   color: var(--white-color);
   font-size: 36px;

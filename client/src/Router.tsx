@@ -8,6 +8,7 @@ import ProfilArtist from "./pages/ProfilArtist";
 import ProfilMovement from "./pages/ProfilMovement";
 import ProfilUser from "./pages/ProfilUser";
 import Profil from "./pages/Profile";
+import Register from "./pages/Register";
 import SeConnecter from "./pages/SeConnecter";
 import ProfileArt from "./pages/profileArt";
 
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
       {
         path: "/welcome",
         element: <Bienvenue />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
       {
         path: "/login",

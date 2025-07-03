@@ -25,19 +25,27 @@ async function selectOne(id: number) {
   return user;
 }
 
-async function create(newUser: Omit<Users, "id">) {
+async function add(newUser: Omit<Users, "id">) {
   const [result] = await db_client.query<Result>(
-    "INSERT INTO user (name, birthday, date_inscription, mail, password, admin, artist_id) values (?, ?, ?, ?, ?, ?)",
+    "INSERT INTO user (name, birthday, date_inscription, mail, password, artist_id) values (?, ?, ?, ?, ?, ?)",
     [
       newUser.name,
       newUser.birthday,
+      newUser.date_inscription,
       newUser.mail,
       newUser.password,
-      newUser.admin,
       newUser.artist_id,
     ],
   );
-  return result;
+  return result.affectedRows;
+}
+
+async function readByEmail(mail: string) {
+  const [rows] = await db_client.query<Rows>(
+    "Select * from user where mail = ?",
+    [mail],
+  );
+  return rows[0] as Users;
 }
 
 async function deleteById(id: number) {
@@ -56,4 +64,11 @@ async function updateById(user: Partial<Users>, id: number) {
   return result;
 }
 
-export default { selectAll, selectOne, create, deleteById, updateById };
+export default {
+  selectAll,
+  selectOne,
+  add,
+  readByEmail,
+  deleteById,
+  updateById,
+};

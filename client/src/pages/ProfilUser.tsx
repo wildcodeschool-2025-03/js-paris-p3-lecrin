@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 import "./ProfilUser.css";
 import { useEffect, useState } from "react";
-import type { User } from "../types/vite-env";
+import type { Users } from "../types/vite-env";
 
 function ProfilUser() {
   const { id } = useParams();
 
-  const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<Users>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

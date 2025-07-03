@@ -1,14 +1,16 @@
+import argon from "argon2";
 import type { RequestHandler } from "express";
 import Joi, { required } from "joi";
+import jwt from "jsonwebtoken";
 import userRepository from "./userRepository";
 
 const ValidateUser: RequestHandler = (req, res, next) => {
   const schema = Joi.object({
     name: Joi.string().alphanum().min(1).max(255).required(),
-    birthday: Joi.date().required(),
+    birthday: Joi.date().iso().less("now").required(),
     mail: Joi.string().email().required(),
+    date_inscription: Joi.date().iso().required(),
     password: Joi.string().alphanum().min(1).max(255).required(),
-    admin: Joi.string().alphanum().min(1).max(255).required(),
   });
 
   const result = schema.validate(req.body, { abortEarly: false });
@@ -39,19 +41,39 @@ const read: RequestHandler = async (req, res, next) => {
   }
 };
 
-const add: RequestHandler = async (req, res, next) => {
+const create: RequestHandler = async (req, res, next) => {
   try {
-    // Create the user
-    const result = await userRepository.create(req.body);
+    const user = req.body;
+    user.password = await argon.hash(user.password);
+    const affectedRows = await userRepository.add(user);
     // Respond with HTTP 201 (Created) and the ID of the newly inserted user
-
-    if (result.affectedRows != null) {
-      res.status(201).json(result);
-    } else {
-      res.sendStatus(400);
-    }
+    if (affectedRows) res.sendStatus(201);
+    else res.sendStatus(422);
   } catch (err) {
     next(err);
+  }
+};
+
+const login: RequestHandler = async (req, res, next) => {
+  try {
+    const { mail, password } = req.body;
+    const user = await userRepository.readByEmail(mail);
+    if (!user) res.status(422).json("Utilisateur introuvable.");
+    else {
+      const confirmPassword = await argon.verify(user.password, password);
+      if (!confirmPassword)
+        res.status(422).json("L'identifiant ou le mot de passe est incorrect.");
+      else {
+        const token = jwt.sign(
+          { id: user.id, admin: user.admin },
+          process.env.APP_SECRET as string,
+        );
+        const { password, ...userWithoutPassword } = user;
+        res.json({ userWithoutPassword, token });
+      }
+    }
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -84,4 +106,4 @@ const edit: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, add, read, destroy, edit, ValidateUser };
+export default { browse, create, login, read, destroy, edit, ValidateUser };

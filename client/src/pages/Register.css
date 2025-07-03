@@ -1,0 +1,11 @@
+.login input,
+.login textarea {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: var(--text-font);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
+}

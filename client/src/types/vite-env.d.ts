@@ -48,10 +48,16 @@ export type Artwork = {
   // autres champs si besoin
 };
 
-export type User = {
+export type Users = {
   id: number;
   name: string;
   photo: string;
-  admin: string;
-  // autres champs si besoin
+  birthday: string;
+  date_inscription: string;
+  mail: string;
+  password: string;
+  artworks?: Artwork[];
+  admin?: string;
+  artist_id?: Artist[];
+  token: string;
 };

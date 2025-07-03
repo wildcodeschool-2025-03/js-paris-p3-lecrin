@@ -256,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`user` (
     `date_inscription` DATETIME NOT NULL DEFAULT NOW(),
     `mail` VARCHAR(255) NOT NULL,
     `password` VARCHAR(150) NOT NULL,
-    `admin` TINYINT(1) NOT NULL,
+    `admin` TINYINT(1) NOT NULL DEFAULT 0,
     `artist_id` INT NULL DEFAULT NULL,
     PRIMARY KEY (`id`),
     UNIQUE INDEX `mail_UNIQUE` (`mail` ASC) VISIBLE,
