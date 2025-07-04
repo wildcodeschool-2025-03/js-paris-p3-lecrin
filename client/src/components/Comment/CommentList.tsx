@@ -9,9 +9,15 @@ interface CommentListProps {
   artworkId: number;
   onClose: () => void;
   modalIsOpen: boolean;
+  artworkImage: string;
 }
 
-function CommentList({ artworkId, onClose, modalIsOpen }: CommentListProps) {
+function CommentList({
+  artworkId,
+  onClose,
+  modalIsOpen,
+  artworkImage,
+}: CommentListProps) {
   const [comments, setComments] = useState<Comment[]>([]);
 
   useEffect(() => {
@@ -30,12 +36,19 @@ function CommentList({ artworkId, onClose, modalIsOpen }: CommentListProps) {
       isOpen={modalIsOpen}
       onRequestClose={onClose}
       contentLabel="Commentaires"
+      className="react-modal-content"
+      overlayClassName="react-modal-overlay"
     >
-      <h2>Commentaires</h2>
-      {comments.length === 0 && "aucun commentaire"}
-      {comments.map((comment) => (
-        <p key={comment.id}>{comment.text}</p>
-      ))}
+      <img src={artworkImage} alt="Artwork" className="comment-image" />
+      <div className="comment-section">
+        {comments.length === 0 && <p>Aucun commentaire pour le moment.</p>}
+        {comments.map((comment) => (
+          <div key={comment.id} className="comment-item">
+            <span>{comment.userName}</span>
+            <p>{comment.text}</p>
+          </div>
+        ))}
+      </div>
     </Modal>
   );
 }

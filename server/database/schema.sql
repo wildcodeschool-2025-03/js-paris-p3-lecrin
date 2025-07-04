@@ -555,12 +555,44 @@ CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`comment` (
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb3;
 
 INSERT INTO `BDD_projet_3`.`comment` (`text`, `date`, `user_id`, `artwork_id`)
-VALUES (
-  'Incroyable œuvre, j\'adore la composition !',
-  NOW(), -- ou une date précise si tu veux
-  1,     -- ID d’un user existant
-  2      -- ID de l’artwork pour lequel tu veux tester
+VALUES
+(
+  'Incroyable œuvre!',
+  NOW(),
+  1,
+  2
+),
+(
+  'L’équilibre entre clair et obscur est magistral.',
+  NOW(),
+  6,
+  2
+),
+(
+  'Franchement ce côté cubisme ne me dit rien... mais respect à l\'artiste quand même',
+  NOW(),
+  3,
+  2
+),
+(
+  'La palette de couleurs est superbe, ça donne vraiment vie à l\'ensemble de la scène.',
+  NOW(),
+  8,
+  3
+),
+(
+  'L\'harmonie des couleurs et la douceur des formes donnent une profondeur incroyable à la scène. On sent une vraie maîtrise de la lumière, presque cinématographique. Chaque détail semble pensé et chargé de sens.',
+  NOW(),
+  5,
+  3
+),
+(
+  'Je n\'accroche pas du tout, l\'ambiance est trop froide et impersonnelle à mon goût.',
+  NOW(),
+  6,
+  3
 );
+
 
 -- -----------------------------------------------------
 -- Table `BDD_projet_3`.`link_artist_movement`
