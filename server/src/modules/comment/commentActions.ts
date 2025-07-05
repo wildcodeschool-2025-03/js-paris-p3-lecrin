@@ -4,9 +4,16 @@ import Joi from "joi";
 import commentRepository from "./commentRepository";
 
 const ValidateComment: RequestHandler = (req, res, next) => {
+  //   const schema = Joi.object({
+  //     comment: Joi.string().alphanum().required,
+  //     date: Joi.date().required(),
+  //   });
+
   const schema = Joi.object({
-    comment: Joi.string().alphanum().required,
+    text: Joi.string().min(2).max(500).required(),
     date: Joi.date().required(),
+    user_id: Joi.number().integer().required(),
+    artwork_id: Joi.number().integer().required(),
   });
 
   const result = schema.validate(req.body, { abortEarly: false });
