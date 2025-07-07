@@ -8,23 +8,23 @@
 }
 
 .react-modal-content {
-  background: #141414; /* fond noir */
-  color: #fff; /* texte blanc */
+  background: #141414;
   display: flex;
+  justify-content: center;
   flex-direction: row;
-  max-width: 900px;
+  max-width: 90%;
   width: 70%;
   margin: auto;
   margin-top: 5%;
   padding: 2rem;
-  gap: 2rem;
+  gap: 10rem;
   font-family: var(--text-font);
   color: var(--white-color);
 }
 
 .comment-image {
-  max-width: 300px;
-  height: auto;
+  max-width: 40%;
+  max-height: 40%;
 }
 
 .comment-section {
@@ -35,11 +35,20 @@
   max-height: 80vh;
 }
 
+.comment-item {
+  display: flex;
+  flex-direction: column;
+}
+
 .comment-item span {
   font-weight: bold;
   display: block;
   margin-bottom: 0.25rem;
   color: var(--white-color);
+}
+
+.comment-item img {
+  width: 10%;
 }
 
 .comment-item p {

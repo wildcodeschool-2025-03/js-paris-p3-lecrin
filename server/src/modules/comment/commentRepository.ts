@@ -52,7 +52,7 @@ async function updateById(comment: Partial<Comment>, id: number) {
 
 async function selectCommentByArtworkId(artworkId: number) {
   const [comment] = await db_client.query<Rows>(
-    "SELECT comment.text, comment.date, user.name AS userName FROM comment JOIN user ON comment.user_id = user.id WHERE comment.artwork_id = ?",
+    "SELECT comment.text, comment.date, user.name AS userName, user.photo AS userPic FROM comment JOIN user ON comment.user_id = user.id WHERE comment.artwork_id = ?",
     [artworkId],
   );
   return comment;

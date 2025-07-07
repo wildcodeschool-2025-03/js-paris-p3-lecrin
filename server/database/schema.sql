@@ -574,6 +574,7 @@ VALUES
   3,
   2
 ),
+
 (
   'La palette de couleurs est superbe, ça donne vraiment vie à l\'ensemble de la scène.',
   NOW(),
@@ -591,8 +592,67 @@ VALUES
   NOW(),
   6,
   3
+),
+(
+  'La palette de couleurs est superbe, ça donne vraiment vie à l\'ensemble de la scène.',
+  NOW(),
+  1,
+  6
+),
+(
+  'L\'harmonie des couleurs et la douceur des formes donnent une profondeur incroyable à la scène. On sent une vraie maîtrise de la lumière, presque cinématographique. Chaque détail semble pensé et chargé de sens.',
+  NOW(),
+  2,
+  6
+),
+(
+  'Je n\'accroche pas du tout, l\'ambiance est trop froide et impersonnelle à mon goût.',
+  NOW(),
+  3,
+  6
+),
+(
+  'L\’expressivité brute du visage central capte une angoisse universelle. Une œuvre puissante et intemporelle.',
+  NOW(),
+  1,
+  6
+),
+(
+  'J\’sais pas, j\’trouve ça trop chelou. Genre c\’est censé faire peur ou quoi ?',
+  NOW(),
+  2,
+  6
+),
+(
+  'Si l\’émotion est là, la composition reste trop simpliste à mon goût. L\’arrière-plan manque de finesse',
+  NOW(),
+  4,
+  6
+),
+(
+  'Ce tableau me fout des frissons à chaque fois, c\’est trop fort comme il te prend au tripes.',
+  NOW(),
+  5,
+  6
+),
+(
+  'Une œuvre marquante qui transcende les époques. Le désespoir s\’inscrit dans chaque trait du pinceau.',
+  NOW(),
+  6,
+  6
+),
+(
+  'C\’est juste un gars qui crie… Je pige pas pourquoi tout le monde kiffe ça',
+  NOW(),
+  7,
+  6
+),
+(
+  'Le fond est trop stylé, on dirait que tout tremble autour du perso, ça fout mal à l\’aise grave.',
+  NOW(),
+  9,
+  6
 );
-
 
 -- -----------------------------------------------------
 -- Table `BDD_projet_3`.`link_artist_movement`
