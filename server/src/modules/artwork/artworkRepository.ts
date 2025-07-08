@@ -10,6 +10,7 @@ interface Artwork {
   musee: string;
   ville: string;
   pays: string;
+  dimensions: string;
   description: string;
   artist_id: number;
   movement_id: number;

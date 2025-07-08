@@ -4,12 +4,12 @@ import Joi, { required } from "joi";
 import jwt from "jsonwebtoken";
 import userRepository from "./userRepository";
 
+
 const ValidateUser: RequestHandler = (req, res, next) => {
   const schema = Joi.object({
     name: Joi.string().alphanum().min(1).max(255).required(),
     birthday: Joi.date().iso().less("now").required(),
     mail: Joi.string().email().required(),
-    date_inscription: Joi.date().iso().required(),
     password: Joi.string().alphanum().min(1).max(255).required(),
   });
 
@@ -27,19 +27,6 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
-const read: RequestHandler = async (req, res, next) => {
-  try {
-    const id = Number.parseInt(req.params.id);
-    const user = await userRepository.selectOne(id);
-    if (user) {
-      res.json(user);
-    } else {
-      res.sendStatus(404);
-    }
-  } catch (err) {
-    next(err);
-  }
-};
 
 const create: RequestHandler = async (req, res, next) => {
   try {
@@ -77,6 +64,34 @@ const login: RequestHandler = async (req, res, next) => {
   }
 };
 
+const isAuth: RequestHandler = async (req, res, next) => {
+  try {
+    const authorization = req.headers.authorization;
+    if (!authorization) res.status(401).json("Authorisation manquant.");
+    else {
+      const token = authorization.split(" ")[1];
+      if (!token) res.status(401).json("Token manquant.");
+      else {
+        const payload = jwt.verify(
+          token,
+          process.env.APP_SECRET as string,
+        );
+        req.body.user = payload;
+        next();
+      }
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+const isAdmin: RequestHandler = async (req, res, next) => {
+  const { admin } = req.body.user;
+  if (admin === false) res.status(403).json("Vous n'avez pas les droits.");
+  else next();
+};
+
+
 const destroy: RequestHandler = async (req, res, next) => {
   try {
     const deleteId = Number.parseInt(req.params.id);
@@ -90,6 +105,7 @@ const destroy: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+//faire une verif sur le le user qui supprime et le compte sur lequel il est co 
 
 const edit: RequestHandler = async (req, res, next) => {
   try {
@@ -105,5 +121,15 @@ const edit: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+//faire une verif sur le le user qui modifie et le compte sur lequel il est co 
 
-export default { browse, create, login, read, destroy, edit, ValidateUser };
+export default {
+  browse,
+  create,
+  login,
+  destroy,
+  edit,
+  ValidateUser,
+  isAuth,
+  isAdmin,
+};

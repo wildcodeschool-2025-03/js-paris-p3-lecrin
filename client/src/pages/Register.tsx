@@ -10,6 +10,7 @@ function Register() {
   const birthdate = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
   const date_inscription = useRef<HTMLInputElement>(null);
+  const photo = useRef<HTMLInputElement>(null);
 
   const registerBtn = async () => {
     try {
@@ -22,6 +23,7 @@ function Register() {
           birthday: birthdate.current?.value,
           password: password.current?.value,
           date_inscription: date_inscription.current?.value,
+          photo: photo.current?.value,
         }),
       };
       const response = await fetch(
@@ -45,10 +47,10 @@ function Register() {
         <form action="/ma-page-de-traitement" method="post" className="seco">
           <label htmlFor="name">Pseudo :</label>
           <input ref={name} type="text" id="name" name="user_name" />
-
           <label htmlFor="mail">E-mail :</label>
           <input ref={mail} type="email" id="mail" name="user_mail" />
-
+          <label htmlFor="photo">photo :</label>
+          <input ref={photo} type="photo" id="photo" name="user_photo" />
           <label htmlFor="birthdate">Date de naissance</label>
           <input
             ref={birthdate}
@@ -56,18 +58,8 @@ function Register() {
             id="birthdate"
             name="user_birthdate"
           />
-
           <label htmlFor="password">Mot de passe</label>
           <input ref={password} type="password" id="password" name="password" />
-
-          <label htmlFor="register">Date d'Inscription</label>
-          <input
-            ref={date_inscription}
-            type="date"
-            id="register_date"
-            name="user_register_date"
-          />
-
           <button onClick={registerBtn} className="btn-seco" type="button">
             S'inscrire
           </button>
