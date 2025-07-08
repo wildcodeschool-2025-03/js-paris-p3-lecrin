@@ -5,6 +5,8 @@ interface Comment {
   id: number;
   text: string;
   date: string;
+  user_id: number;
+  artwork_id: number;
 }
 
 async function selectAll() {
@@ -22,11 +24,17 @@ async function selectOne(id: number) {
 
 async function create(newComment: Omit<Comment, "id">) {
   const [result] = await db_client.query<Result>(
-    "INSERT INTO comment ? VALUES (?, ?) ",
-    [newComment.text, newComment.date],
+    "INSERT INTO comment (text, date, user_id, artwork_id) VALUES (?, ?, ?, ?)",
+    [
+      newComment.text,
+      newComment.date,
+      newComment.user_id,
+      newComment.artwork_id,
+    ],
   );
   return result;
 }
+
 async function deleteById(id: number) {
   const [result] = await db_client.query<Result>(
     "DELETE FROM comment WHERE id = ?",

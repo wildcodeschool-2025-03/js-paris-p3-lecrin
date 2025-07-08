@@ -23,8 +23,9 @@
 }
 
 .comment-image {
-  max-width: 40%;
-  max-height: 40%;
+  max-width: 300px;
+  max-height: 400px;
+  height: auto;
 }
 
 .comment-section {
