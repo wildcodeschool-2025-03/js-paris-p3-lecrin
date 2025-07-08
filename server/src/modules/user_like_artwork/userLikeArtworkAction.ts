@@ -1,7 +1,6 @@
 import type { RequestHandler } from "express";
 import userLikeArtworkRepository from "./userLikeArtworkRepository";
 
-
 const read: RequestHandler = async (req, res, next) => {
   try {
     const parseId = Number.parseInt(req.params.id);
