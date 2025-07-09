@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import "./CommentList.css";
+import { useUser } from "../../contexts/user.context";
 import type { Comment } from "../../types/vite-env";
 
 Modal.setAppElement("#root");
@@ -21,6 +22,7 @@ function CommentList({
   const [comments, setComments] = useState<Comment[]>([]);
   const [textAreaOpen, setTextAreaOpen] = useState(false);
   const [newComment, setNewComment] = useState("");
+  const { user } = useUser();
 
   useEffect(() => {
     fetch(`http://localhost:3310/api/artworks/${artworkId}/comments`)
@@ -61,7 +63,7 @@ function CommentList({
         body: JSON.stringify({
           text: trimmed,
           date: "2025-07-05",
-          user_id: 7,
+          user_id: user?.id,
           artwork_id: artworkId,
         }),
       })

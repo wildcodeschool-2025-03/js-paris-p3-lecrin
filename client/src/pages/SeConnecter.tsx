@@ -8,6 +8,7 @@ function SeConnecter() {
   const navigate = useNavigate();
   const mail = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
+  //const { user, setUser } = useUser();
   const context = useContext(UserContext);
 
   const loginBtn = async () => {
@@ -32,6 +33,8 @@ function SeConnecter() {
         const user = userWithoutPassword;
         user.token = token;
         context?.setUser(user);
+        //setUser({ ...userWithoutPassword, token });
+        console.log("user", user);
         navigate("/");
       }
     } catch (error) {

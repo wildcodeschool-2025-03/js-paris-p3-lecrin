@@ -251,7 +251,7 @@ VALUES (
 CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`user` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(55) NOT NULL,
-    `photo` TEXT NOT NULL,
+    `photo` TEXT,
     `birthday` DATETIME NOT NULL,
     `date_inscription` DATETIME NOT NULL DEFAULT NOW(),
     `mail` VARCHAR(255) NOT NULL,

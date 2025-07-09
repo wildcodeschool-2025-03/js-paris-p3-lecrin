@@ -67,8 +67,6 @@ function ProfilUser() {
         <section className="sectionProfil">
           <nav className="navProfil">
             <p className="btnNavProf">Publications</p>
-            <p className="btnNavProf">Collections</p>
-            <p className="btnNavProf">Favoris</p>
           </nav>
         </section>
       </main>

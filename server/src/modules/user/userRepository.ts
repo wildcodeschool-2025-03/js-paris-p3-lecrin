@@ -1,7 +1,7 @@
 import db_client from "../../../database/client";
 import type { Result, Rows } from "../../../database/client";
 
-type Users = {
+type User = {
   id: number;
   name: string;
   birthday: string;
@@ -25,7 +25,7 @@ async function selectOne(id: number) {
   return user;
 }
 
-async function add(newUser: Omit<Users, "id">) {
+async function add(newUser: Omit<User, "id">) {
   const [result] = await db_client.query<Result>(
     "INSERT INTO user (name, birthday, date_inscription, mail, password, artist_id) values (?, ?, ?, ?, ?, ?)",
     [
@@ -45,7 +45,7 @@ async function readByEmail(mail: string) {
     "Select * from user where mail = ?",
     [mail],
   );
-  return rows[0] as Users;
+  return rows[0] as User;
 }
 
 async function deleteById(id: number) {
@@ -56,7 +56,7 @@ async function deleteById(id: number) {
   return result;
 }
 
-async function updateById(user: Partial<Users>, id: number) {
+async function updateById(user: Partial<User>, id: number) {
   const [result] = await db_client.query<Result>(
     "UPDATE user SET ? WHERE id = ?",
     [user, id],

@@ -10,7 +10,6 @@ function Register() {
   const birthdate = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
   const date_inscription = useRef<HTMLInputElement>(null);
-  const photo = useRef<HTMLInputElement>(null);
 
   const registerBtn = async () => {
     try {
@@ -23,7 +22,6 @@ function Register() {
           birthday: birthdate.current?.value,
           password: password.current?.value,
           date_inscription: date_inscription.current?.value,
-          photo: photo.current?.value,
         }),
       };
       const response = await fetch(
@@ -49,8 +47,6 @@ function Register() {
           <input ref={name} type="text" id="name" name="user_name" />
           <label htmlFor="mail">E-mail :</label>
           <input ref={mail} type="email" id="mail" name="user_mail" />
-          <label htmlFor="photo">photo :</label>
-          <input ref={photo} type="photo" id="photo" name="user_photo" />
           <label htmlFor="birthdate">Date de naissance</label>
           <input
             ref={birthdate}

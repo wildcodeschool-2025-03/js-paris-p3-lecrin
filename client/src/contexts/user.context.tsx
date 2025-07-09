@@ -1,15 +1,15 @@
-import { type ReactNode, createContext, useState } from "react";
-import type { Users } from "../types/vite-env";
+import { type ReactNode, createContext, useContext, useState } from "react";
+import type { User } from "../types/vite-env";
 
 interface UserContextType {
-  user: Users | null;
-  setUser: React.Dispatch<React.SetStateAction<Users | null>>;
+  user: User | null;
+  setUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
 
 export const UserContext = createContext<UserContextType | null>(null);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<Users | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
@@ -17,3 +17,11 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     </UserContext.Provider>
   );
 };
+
+export function useUser(): UserContextType {
+  const value = useContext(UserContext);
+  if (value === null) {
+    throw new Error("useRecipe has to be used within <RecipeProvider>");
+  }
+  return value;
+}
