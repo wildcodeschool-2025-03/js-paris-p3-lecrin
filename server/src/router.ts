@@ -18,7 +18,6 @@ import artworkActions from "./modules/artwork/artworkActions";
 router.get("/api/artworks", artworkActions.browse);
 router.get("/api/artworks/:id", artworkActions.read);
 router.get("/api/artworks/:id/comments", commentActions.ReadCommentByArtworkId);
-router.delete("/api/artworks/:id/comments/:id", commentActions.destroy);
 router.post(
   "/api/artworks",
   artworkActions.ValidateArtwork,

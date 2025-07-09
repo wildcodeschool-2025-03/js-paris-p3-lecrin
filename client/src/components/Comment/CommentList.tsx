@@ -21,19 +21,25 @@ function CommentList({
   const [comments, setComments] = useState<Comment[]>([]);
   const [textAreaOpen, setTextAreaOpen] = useState(false);
   const [newComment, setNewComment] = useState("");
-  const [sendComment, setSendComment] = useState<Response | null>(null);
   const [deleteCom, setDeleteCom] = useState<Response | null>(null);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
+    console.log("comments", comments);
     fetch(`http://localhost:3310/api/artworks/${artworkId}/comments`)
       .then((res) => {
         if (res.ok) return res.json();
       })
       .then((data) => {
         if (data) setComments(data);
-      });
-  }, [artworkId, sendComment, deleteCom]);
+      })
+      .catch((error) =>
+        console.error(
+          "une erreur est survenue lors de la récupération des commentaires",
+          error,
+        ),
+      );
+  }, [artworkId, deleteCom]); // <= quand est ce que le code useEffect va etre executé
 
   function textAreaOn() {
     setTextAreaOpen(true);
@@ -51,25 +57,44 @@ function CommentList({
     } else {
       fetch("http://localhost:3310/api/comments", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" }, // RAJOUTER AUTORIZATION /!\
         body: JSON.stringify({
           text: trimmed,
           date: "2025-07-05",
-          user_id: 2,
+          user_id: 7,
+          artwork_id: artworkId,
         }),
-      }).then((res) => setSendComment(res));
+      })
+        .then((res) => {
+          if (res.ok) {
+            setNewComment("");
+
+            return fetch(
+              `http://localhost:3310/api/artworks/${artworkId}/comments`,
+            );
+          }
+        })
+        .then((res) => res?.json())
+        .then((data) => {
+          if (data) {
+            setComments(data);
+          }
+        });
+      // RAJOUTER UN .CATCH /!\
     }
   }
 
-  function destroy() {
-    fetch(
-      `http://localhost:3310/api/artworks/${artworkId}/comments/${artworkId}`,
-      {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: 2 }),
+  function destroy(commentId: number) {
+    fetch(`http://localhost:3310/api/comments/${commentId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`, //voir si le token a bien été mis dans le TOKEN
       },
-    ).then((res) => setDeleteCom(res));
+    }).then((res) => {
+      setDeleteCom(res);
+      setComments((prev) => prev.filter((com) => com.id !== commentId));
+    });
   }
 
   return (
@@ -111,7 +136,7 @@ function CommentList({
               {comment.userName}
             </span>
             <p>{comment.text}</p>
-            <button type="button" onClick={destroy}>
+            <button type="button" onClick={() => destroy(comment.id)}>
               Supprimer
             </button>
           </div>
