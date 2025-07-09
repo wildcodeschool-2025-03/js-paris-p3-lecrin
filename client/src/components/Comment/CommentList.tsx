@@ -56,22 +56,20 @@ function CommentList({
           text: trimmed,
           date: "2025-07-05",
           user_id: 2,
-          artwork_id: 2,
         }),
       }).then((res) => setSendComment(res));
     }
   }
 
   function destroy() {
-    if (newComment) {
-      fetch(`http://localhost:3310/api/comments/${artworkId}`, {
+    fetch(
+      `http://localhost:3310/api/artworks/${artworkId}/comments/${artworkId}`,
+      {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: 2 }),
-      }).then((res) => setDeleteCom(res));
-    } else {
-      ("aucun commentaire à supprimer");
-    }
+      },
+    ).then((res) => setDeleteCom(res));
   }
 
   return (
