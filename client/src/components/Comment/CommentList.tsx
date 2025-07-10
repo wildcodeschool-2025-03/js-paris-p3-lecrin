@@ -21,6 +21,7 @@ function CommentList({
   const [comments, setComments] = useState<Comment[]>([]);
   const [textAreaOpen, setTextAreaOpen] = useState(false);
   const [newComment, setNewComment] = useState("");
+
   useEffect(() => {
     fetch(`http://localhost:3310/api/artworks/${artworkId}/comments`)
       .then((res) => {
@@ -89,8 +90,11 @@ function CommentList({
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
+    }).then((res) => {
+      if (res.ok) {
+        setComments((prev) => prev.filter((com) => com.id !== commentId));
+      }
     });
-    setComments((prev) => prev.filter((com) => com.id !== commentId));
   }
 
   return (
