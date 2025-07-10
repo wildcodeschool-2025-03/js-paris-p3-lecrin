@@ -1,3 +1,4 @@
+import { log } from "node:console";
 import { tr } from "@faker-js/faker/.";
 import type { RequestHandler } from "express";
 import Joi from "joi";
@@ -91,7 +92,7 @@ const ReadCommentByArtworkId: RequestHandler = async (req, res, next) => {
     if (comments.length > 0) {
       res.status(200).json(comments);
     } else {
-      res.sendStatus(404);
+      res.status(200).json([]);
     }
   } catch (error) {
     next(error);
