@@ -136,7 +136,7 @@
     margin-top: 50px;
   }
 
-  .divAbonne>div {
+  .divAbonne > div {
     flex-direction: row;
     gap: 20px;
   }
