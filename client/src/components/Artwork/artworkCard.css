@@ -191,3 +191,29 @@
   color: black;
   border-color: black;
 }
+
+@media screen and (max-width: 768px) {
+  .divCard {
+    flex-direction: column;
+  }
+
+  .divImg {
+    align-items: flex-start;
+  }
+
+  .imgArt {
+    width: 80vw;
+  }
+
+  .firstDivCard {
+    align-items: center;
+  }
+
+  .divDescArtwork {
+    align-items: center;
+  }
+
+  .titreArtwork {
+    font-size: 28px;
+  }
+}

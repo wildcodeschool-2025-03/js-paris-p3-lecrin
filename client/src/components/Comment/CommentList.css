@@ -56,3 +56,10 @@
   margin: 0;
   line-height: 1.4;
 }
+
+@media screen and (max-width: 768px) {
+  .react-modal-content {
+    flex-direction: column;
+    width: 100%;
+  }
+}
