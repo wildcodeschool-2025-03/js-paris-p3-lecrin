@@ -123,3 +123,29 @@
   padding: 9px;
   gap: 24px;
 }
+
+@media screen and (max-width: 768px) {
+  .headerProfil {
+    flex-direction: column;
+  }
+
+  .firstDivProf {
+    flex-direction: column;
+  }
+  .divAbonne {
+    margin-top: 50px;
+  }
+
+  .divAbonne>div {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .div {
+    flex-direction: column;
+  }
+
+  .navProfil {
+    justify-content: space-between;
+  }
+}
