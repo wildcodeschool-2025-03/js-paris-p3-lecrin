@@ -15,7 +15,6 @@ function ProfilMovement() {
       .then((res) => res.json())
       .then((json) => {
         setMovement(json);
-        console.log(json);
 
         setLoading(false);
       })

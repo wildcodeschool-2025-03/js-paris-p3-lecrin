@@ -23,7 +23,6 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
       .then((res) => res.json())
       .then((data) => {
         setLike(data);
-        console.log(data);
       });
   }, [updateLike, artwork.id, deleteLike]);
 
@@ -42,7 +41,6 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
       }).then((res) => setUpdateLike(res));
     }
   };
-  console.log(artwork);
 
   function openModal() {
     setModalIsOpen(true);
