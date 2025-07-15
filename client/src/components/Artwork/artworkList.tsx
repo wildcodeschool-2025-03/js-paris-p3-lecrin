@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import artworks from "../../data/dataArtwork.json";
 import type { Artwork } from "../../types/vite-env";
 import Searchbar from "../Searchbar/Searchbar";
 import ArtworkCard from "./artworkCard";
@@ -18,7 +17,6 @@ function ArtworkList() {
       .then((res) => res.json())
       .then((json) => {
         setData(json);
-        console.log(json);
 
         setLoading(false);
       })
@@ -35,7 +33,6 @@ function ArtworkList() {
       <div className="msgErr">Artwork invalide ou données manquantes.</div>
     );
   }
-  console.log("artworks.length =", artworks.length);
 
   return (
     <div>
