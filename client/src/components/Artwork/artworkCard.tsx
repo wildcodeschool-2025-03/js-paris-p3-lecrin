@@ -6,6 +6,7 @@ import PictoSave from "../../assets/images/pictos/picto-save.svg";
 import type { Artwork, Movement } from "../../types/vite-env";
 import "./artworkCard.css";
 import { useEffect, useState } from "react";
+import PopUpCollection from "../Collection/PopUpCollection";
 import CommentList from "../Comment/CommentList";
 
 type ArtworkCardProps = {
@@ -16,7 +17,8 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
   const [like, setLike] = useState<{ user_id: number }[]>([]);
   const [updateLike, setUpdateLike] = useState<Response | never[]>([]);
   const [deleteLike, setDeleteLike] = useState<Response | never[]>([]);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [comIsOpen, setComIsOpen] = useState(false);
+  const [popUpIsOpen, setPopUpIsOpen] = useState(false);
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     fetch(`http://localhost:3310/api/artworks/${artwork.id}/like`)
@@ -44,28 +46,43 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
   };
   console.log(artwork);
 
-  function openModal() {
-    setModalIsOpen(true);
+  function openCom() {
+    setComIsOpen(true);
   }
 
-  function closeModal() {
-    setModalIsOpen(false);
+  function closeCom() {
+    setComIsOpen(false);
+  }
+
+  function openPopUpSave() {
+    setPopUpIsOpen(true);
+  }
+
+  function closePopUpSave() {
+    setPopUpIsOpen(false);
   }
   return (
     <>
       <CommentList
         artworkId={artwork.id}
         artworkImage={artwork.photo}
-        onClose={closeModal}
-        modalIsOpen={modalIsOpen}
+        onClose={closeCom}
+        comIsOpen={comIsOpen}
       />
+      <PopUpCollection
+        artworkId={artwork.id}
+        artworkImage={artwork.photo}
+        onClose={closePopUpSave}
+        popUpIsOpen={popUpIsOpen}
+      />
+
       <main key={artwork.id} className="sectionCard">
         <Link className="LinkToArtistProf" to={`/profiluser/${artwork.userId}`}>
           <div className="divUser">
             <div className="divImgUser">
               <img
                 className="imgUser"
-                src="https://i.pinimg.com/originals/54/72/d1/5472d1b09d3d724228109d381d617326.jpg"
+                src={artwork.userPhoto}
                 alt={`Avatar de l'utilisateur ${artwork.userName}`}
               />
             </div>
@@ -94,7 +111,7 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
               <div className="divLike">
                 <button
                   type="button"
-                  onClick={openModal}
+                  onClick={openCom}
                   className="btnLike"
                   aria-label="Voir les commentaires"
                 >
@@ -136,10 +153,14 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
                 ))}
               </div>
 
-              <div className="saveArtwork">
+              <button
+                className="saveArtwork"
+                onClick={openPopUpSave}
+                type="button"
+              >
                 <img className="pictoSave" src={PictoSave} alt="" />
                 <p className="infoArtwork">enregistrer</p>
-              </div>
+              </button>
             </div>
 
             <div className="divDescArtwork">

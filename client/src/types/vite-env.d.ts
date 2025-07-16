@@ -47,6 +47,7 @@ export type Artwork = {
   artistName: string;
   artworkName: string;
   userName: string;
+  userPhoto: string;
   countLike: number;
   // autres champs si besoin
 };
@@ -73,4 +74,11 @@ export type Comment = {
   artist: Artist[];
   userName: string;
   userPic: string;
+};
+
+export type Collection = {
+  id: number;
+  name: string;
+  photo: string;
+  user_id: number;
 };

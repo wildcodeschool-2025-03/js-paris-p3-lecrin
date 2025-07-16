@@ -530,6 +530,7 @@ VALUES (
 CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`collection` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(45) NOT NULL,
+    `photo` TEXT NOT NULL,
     `user_id` INT NOT NULL,
     PRIMARY KEY (`id`, `user_id`),
     INDEX `fk_collection_user1_idx` (`user_id` ASC) VISIBLE,
