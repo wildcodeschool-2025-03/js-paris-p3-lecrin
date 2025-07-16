@@ -14,7 +14,6 @@ function ProfilUser() {
       .then((res) => res.json())
       .then((json) => {
         setUser(json);
-        console.log(json);
 
         setLoading(false);
       })

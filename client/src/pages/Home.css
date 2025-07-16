@@ -44,3 +44,9 @@
   color: black;
   border-color: black;
 }
+
+@media screen and (max-width: 768px) {
+  .divH1-btn {
+    align-items: center;
+  }
+}

@@ -18,7 +18,6 @@ function ArtistList() {
       .then((res) => res.json())
       .then((json) => {
         setArtists(json);
-        console.log(json);
 
         setLoading(false);
       })
