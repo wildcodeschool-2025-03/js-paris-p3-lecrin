@@ -12,7 +12,6 @@ type PopUpCollectionProps = {
 };
 
 function PopUpCollection({
-  // artworkId,
   artworkImage,
   onClose,
   popUpIsOpen,

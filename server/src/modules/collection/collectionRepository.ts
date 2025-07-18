@@ -44,11 +44,4 @@ async function updateById(id: number, collection: Partial<Collection>) {
   return result;
 }
 
-// async function createCollectionByUserId(
-//   id: number,
-//   collection: Partial<Collection>,
-// ) {
-//   const [result] = await db_client.query<Result>();
-// }
-
 export default { selectAll, selectOne, create, deleteById, updateById };

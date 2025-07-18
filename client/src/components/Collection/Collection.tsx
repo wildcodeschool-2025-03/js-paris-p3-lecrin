@@ -16,7 +16,7 @@ function Collections() {
           </div>
         ))
       ) : (
-        <p className="msgErr">Vous n'avez pas encore de collections</p>
+        <p className="msgErr">Vous n'avez pas encore de collection</p>
       )}
     </>
   );

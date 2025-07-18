@@ -28,7 +28,6 @@ async function selectOne(id: number) {
     "SELECT artwork.id, user.id as userId, user.name AS userName, artwork.name as artworkName, artwork.photo, artwork.date_artwork, artwork.musee, artwork.ville, artwork.pays, artwork.date_post, artwork.description, artist.name AS artistName FROM artwork JOIN artist ON artwork.artist_id = artist.id JOIN user ON artwork.user_id = user.id WHERE artwork.id = ?",
     [id],
   );
-  console.log(artwork);
 
   return artwork;
 }
