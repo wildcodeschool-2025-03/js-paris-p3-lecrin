@@ -41,8 +41,6 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
       }).then((res) => setUpdateLike(res));
     }
   };
-  console.log(artwork);
-
   function openModal() {
     setModalIsOpen(true);
   }
@@ -69,7 +67,7 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
               />
             </div>
             <p className="textPetit">
-              <span className="spanUser">{artwork.userName}</span> a publiée
+              <span className="spanUser">{artwork.userName}</span> a publié
             </p>
           </div>
         </Link>

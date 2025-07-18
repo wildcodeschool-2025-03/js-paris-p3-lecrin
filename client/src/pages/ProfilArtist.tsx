@@ -8,8 +8,6 @@ import type { Artist, Movement } from "../types/vite-env";
 function ProfilArtist() {
   const { id } = useParams();
   const [artist, setArtist] = useState<Artist>();
-  console.log(artist);
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -17,7 +15,6 @@ function ProfilArtist() {
       .then((res) => res.json())
       .then((json) => {
         setArtist(json);
-
         setLoading(false);
       })
       .catch((err) => {

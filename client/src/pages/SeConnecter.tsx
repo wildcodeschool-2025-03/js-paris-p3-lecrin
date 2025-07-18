@@ -32,7 +32,6 @@ function SeConnecter() {
         const user = userWithoutPassword;
         user.token = token;
         context?.setUser(user);
-        console.log("user", user);
         navigate("/");
       }
     } catch (error) {

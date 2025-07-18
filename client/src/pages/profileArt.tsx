@@ -18,7 +18,6 @@ function ProfileArt() {
       .then((res) => res.json())
       .then((json) => {
         setArtwork(json);
-
         setLoading(false);
       })
       .catch((err) => {

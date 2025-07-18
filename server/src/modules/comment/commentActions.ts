@@ -10,7 +10,6 @@ const ValidateComment: RequestHandler = (req, res, next) => {
     //user_id: Joi.number().integer().required(),
     artwork_id: Joi.number().integer().required(),
   });
-  console.log("in validate comment", req.body);
   const result = schema.validate(req.body, { abortEarly: false });
   if (result.error) {
     res.status(400).json(result.error.details);

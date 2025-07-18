@@ -40,8 +40,6 @@ function CommentList({
     if (!trimmed) {
       alert("Vous ne pouvez pas envoyer de commentaire vide");
     } else {
-      console.log(user?.token);
-      console.log("user", user);
       fetch("http://localhost:3310/api/comments", {
         method: "POST",
         headers: {

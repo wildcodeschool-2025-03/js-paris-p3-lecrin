@@ -78,20 +78,16 @@ const isAuth: RequestHandler = async (
 ) => {
   try {
     const authorization = req.headers.authorization;
-    console.log("authorisation", authorization);
     if (!authorization) {
       res.status(401).json("Authorisation manquant.");
     } else {
       const token = authorization.split(" ")[1];
-      console.log("token", token);
       if (!token) res.status(401).json("Token manquant.");
       else {
         const payload = jwt.verify(
           token,
           process.env.APP_SECRET as string,
         ) as PayloadToken;
-        console.log("payload", payload);
-
         const user = (await userRepository.selectOne(
           payload?.id as number,
         )) as User;
