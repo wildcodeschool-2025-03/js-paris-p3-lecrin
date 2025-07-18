@@ -1,12 +1,11 @@
 import { useParams } from "react-router-dom";
 import "./ProfilUser.css";
 import { useEffect, useState } from "react";
-import type { Users } from "../types/vite-env";
+import type { User } from "../types/vite-env";
 
 function ProfilUser() {
   const { id } = useParams();
-
-  const [user, setUser] = useState<Users>();
+  const [user, setUser] = useState<User>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,7 +13,6 @@ function ProfilUser() {
       .then((res) => res.json())
       .then((json) => {
         setUser(json);
-
         setLoading(false);
       })
       .catch((err) => {
@@ -69,8 +67,6 @@ function ProfilUser() {
         <section className="sectionProfil">
           <nav className="navProfil">
             <p className="btnNavProf">Publications</p>
-            <p className="btnNavProf">Collections</p>
-            <p className="btnNavProf">Favoris</p>
           </nav>
         </section>
       </main>

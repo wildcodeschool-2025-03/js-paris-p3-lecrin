@@ -1,6 +1,6 @@
-import "./ArtistCard.css";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import type { Artist, Movement } from "../../types/vite-env";
+import "./ArtistCard.css";
 
 type ArtistCardProps = {
   artist: Artist;

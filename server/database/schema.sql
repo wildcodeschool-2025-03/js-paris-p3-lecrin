@@ -30,7 +30,7 @@ USE `BDD_projet_3`;
 CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`artist` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(255) NOT NULL,
-    `photo` TEXT NOT NULL,
+    `photo` TEXT,
     `pays` TEXT NOT NULL,
     `description` TEXT NOT NULL,
     `birthday` DATETIME NOT NULL,
@@ -169,7 +169,7 @@ VALUES (
 CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`movement` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(255) NOT NULL,
-    `photo` TEXT NOT NULL,
+    `photo` TEXT,
     `description` TEXT NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb3;
@@ -251,7 +251,7 @@ VALUES (
 CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`user` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(55) NOT NULL,
-    `photo` TEXT NOT NULL,
+    `photo` TEXT,
     `birthday` DATETIME NOT NULL,
     `date_inscription` DATETIME NOT NULL DEFAULT NOW(),
     `mail` VARCHAR(255) NOT NULL,
@@ -386,7 +386,7 @@ CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`artwork` (
     `name` VARCHAR(55) NOT NULL,
     `user_id` INT NOT NULL,
     `date_artwork` DATETIME NOT NULL,
-    `photo` TEXT NOT NULL,
+    `photo` TEXT,
     `date_post` DATETIME NOT NULL DEFAULT NOW(),
     `musee` VARCHAR(255) NULL,
     `ville` VARCHAR(255) NULL,
@@ -545,7 +545,7 @@ CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`collection` (
 CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`comment` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `text` TEXT NOT NULL,
-    `date` DATETIME NOT NULL,
+    `date` DATETIME NOT NULL DEFAULT NOW(),
     `user_id` INT NOT NULL,
     `artwork_id` INT NOT NULL,
     PRIMARY KEY (`id`),
@@ -554,6 +554,10 @@ CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`comment` (
     CONSTRAINT `fk_comment_artwork1` FOREIGN KEY (`artwork_id`) REFERENCES `BDD_projet_3`.`artwork` (`id`),
     CONSTRAINT `fk_comment_user1` FOREIGN KEY (`user_id`) REFERENCES `BDD_projet_3`.`user` (`id`)
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb3;
+
+ALTER TABLE comment
+MODIFY COLUMN date DATETIME DEFAULT CURRENT_TIMESTAMP;
+
 
 
 -- -----------------------------------------------------

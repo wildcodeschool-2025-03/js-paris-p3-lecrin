@@ -22,15 +22,10 @@ async function selectOne(id: number) {
   return comment;
 }
 
-async function create(newComment: Omit<Comment, "id">) {
+async function create(newComment: Omit<Comment, "id" | "date">) {
   const [result] = await db_client.query<Result>(
-    "INSERT INTO comment (text, date, user_id, artwork_id) VALUES (?, ?, ?, ?)",
-    [
-      newComment.text,
-      newComment.date,
-      newComment.user_id,
-      newComment.artwork_id,
-    ],
+    "INSERT INTO comment (text, user_id, artwork_id) VALUES (?, ?, ?)",
+    [newComment.text, newComment.user_id, newComment.artwork_id],
   );
   return result;
 }
