@@ -7,13 +7,13 @@ Modal.setAppElement("#root");
 interface CommentListProps {
   artworkId: number;
   onClose: () => void;
-  modalIsOpen: boolean;
+  comIsOpen: boolean;
   artworkImage: string;
 }
 function CommentList({
   artworkId,
   onClose,
-  modalIsOpen,
+  comIsOpen,
   artworkImage,
 }: CommentListProps) {
   const [comments, setComments] = useState<Comment[]>([]);
@@ -88,7 +88,7 @@ function CommentList({
   }
   return (
     <Modal
-      isOpen={modalIsOpen}
+      isOpen={comIsOpen}
       onRequestClose={onClose}
       contentLabel="Commentaires"
       className="react-modal-content"
@@ -97,7 +97,7 @@ function CommentList({
       <img src={artworkImage} alt="Artwork" className="comment-image" />
       <div className="comment-section">
         {!textAreaOpen ? (
-          <button type="button" onClick={textAreaOn}>
+          <button className="BtnPP" type="button" onClick={textAreaOn}>
             Ajouter un commentaire
           </button>
         ) : (
@@ -108,10 +108,10 @@ function CommentList({
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
             />
-            <button type="button" onClick={textAreaOff}>
+            <button className="BtnPP" type="button" onClick={textAreaOff}>
               Annuler
             </button>
-            <button type="button" onClick={send}>
+            <button className="BtnPP" type="button" onClick={send}>
               Envoyer
             </button>
           </>
@@ -124,6 +124,7 @@ function CommentList({
               {comment.userName}
             </span>
             <p>{comment.text}</p>
+
             <button type="button" onClick={() => destroy(comment.id)}>
               Supprimer
             </button>

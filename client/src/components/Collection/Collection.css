@@ -1,0 +1,62 @@
+.react-modal-content-popup {
+  background: var(--black-color);
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  max-width: 90%;
+  width: 70%;
+  margin: auto;
+  margin-top: 5%;
+  padding: 20px;
+  gap: 20px;
+  font-family: var(--text-font);
+  color: var(--white-color);
+}
+
+.popup-image {
+  max-width: 35vw;
+  max-height: 400px;
+  height: auto;
+}
+
+.divBtnPP {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.BtnPP {
+  text-decoration: none;
+  color: inherit;
+  color: var(--white-color);
+  background-color: transparent;
+  font-size: 16px;
+  font-family: var(--title-font);
+  font-weight: 200;
+  padding: 8px 32px;
+  border: 1px solid var(--white-color);
+  max-width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s
+    ease;
+}
+
+.BtnPP:hover {
+  background-color: white;
+  color: black;
+  border-color: black;
+}
+
+.titrePopUp {
+  color: var(--white-color);
+  font-family: var(--title-font);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.formPopUp {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

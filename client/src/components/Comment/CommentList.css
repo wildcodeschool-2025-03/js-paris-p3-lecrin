@@ -8,7 +8,7 @@
 }
 
 .react-modal-content {
-  background: #141414;
+  background: var(--black-color);
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -16,14 +16,14 @@
   width: 70%;
   margin: auto;
   margin-top: 5%;
-  padding: 2rem;
-  gap: 10rem;
+  padding: 20px;
+  gap: 20px;
   font-family: var(--text-font);
   color: var(--white-color);
 }
 
 .comment-image {
-  max-width: 300px;
+  max-width: 35vw;
   max-height: 400px;
   height: auto;
 }

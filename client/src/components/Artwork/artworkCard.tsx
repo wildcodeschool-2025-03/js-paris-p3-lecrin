@@ -1,11 +1,12 @@
 // artworkCard.tsx
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PictoComment from "../../assets/images/pictos/picto-comment.svg";
 import PictoLike from "../../assets/images/pictos/picto-like.svg";
 import PictoSave from "../../assets/images/pictos/picto-save.svg";
-import type { Artwork, Movement } from "../../types/vite-env";
 import "./artworkCard.css";
-import { useEffect, useState } from "react";
+import type { Artwork, Movement } from "../../types/vite-env";
+import PopUpCollection from "../Collection/PopUpCollection";
 import CommentList from "../Comment/CommentList";
 
 type ArtworkCardProps = {
@@ -16,8 +17,10 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
   const [like, setLike] = useState<{ user_id: number }[]>([]);
   const [updateLike, setUpdateLike] = useState<Response | never[]>([]);
   const [deleteLike, setDeleteLike] = useState<Response | never[]>([]);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  const [comIsOpen, setComIsOpen] = useState(false);
+  const [popUpIsOpen, setPopUpIsOpen] = useState(false);
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: fetch dépendances bien gérées ici
   useEffect(() => {
     fetch(`http://localhost:3310/api/artworks/${artwork.id}/like`)
       .then((res) => res.json())
@@ -41,20 +44,40 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
       }).then((res) => setUpdateLike(res));
     }
   };
+  
   function openModal() {
     setModalIsOpen(true);
   }
 
-  function closeModal() {
-    setModalIsOpen(false);
+  function openCom() {
+    setComIsOpen(true);
   }
+
+  function closeCom() {
+    setComIsOpen(false);
+  }
+
+  function openPopUpSave() {
+    setPopUpIsOpen(true);
+  }
+
+  function closePopUpSave() {
+    setPopUpIsOpen(false);
+  }
+
   return (
     <>
       <CommentList
         artworkId={artwork.id}
         artworkImage={artwork.photo}
-        onClose={closeModal}
-        modalIsOpen={modalIsOpen}
+        onClose={closeCom}
+        comIsOpen={comIsOpen}
+      />
+      <PopUpCollection
+        artworkId={artwork.id}
+        artworkImage={artwork.photo}
+        onClose={closePopUpSave}
+        popUpIsOpen={popUpIsOpen}
       />
       <main key={artwork.id} className="sectionCard">
         <Link className="LinkToArtistProf" to={`/profiluser/${artwork.userId}`}>
@@ -62,7 +85,7 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
             <div className="divImgUser">
               <img
                 className="imgUser"
-                src="https://i.pinimg.com/originals/54/72/d1/5472d1b09d3d724228109d381d617326.jpg"
+                src={artwork.userPhoto}
                 alt={`Avatar de l'utilisateur ${artwork.userName}`}
               />
             </div>
@@ -71,27 +94,23 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
             </p>
           </div>
         </Link>
-
         <section className="divCard">
           <div className="divImg">
             <img className="imgArt" src={artwork.photo} alt={artwork.name} />
-
             <div className="divInfoCard">
               <p className="datePost">
                 {new Date(artwork.date_post).toLocaleDateString()}
               </p>
-
               <div className="divLike">
                 <button type="button" className="btnLike" onClick={handleClick}>
                   <img className="pictoLike" src={PictoLike} alt="" />
                 </button>
                 <p className="textPicto">{like.length}</p>
               </div>
-
               <div className="divLike">
                 <button
                   type="button"
-                  onClick={openModal}
+                  onClick={openCom}
                   className="btnLike"
                   aria-label="Voir les commentaires"
                 >
@@ -101,7 +120,6 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
               </div>
             </div>
           </div>
-
           <article className="infoCard">
             <div className="firstDivCard">
               <h1 className="titreArtwork">{artwork.artworkName}</h1>
@@ -114,34 +132,30 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
                 </Link>{" "}
                 - {new Date(artwork.date_artwork).getFullYear()}
               </h2>
-
               {artwork.musee && artwork.ville && artwork.pays ? (
                 <p className="infoArtwork">
                   {artwork.musee} - {artwork.ville}, {artwork.pays}
                 </p>
               ) : null}
-
               <p className="infoArtwork">{artwork.dimensions}</p>
-
               <div className="divMvt">
                 {artwork.movements.map((movement: Movement) => (
                   <Link key={movement.id} to={`/Mouvements/${movement.id}`}>
-                    <p key={movement.id} className="mvtArtwork">
-                      {movement.name}
-                    </p>
+                    <p className="mvtArtwork">{movement.name}</p>
                   </Link>
                 ))}
               </div>
-
-              <div className="saveArtwork">
+              <button
+                className="saveArtwork"
+                onClick={openPopUpSave}
+                type="button"
+              >
                 <img className="pictoSave" src={PictoSave} alt="" />
                 <p className="infoArtwork">enregistrer</p>
-              </div>
+              </button>
             </div>
-
             <div className="divDescArtwork">
               <p className="descArtwork">{artwork.description}</p>
-
               <Link to={`/ProfilArtwork/${artwork.id}`} className="textPlus">
                 EN VOIR PLUS
               </Link>
@@ -152,4 +166,5 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
     </>
   );
 }
+
 export default ArtworkCard;

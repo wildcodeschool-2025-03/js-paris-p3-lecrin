@@ -5,6 +5,7 @@ interface Collection {
   id: number;
   name: string;
   user_id: number;
+  photo: string; // ou string | null selon ta BDD
 }
 
 async function selectAll() {
@@ -21,8 +22,8 @@ async function selectOne(id: number) {
 
 async function create(newCollection: Omit<Collection, "id">) {
   const [result] = await db_client.query<Result>(
-    "INSERT INTO collection (name, user_id) VALUES (?, ?)",
-    [newCollection.name, newCollection.user_id],
+    "INSERT INTO collection (name, photo, user_id) VALUES (?, ?)",
+    [newCollection.name, newCollection.photo, newCollection.user_id],
   );
   return result;
 }
