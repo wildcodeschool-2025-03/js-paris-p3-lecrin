@@ -1,6 +1,4 @@
-// import { useContext } from "react";
 import ArtworkList from "../components/Artwork/artworkList";
-// import { UserContext } from "../contexts/user.context";
 import "./Home.css";
 import { useNavigate } from "react-router";
 // import { toast } from "react-toastify";
@@ -16,7 +14,6 @@ function Home() {
       <main>
         <section className="hautHome">
           <article className="divH1-btn">
-            {/* <h3 className="bjr">Bonjour {context?.user?.name}</h3> */}
             <h1 className="titreHome">À l'honneur (fil d'actualité)</h1>
             <button
               onClick={() => {

@@ -4,7 +4,7 @@ import BisArtworkCard from "./bisArtworkCard";
 function ListArtistBisArtworkCard({ artworks }: { artworks: Artwork[] }) {
   return (
     <>
-      <div className="DivListBisArt">
+      <div className="divListBisArt">
         {artworks.map((artwork) => {
           return (
             <BisArtworkCard

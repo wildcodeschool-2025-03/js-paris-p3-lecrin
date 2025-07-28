@@ -52,7 +52,7 @@ export type Artwork = {
   // autres champs si besoin
 };
 
-export type Users = {
+export type User = {
   id: number;
   name: string;
   photo: string;
@@ -62,7 +62,7 @@ export type Users = {
   password: string;
   artworks?: Artwork[];
   admin?: string;
-  artist_id?: Artist[];
+  artist_id?: Artist;
   token: string;
 };
 
@@ -70,8 +70,9 @@ export type Comment = {
   id: number;
   text: string;
   date: string;
-  artwork: Artwork[];
-  artist: Artist[];
+  artwork: Artwork;
+  artist: Artist;
+  userId: User;
   userName: string;
   userPic: string;
 };

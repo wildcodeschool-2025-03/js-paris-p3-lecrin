@@ -15,7 +15,6 @@ function ProfilArtist() {
       .then((res) => res.json())
       .then((json) => {
         setArtist(json);
-
         setLoading(false);
       })
       .catch((err) => {

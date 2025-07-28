@@ -1,7 +1,9 @@
 import "./Profile.css";
 import pictoProfil from "../assets/images/pictos/picto-profil.svg";
+import { useUser } from "../contexts/user.context";
 
 function Profil() {
+  const { user } = useUser();
   return (
     <>
       <main>
@@ -13,7 +15,7 @@ function Profil() {
 
             <div className="div">
               <div className="divNomBadge">
-                <h1 className="nomProfil">Omaya</h1>
+                <h1 className="nomProfil">{user?.name}</h1>
                 <p className="badge">administrateur</p>
               </div>
 

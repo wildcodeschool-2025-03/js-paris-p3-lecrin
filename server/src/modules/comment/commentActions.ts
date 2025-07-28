@@ -1,20 +1,21 @@
-import { log } from "node:console";
-import { tr } from "@faker-js/faker/.";
 import type { RequestHandler } from "express";
 import Joi from "joi";
+import type { AuthenticationRequest } from "../user/userActions";
+import type { User } from "./../user/userRepository";
 import commentRepository from "./commentRepository";
 
 const ValidateComment: RequestHandler = (req, res, next) => {
   const schema = Joi.object({
     text: Joi.string().min(2).max(500).required(),
-    date: Joi.date().required(),
-    user_id: Joi.number().integer().required(),
+    //user_id: Joi.number().integer().required(),
     artwork_id: Joi.number().integer().required(),
   });
-
   const result = schema.validate(req.body, { abortEarly: false });
-  if (result.error) res.status(400).json(result.error);
-  else next();
+  if (result.error) {
+    res.status(400).json(result.error.details);
+    return;
+  }
+  next();
 };
 
 const browse: RequestHandler = async (req, res, next) => {
@@ -56,10 +57,15 @@ const edit: RequestHandler = async (req, res, next) => {
   }
 };
 
-const add: RequestHandler = async (req, res, next) => {
+const add: RequestHandler = async (req: AuthenticationRequest, res, next) => {
   try {
-    const newComment = req.body;
-    const result = await commentRepository.create(newComment);
+    const user_id = (req.user as User).id as number;
+    const { text, artwork_id } = req.body;
+    const result = await commentRepository.create({
+      text: text,
+      artwork_id: artwork_id,
+      user_id: user_id,
+    });
     if (result.affectedRows != null) {
       res.status(201).json(result);
     } else {
