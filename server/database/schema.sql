@@ -393,7 +393,7 @@ CREATE TABLE IF NOT EXISTS `BDD_projet_3`.`artwork` (
     `pays` VARCHAR(255) NULL,
     `dimensions` VARCHAR(255) NOT NULL,
     `description` TEXT NULL DEFAULT NULL,
-    `artist_id` INT NOT NULL,
+    `artist_id` INT NULL DEFAULT NULL,
     PRIMARY KEY (`id`),
     INDEX `fk_artwork_user_idx` (`user_id` ASC) VISIBLE,
     INDEX `fk_artwork_artist1_idx` (`artist_id` ASC) VISIBLE,

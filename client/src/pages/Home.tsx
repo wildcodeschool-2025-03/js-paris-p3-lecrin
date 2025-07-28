@@ -2,9 +2,15 @@
 import ArtworkList from "../components/Artwork/artworkList";
 // import { UserContext } from "../contexts/user.context";
 import "./Home.css";
+import { useNavigate } from "react-router";
+// import { toast } from "react-toastify";
+// import { useUser } from "../contexts/user.context";
 
 function Home() {
   // const context = useContext(UserContext);
+  const navigate = useNavigate();
+  // const { user } = useUser();
+
   return (
     <>
       <main>
@@ -12,7 +18,17 @@ function Home() {
           <article className="divH1-btn">
             {/* <h3 className="bjr">Bonjour {context?.user?.name}</h3> */}
             <h1 className="titreHome">À l'honneur (fil d'actualité)</h1>
-            <p className="addBtn">Ajouter une oeuvre</p>
+            <button
+              onClick={() => {
+                navigate("/postArtwork");
+                // if (user) navigate("/postArtwork")
+                // else toast.warning("Tu dois être connecté pour poster une anecdote !");
+              }}
+              type="button"
+              className="addBtn"
+            >
+              Ajouter une oeuvre
+            </button>
           </article>
         </section>
 

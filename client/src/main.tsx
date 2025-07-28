@@ -3,6 +3,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router";
 import { router } from "./Router";
+import { ArtworkProvider } from "./contexts/artwork.context";
 import { CollectionProvider } from "./contexts/collection.context";
 import { UserProvider } from "./contexts/user.context";
 
@@ -18,11 +19,13 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <UserProvider>
-      <CollectionProvider>
-        <RouterProvider router={router} />
-      </CollectionProvider>
-    </UserProvider>
+    <ArtworkProvider>
+      <UserProvider>
+        <CollectionProvider>
+          <RouterProvider router={router} />
+        </CollectionProvider>
+      </UserProvider>
+    </ArtworkProvider>
   </StrictMode>,
 );
 

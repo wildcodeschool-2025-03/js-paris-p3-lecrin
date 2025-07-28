@@ -10,6 +10,7 @@ const ValidateArtwork: RequestHandler = (req, res, next) => {
     place: Joi.string().min(2).max(100).required(),
     //photo:
     date_artwork: Joi.date().max("now").required(),
+    dimensions: Joi.string().alphanum().required(),
   });
 
   const result = schema.validate(req.body, { abortEarly: false });

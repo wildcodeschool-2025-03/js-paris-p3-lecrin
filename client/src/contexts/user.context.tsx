@@ -1,4 +1,4 @@
-import { type ReactNode, createContext, useState } from "react";
+import { type ReactNode, createContext, useContext, useState } from "react";
 import type { Users } from "../types/vite-env";
 
 interface UserContextType {
@@ -16,4 +16,10 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </UserContext.Provider>
   );
+};
+
+export const useUser = (): UserContextType => {
+  const context = useContext(UserContext);
+  if (!context) throw new Error("Utilisez useUser dans un userProvider");
+  return context;
 };
