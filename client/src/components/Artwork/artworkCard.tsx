@@ -5,6 +5,7 @@ import PictoComment from "../../assets/images/pictos/picto-comment.svg";
 import PictoLike from "../../assets/images/pictos/picto-like.svg";
 import PictoSave from "../../assets/images/pictos/picto-save.svg";
 import "./artworkCard.css";
+import { useUser } from "../../contexts/user.context";
 import type { Artwork, Movement } from "../../types/vite-env";
 import PopUpCollection from "../Collection/PopUpCollection";
 import CommentList from "../Comment/CommentList";
@@ -19,6 +20,7 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
   const [deleteLike, setDeleteLike] = useState<Response | never[]>([]);
   const [comIsOpen, setComIsOpen] = useState(false);
   const [popUpIsOpen, setPopUpIsOpen] = useState(false);
+  const { user } = useUser();
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: fetch dépendances bien gérées ici
   useEffect(() => {
@@ -30,24 +32,26 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
   }, [updateLike, artwork.id, deleteLike]);
 
   const handleClick = () => {
-    if (like.some((u) => u.user_id === 4)) {
+    if (like.some((u) => u.user_id === user?.id)) {
       fetch(`http://localhost:3310/api/artworks/${artwork.id}/like`, {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: 4 }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.token}`,
+        },
+        body: JSON.stringify({ user_id: user?.id }),
       }).then((res) => setDeleteLike(res));
     } else {
       fetch("http://localhost:3310/api/artworks/like", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: 4, artwork_id: artwork.id }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.token}`,
+        },
+        body: JSON.stringify({ user_id: user?.id, artwork_id: artwork.id }),
       }).then((res) => setUpdateLike(res));
     }
   };
-
-  // function openModal() {
-  //   setModalIsOpen(true);
-  // }
 
   function openCom() {
     setComIsOpen(true);

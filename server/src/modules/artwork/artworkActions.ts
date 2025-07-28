@@ -8,7 +8,6 @@ const ValidateArtwork: RequestHandler = (req, res, next) => {
     name: Joi.string().alphanum().min(1).max(255).required(),
     description: Joi.string().alphanum().required(),
     place: Joi.string().min(2).max(100).required(),
-    //photo:
     date_artwork: Joi.date().max("now").required(),
     dimensions: Joi.string().alphanum().required(),
   });
