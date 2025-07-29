@@ -5,7 +5,7 @@ import ArtworkCard from "./artworkCard";
 
 function ArtworkList() {
   // const [artworksData, setData] = useState<Artwork[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const { artwork } = useArtwork();
 
@@ -15,7 +15,10 @@ function ArtworkList() {
 
   useEffect(() => {
     fetch("http://localhost:3310/api/artworks")
-      .then((res) => res.json())
+      .then((res) => {
+        res.json();
+        setLoading(false);
+      })
       // .then((json) => {
       //   // setData(json);
 
