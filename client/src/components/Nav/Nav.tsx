@@ -1,5 +1,5 @@
-import "./Nav.css";
 import { Link } from "react-router-dom";
+import "./Nav.css";
 
 function Nav() {
   return (
@@ -13,6 +13,8 @@ function Nav() {
           <Link to="/Artist">Artistes</Link>
           <Link to="/Mouvements">Mouvements</Link>
           <Link to="/Profil">Profil</Link>
+          <Link to="/Register">S'inscrire</Link>
+          <Link to="/login">Se connecter</Link>
         </div>
       </nav>
     </>

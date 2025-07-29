@@ -19,10 +19,6 @@ function Searchbar({ search, setSearch }: SearchbarProps) {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-
-      <div className="divFiltre">
-        <p>picto filtre</p>
-      </div>
     </article>
   );
 }

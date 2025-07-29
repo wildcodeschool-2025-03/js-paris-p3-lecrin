@@ -36,6 +36,12 @@
   color: var(--white-color);
 }
 
+.loginInput {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .btn-login {
   color: grey;
   background-color: transparent;

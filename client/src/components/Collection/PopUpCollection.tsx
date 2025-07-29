@@ -48,6 +48,9 @@ function PopUpCollection({
           >
             Créer une nouvelle collection
           </button>
+          <button type="button" className="BtnPP" onClick={onClose}>
+            Retour{" "}
+          </button>
         </article>
       )}
 

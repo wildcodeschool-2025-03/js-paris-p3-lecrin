@@ -124,7 +124,6 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
                 >
                   <img src={PictoComment} alt="" />
                 </button>
-                <p className="textPicto">4</p>
               </div>
             </div>
           </div>
