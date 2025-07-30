@@ -1,13 +1,15 @@
 // artworkCard.tsx
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import PictoComment from "../../assets/images/pictos/picto-comment.svg";
 import PictoLike from "../../assets/images/pictos/picto-like.svg";
 import PictoSave from "../../assets/images/pictos/picto-save.svg";
-import "./artworkCard.css";
+import { useUser } from "../../contexts/user.context";
 import type { Artwork, Movement } from "../../types/vite-env";
 import PopUpCollection from "../Collection/PopUpCollection";
 import CommentList from "../Comment/CommentList";
+import "./artworkCard.css";
 
 type ArtworkCardProps = {
   artwork: Artwork;
@@ -19,6 +21,7 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
   const [deleteLike, setDeleteLike] = useState<Response | never[]>([]);
   const [comIsOpen, setComIsOpen] = useState(false);
   const [popUpIsOpen, setPopUpIsOpen] = useState(false);
+  const { user } = useUser();
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: fetch dépendances bien gérées ici
   useEffect(() => {
@@ -30,17 +33,23 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
   }, [updateLike, artwork.id, deleteLike]);
 
   const handleClick = () => {
-    if (like.some((u) => u.user_id === 4)) {
+    if (like.some((u) => u.user_id === user?.id)) {
       fetch(`http://localhost:3310/api/artworks/${artwork.id}/like`, {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: 4 }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.token}`,
+        },
+        body: JSON.stringify({ user_id: user?.id }),
       }).then((res) => setDeleteLike(res));
     } else {
       fetch("http://localhost:3310/api/artworks/like", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: 4, artwork_id: artwork.id }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user?.token}`,
+        },
+        body: JSON.stringify({ user_id: user?.id, artwork_id: artwork.id }),
       }).then((res) => setUpdateLike(res));
     }
   };
@@ -98,7 +107,19 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
                 {new Date(artwork.date_post).toLocaleDateString()}
               </p>
               <div className="divLike">
-                <button type="button" className="btnLike" onClick={handleClick}>
+                <button
+                  type="button"
+                  className="btnLike"
+                  onClick={() => {
+                    if (!user || !user.id) {
+                      toast.warning(
+                        "Vous devez être connecté pour aimé une œuvre",
+                      );
+                    } else {
+                      handleClick();
+                    }
+                  }}
+                >
                   <img className="pictoLike" src={PictoLike} alt="" />
                 </button>
                 <p className="textPicto">{like.length}</p>
@@ -112,7 +133,6 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
                 >
                   <img src={PictoComment} alt="" />
                 </button>
-                <p className="textPicto">4</p>
               </div>
             </div>
           </div>
@@ -143,7 +163,15 @@ function ArtworkCard({ artwork }: ArtworkCardProps) {
               </div>
               <button
                 className="saveArtwork"
-                onClick={openPopUpSave}
+                onClick={() => {
+                  if (!user || !user.id) {
+                    toast.warning(
+                      "Vous devez être connecté pour enregistré une œuvre",
+                    );
+                  } else {
+                    openPopUpSave();
+                  }
+                }}
                 type="button"
               >
                 <img className="pictoSave" src={PictoSave} alt="" />

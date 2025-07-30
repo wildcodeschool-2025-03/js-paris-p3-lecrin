@@ -159,6 +159,9 @@
   flex-direction: row;
   align-items: center;
   gap: 6px;
+  background-color: black;
+  box-decoration-break: none;
+  cursor: pointer;
 }
 
 .divDescArtwork {

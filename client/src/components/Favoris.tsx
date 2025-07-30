@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ArtworkCard from "../components/Artwork/artworkCard";
 import { useArtwork } from "../contexts/artwork.context";
 import { useUser } from "../contexts/user.context";
+import type { Artwork } from "../types/vite-env";
 
 function Favoris() {
   const { user } = useUser();
@@ -13,7 +14,7 @@ function Favoris() {
     fetch(`http://localhost:3310/api/user/${user?.id}/likes`)
       .then((res) => res.json())
       .then((data) => {
-        const ids = data.map((item: { artwork_id: number }) => item.artwork_id);
+        const ids = data.map((item: Artwork) => item.id);
         setLikedArtworksIds(ids);
         setLoading(false);
       })

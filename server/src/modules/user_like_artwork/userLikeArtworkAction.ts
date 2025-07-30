@@ -46,4 +46,15 @@ const destroy: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { read, add, destroy };
+const readAllByUser: RequestHandler = async (req, res, next) => {
+  try {
+    const userId = Number.parseInt(req.params.id);
+    const likes = await userLikeArtworkRepository.selectAllByUser(userId);
+
+    res.json(likes);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default { read, add, destroy, readAllByUser };

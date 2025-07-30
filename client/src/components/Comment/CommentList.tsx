@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
-import "./CommentList.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useUser } from "../../contexts/user.context";
 import type { Comment } from "../../types/vite-env";
+import "./CommentList.css";
 Modal.setAppElement("#root");
 interface CommentListProps {
   artworkId: number;
@@ -35,17 +37,10 @@ function CommentList({
   function textAreaOff() {
     setTextAreaOpen(false);
   }
+
   function send() {
     const trimmed = newComment.trim();
-    if (!trimmed) {
-      alert("Vous ne pouvez pas envoyer de commentaire vide");
-      return;
-    }
 
-    if (!user || !user.id) {
-      alert("Vous devez être connecté pour commenter");
-      return;
-    }
     fetch("http://localhost:3310/api/comments", {
       method: "POST",
       headers: {
@@ -111,7 +106,19 @@ function CommentList({
             <button className="BtnPP" type="button" onClick={textAreaOff}>
               Annuler
             </button>
-            <button className="BtnPP" type="button" onClick={send}>
+            <button
+              className="BtnPP"
+              type="button"
+              onClick={() => {
+                if (!user || !user.id) {
+                  toast.warning(
+                    "Vous devez être connecté pour poster un commentaire",
+                  );
+                } else {
+                  send();
+                }
+              }}
+            >
               Envoyer
             </button>
           </>

@@ -18,10 +18,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export function useUser(): UserContextType {
-  const value = useContext(UserContext);
-  if (value === null) {
-    throw new Error("useRecipe has to be used within <RecipeProvider>");
-  }
-  return value;
-}
+export const useUser = (): UserContextType => {
+  const context = useContext(UserContext);
+  if (!context) throw new Error("Utilisez useUser dans un userProvider");
+  return context;
+};
