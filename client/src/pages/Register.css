@@ -49,10 +49,17 @@
   padding: 10px;
   gap: 10px;
   transition: background-color 0.3s ease;
+  color: white;
 }
 
 .inputReg:hover {
   background-color: white;
+  color: black;
+}
+
+.inputReg:focus {
+  background-color: white;
+  color: black;
 }
 
 .sectionPostArtwork {

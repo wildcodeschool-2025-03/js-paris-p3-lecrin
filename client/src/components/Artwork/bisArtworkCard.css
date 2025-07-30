@@ -148,13 +148,13 @@
 }
 
 @media (max-width: 768px) {
-  .DivListBisArt {
+  .divListBisArt {
     column-count: 1;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .DivListBisArt {
+  .divListBisArt {
     column-count: 2;
   }
 }

@@ -20,7 +20,7 @@ function MouvementList() {
   }, []);
 
   return (
-    <div>
+    <div className="pageMvt">
       <Searchbar search={search} setSearch={setSearch} />
       {filteredMouvement.map((movement) => {
         return <MouvementCard key={movement.id} movement={movement} />;

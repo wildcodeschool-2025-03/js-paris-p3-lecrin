@@ -14,7 +14,7 @@ function Home() {
       <main>
         <section className="hautHome">
           <article className="divH1-btn">
-            <h1 className="titreHome">À l'honneur (fil d'actualité)</h1>
+            <h1 className="titreHome">Fil d'actualité</h1>
             <button
               onClick={() => {
                 if (user) navigate("/postArtwork");

@@ -1,3 +1,9 @@
+.linkMvt {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
 .desc-img {
   display: flex;
   justify-content: start;

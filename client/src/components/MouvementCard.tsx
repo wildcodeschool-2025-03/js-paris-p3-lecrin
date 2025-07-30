@@ -9,7 +9,11 @@ type MovementCardProps = {
 function MouvementCard({ movement }: MovementCardProps) {
   return (
     <>
-      <Link className="LinkToArtistProf" to={`/Mouvements/${movement.id}`}>
+      <Link
+        id="linkMvt"
+        className="LinkToArtistProf"
+        to={`/Mouvements/${movement.id}`}
+      >
         <div className="desc-img">
           <div className="divImgMvt">
             <img className="imgMvt" src={movement.photo} alt={movement.name} />

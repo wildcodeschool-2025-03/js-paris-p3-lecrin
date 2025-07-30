@@ -5,6 +5,13 @@
   gap: 20px;
 }
 
+.pageList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 60px;
+}
+
 @media (max-width: 768px) {
   .artistlist {
     grid-template-columns: 1fr;

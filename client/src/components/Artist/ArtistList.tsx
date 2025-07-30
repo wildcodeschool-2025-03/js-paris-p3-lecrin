@@ -35,14 +35,14 @@ function ArtistList() {
   }
 
   return (
-    <>
+    <section className="pageList">
       <Searchbar search={search} setSearch={setSearch} />
       <div className="artistlist">
         {filteredArtists.map((artist) => (
           <ArtistCard key={artist.id} artist={artist} />
         ))}
       </div>
-    </>
+    </section>
   );
 }
 
