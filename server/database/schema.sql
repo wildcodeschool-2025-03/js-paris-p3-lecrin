@@ -640,7 +640,9 @@ VALUES (1, 4), -- La Nuit étoilée (Post-Impressionnisme)
 (9, 29), -- Belshazzar’s Feast (Baroque)
 (9, 30), -- Self-Portrait at Prayer (Baroque)
 (9, 31), -- The Shipwreck (Rembrandt → Baroque)
-(10, 32); -- The Slave Ship (Turner → Romantisme)
+(10, 32), -- The Slave Ship (Turner → Romantisme)
+(5, 5),
+(4, 1);
 
 -- -----------------------------------------------------
 -- Table `BDD_projet_3`.`user_following_artist`

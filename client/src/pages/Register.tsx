@@ -41,22 +41,54 @@ function Register() {
   return (
     <div className="connexion-page">
       <div className="login">
-        <h1>Inscription</h1>
-        <form action="/ma-page-de-traitement" method="post" className="seco">
-          <label htmlFor="name">Pseudo :</label>
-          <input ref={name} type="text" id="name" name="user_name" />
-          <label htmlFor="mail">E-mail :</label>
-          <input ref={mail} type="email" id="mail" name="user_mail" />
-          <label htmlFor="birthdate">Date de naissance</label>
+        <h1 className="titrePopUp">Inscription</h1>
+        <form
+          action="/ma-page-de-traitement"
+          method="post"
+          className="formPopUp"
+        >
+          <label className="labelRegister" htmlFor="name">
+            Pseudo :
+          </label>
+          <input
+            ref={name}
+            type="text"
+            id="name"
+            name="user_name"
+            className="inputReg"
+          />
+          <label className="labelRegister" htmlFor="mail">
+            E-mail :
+          </label>
+          <input
+            ref={mail}
+            type="email"
+            id="mail"
+            name="user_mail"
+            className="inputReg"
+          />
+          <label className="labelRegister" htmlFor="birthdate">
+            Date de naissance
+          </label>
           <input
             ref={birthdate}
             type="date"
             id="birthdate"
             name="user_birthdate"
+            className="inputReg"
           />
-          <label htmlFor="password">Mot de passe</label>
-          <input ref={password} type="password" id="password" name="password" />
-          <button onClick={registerBtn} className="btn-seco" type="button">
+          <label className="labelRegister" htmlFor="password">
+            Mot de passe
+          </label>
+          <input
+            ref={password}
+            type="password"
+            id="password"
+            name="password"
+            className="inputReg"
+          />
+
+          <button onClick={registerBtn} className="BtnReg" type="button">
             S'inscrire
           </button>
         </form>

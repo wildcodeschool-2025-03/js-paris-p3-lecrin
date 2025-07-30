@@ -60,63 +60,87 @@ function PostArtwork() {
 
   return (
     <section className="sectionPostArtwork">
-      <h1>Le nom de l'oeuvre</h1>
-      <textarea
-        placeholder="Ici le nom..."
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+      <div className="divTruc">
+        <h1 className="labelRegister">Le nom de l'oeuvre</h1>
+        <textarea
+          className="inputReg"
+          placeholder="Ici le nom..."
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </div>
 
-      <h1>La date de l'oeuvre</h1>
-      <textarea
-        placeholder="Ici la date..."
-        value={date_artwork}
-        onChange={(e) => setDate_artwork(e.target.value)}
-      />
+      <div className="divTruc">
+        <h1 className="labelRegister">La date de l'oeuvre</h1>
+        <textarea
+          className="inputReg"
+          placeholder="Ici la date..."
+          value={date_artwork}
+          onChange={(e) => setDate_artwork(e.target.value)}
+        />
+      </div>
 
-      <h1>La photo de l'oeuvre</h1>
-      <textarea
-        placeholder="Ici la photo..."
-        value={photo}
-        onChange={(e) => setPhoto(e.target.value)}
-      />
+      <div className="divTruc">
+        <h1 className="labelRegister">La photo de l'oeuvre</h1>
+        <textarea
+          className="inputReg"
+          placeholder="Ici la photo..."
+          value={photo}
+          onChange={(e) => setPhoto(e.target.value)}
+        />
+      </div>
 
-      <h1>Le musée de l'oeuvre</h1>
-      <textarea
-        placeholder="Ici le musée..."
-        value={musee}
-        onChange={(e) => setMusee(e.target.value)}
-      />
+      <div className="divTruc">
+        <h1 className="labelRegister">Le musée de l'oeuvre</h1>
+        <textarea
+          className="inputReg"
+          placeholder="Ici le musée..."
+          value={musee}
+          onChange={(e) => setMusee(e.target.value)}
+        />
+      </div>
 
-      <h1>La ville de l'oeuvre</h1>
-      <textarea
-        placeholder="Ici la ville..."
-        value={ville}
-        onChange={(e) => setVille(e.target.value)}
-      />
+      <div className="divTruc">
+        <h1 className="labelRegister">La ville de l'oeuvre</h1>
+        <textarea
+          className="inputReg"
+          placeholder="Ici la ville..."
+          value={ville}
+          onChange={(e) => setVille(e.target.value)}
+        />
+      </div>
 
-      <h1>Le pays de l'oeuvre</h1>
-      <textarea
-        placeholder="Ici le pays..."
-        value={pays}
-        onChange={(e) => setPays(e.target.value)}
-      />
+      <div className="divTruc">
+        <h1 className="labelRegister">Le pays de l'oeuvre</h1>
+        <textarea
+          className="inputReg"
+          placeholder="Ici le pays..."
+          value={pays}
+          onChange={(e) => setPays(e.target.value)}
+        />
+      </div>
 
-      <h1>Les dimensions de l'oeuvre</h1>
-      <textarea
-        placeholder="Ici les dimensions..."
-        value={dimensions}
-        onChange={(e) => setDimensions(e.target.value)}
-      />
+      <div className="divTruc">
+        <h1 className="labelRegister">Les dimensions de l'oeuvre</h1>
+        <textarea
+          className="inputReg"
+          placeholder="Ici les dimensions..."
+          value={dimensions}
+          onChange={(e) => setDimensions(e.target.value)}
+        />
+      </div>
 
-      <h1>La description de l'oeuvre</h1>
-      <textarea
-        placeholder="Ici la description..."
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
+      <div className="divTruc">
+        <h1 className="labelRegister">La description de l'oeuvre</h1>
+        <textarea
+          className="inputReg"
+          placeholder="Ici la description..."
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </div>
 
-      <button type="button" onClick={postArtwork}>
+      <button className="BtnReg" type="button" onClick={postArtwork}>
         Poster
       </button>
     </section>

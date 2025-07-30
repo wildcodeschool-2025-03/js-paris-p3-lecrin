@@ -43,17 +43,32 @@ function SeConnecter() {
   return (
     <div className="connexion-page">
       <article className="login">
-        <h1>Se Connecter</h1>
+        <h1 className="titrePopUp">Se Connecter</h1>
         <div className="loginInput">
-          <label htmlFor="mail">E-mail :</label>
-          <input ref={mail} type="email" id="mail" name="user_mail" />
-          <label htmlFor="password">Mot de passe</label>
-          <input ref={password} type="password" id="password" name="password" />
-          <div>
-            <button onClick={loginBtn} className="btn-seco" type="button">
-              Se connecter
-            </button>
-          </div>
+          <label className="labelRegister" htmlFor="mail">
+            E-mail :
+          </label>
+          <input
+            ref={mail}
+            type="email"
+            id="mail"
+            name="user_mail"
+            className="inputReg"
+          />
+          <label className="labelRegister" htmlFor="password">
+            Mot de passe
+          </label>
+          <input
+            ref={password}
+            type="password"
+            id="password"
+            name="password"
+            className="inputReg"
+          />
+
+          <button className="BtnReg" onClick={loginBtn} type="button">
+            Se connecter
+          </button>
         </div>
       </article>
     </div>
