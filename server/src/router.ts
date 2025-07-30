@@ -123,6 +123,7 @@ router.delete("/api/comments/:id", userActions.isAuth, commentActions.destroy);
 import userLikeArtworkAction from "./modules/user_like_artwork/userLikeArtworkAction";
 
 router.get("/api/artworks/:id/like", userLikeArtworkAction.read);
+router.get("/api/user/:id/likes", userLikeArtworkAction.readAllByUser);
 router.post(
   "/api/artworks/like",
   userActions.isAuth,

@@ -19,13 +19,13 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <ArtworkProvider>
-      <UserProvider>
-        <CollectionProvider>
+    <UserProvider>
+      <CollectionProvider>
+        <ArtworkProvider>
           <RouterProvider router={router} />
-        </CollectionProvider>
-      </UserProvider>
-    </ArtworkProvider>
+        </ArtworkProvider>
+      </CollectionProvider>
+    </UserProvider>
   </StrictMode>,
 );
 

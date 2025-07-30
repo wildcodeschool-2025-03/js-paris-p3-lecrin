@@ -1,9 +1,13 @@
 import "./Profile.css";
+import { useState } from "react";
 import pictoProfil from "../assets/images/pictos/picto-profil.svg";
+import Favoris from "../components/Favoris";
 import { useUser } from "../contexts/user.context";
 
 function Profil() {
   const { user } = useUser();
+  const [ongletActif, setOngletActif] = useState("Publications");
+
   return (
     <>
       <main>
@@ -42,8 +46,23 @@ function Profil() {
           <nav className="navProfil">
             <p className="btnNavProf">Publications</p>
             <p className="btnNavProf">Collections</p>
-            <p className="btnNavProf">Favoris</p>
+            {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+            <p
+              className={`btnNavProf ${ongletActif === "Favoris" ? "actif" : ""}`}
+              onClick={() => setOngletActif("Favoris")}
+            >
+              Favoris
+            </p>
           </nav>
+          <div className="contenuProfil">
+            {ongletActif === "Publications" && (
+              <p>Affichage des publications ici</p>
+            )}
+            {ongletActif === "Collections" && (
+              <p>Affichage des collections ici</p>
+            )}
+            {ongletActif === "Favoris" && <Favoris />}
+          </div>
         </section>
       </main>
     </>

@@ -29,5 +29,14 @@ async function deleteById(artworkId: number, userId: number) {
   );
   return result;
 }
+async function selectAllByUser(userId: number) {
+  const [rows] = await db_client.query(
+    `SELECT a.* FROM user_liked_artwork ula
+     JOIN artwork a ON a.id = ula.artwork_id
+     WHERE ula.user_id = ?`,
+    [userId],
+  );
+  return rows;
+}
 
-export default { create, selectOne, deleteById };
+export default { create, selectOne, deleteById, selectAllByUser };
