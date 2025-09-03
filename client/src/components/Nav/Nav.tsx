@@ -13,8 +13,8 @@ function Nav() {
           <Link to="/Artist">Artistes</Link>
           <Link to="/Mouvements">Mouvements</Link>
           <Link to="/Profil">Profil</Link>
-          <Link to="/Register">S'inscrire</Link>
-          <Link to="/login">Se connecter</Link>
+          {/* <Link to="/Register">S'inscrire</Link>
+          <Link to="/login">Se connecter</Link> */}
         </div>
       </nav>
     </>

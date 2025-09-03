@@ -35,6 +35,20 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
+const read: RequestHandler = async (req, res, next) => {
+  try {
+    const parseId = Number.parseInt(req.params.id);
+    const user = await userRepository.selectOne(parseId);
+    if (user) {
+      res.json(user);
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
 const create: RequestHandler = async (req, res, next) => {
   try {
     const user = req.body;
@@ -146,4 +160,5 @@ export default {
   ValidateUser,
   isAuth,
   isAdmin,
+  read,
 };

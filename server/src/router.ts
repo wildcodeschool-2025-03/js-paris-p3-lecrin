@@ -16,6 +16,7 @@ const router = express.Router();
 
 import userActions from "./modules/user/userActions";
 router.get("/api/users", userActions.browse);
+router.get("/api/users/:id", userActions.read);
 router.post("/api/users", userActions.ValidateUser, userActions.create);
 router.post("/api/users/login", userActions.login);
 router.delete("/api/users/:id", userActions.isAuth, userActions.destroy);
